@@ -215,8 +215,10 @@ function renderPanels() {
 function getVisibleSteps() {
   var normal = DATA.washSteps.normal;
   if (mode === 'normal') return normal;
+  // Maintenance wash: exclude steps flagged as normalOnly (Reset pre-foam, 2-bucket wash)
+  var normalFiltered = normal.filter(function(s) { return !s.normalOnly; });
   var maint = DATA.washSteps.maintOnly;
-  var combined = normal.slice();
+  var combined = normalFiltered.slice();
   maint.forEach(function(ms) {
     var idx = combined.findIndex(function(s) { return s.id === ms.insertAfter; });
     if (idx >= 0) combined.splice(idx + 1, 0, Object.assign({}, ms, {isMaint: true}));
