@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>G80 M3 Car Wash Plan</title>
+<style>
+  :root {
+    --bg: #0f0f11;
+    --bg2: #1a1a1f;
+    --bg3: #242429;
+    --border: #2e2e36;
+    --border2: #3a3a44;
+    --text: #e8e8f0;
+    --text2: #9090a8;
+    --text3: #5a5a70;
+    --blue: #4a9eff;
+    --blue-bg: #0d2040;
+    --blue-border: #1a4080;
+    --green: #3ecf8e;
+    --green-bg: #0a2018;
+    --green-border: #1a5035;
+    --amber: #f0b040;
+    --amber-bg: #1f1508;
+    --amber-border: #5a3a00;
+    --red: #f05050;
+    --red-bg: #200808;
+    --red-border: #501010;
+    --maint-green: #5ecb6e;
+    --maint-bg: #0a2010;
+    --maint-border: #1a5025;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.5; -webkit-text-size-adjust: 100%; }
+  .header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 14px 16px 10px; position: sticky; top: 0; z-index: 100; }
+  .header h1 { font-size: 16px; font-weight: 600; color: var(--text); }
+  .header .sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  .mode-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .mode-btn { border: 1px solid var(--border2); background: transparent; color: var(--text2); font-size: 12px; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.15s; -webkit-tap-highlight-color: transparent; }
+  .mode-btn.active-normal { background: var(--blue-bg); color: var(--blue); border-color: var(--blue-border); font-weight: 600; }
+  .mode-btn.active-maint { background: var(--maint-bg); color: var(--maint-green); border-color: var(--maint-border); font-weight: 600; }
+  .tabs { display: flex; overflow-x: auto; gap: 4px; padding: 10px 16px 0; background: var(--bg2); border-bottom: 1px solid var(--border); scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { border: none; background: transparent; color: var(--text3); font-size: 13px; padding: 8px 14px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; -webkit-tap-highlight-color: transparent; }
+  .tab.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 500; }
+  .panel { display: none; padding: 16px; }
+  .panel.active { display: block; }
+  .note { border-radius: var(--radius-sm); padding: 10px 12px; font-size: 13px; line-height: 1.6; margin-bottom: 14px; }
+  .note.ceramic { background: #200a14; border: 1px solid #501030; color: #d080a0; }
+  .note.info { background: var(--bg3); border: 1px solid var(--border2); color: var(--text2); }
+  .note.warn { background: var(--red-bg); border: 1px solid var(--red-border); color: #d08080; }
+  .note.optional { background: var(--maint-bg); border: 1px solid var(--maint-border); color: var(--maint-green); }
+  .note strong { font-weight: 600; }
+  .prog-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .prog-bar { flex: 1; height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+  .prog-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.3s; }
+  .prog-label { font-size: 12px; color: var(--text3); white-space: nowrap; }
+  .reset-btn { border: 1px solid var(--border2); background: transparent; color: var(--text3); font-size: 12px; padding: 5px 12px; border-radius: 20px; cursor: pointer; margin-bottom: 12px; -webkit-tap-highlight-color: transparent; }
+  .steps-list { display: flex; flex-direction: column; gap: 8px; }
+  .step { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 13px 14px; display: flex; align-items: flex-start; gap: 12px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s; }
+  .step.done { opacity: 0.45; }
+  .step.maint-step { border-left: 3px solid var(--maint-border); }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--text3); flex-shrink: 0; }
+  .step.done .step-num { background: var(--green-bg); border-color: var(--green-border); color: var(--green); }
+  .step-body { flex: 1; min-width: 0; }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .step-desc { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500; }
+  .tag.tool { background: var(--blue-bg); color: var(--blue); }
+  .tag.chem { background: var(--amber-bg); color: var(--amber); }
+  .tag.warn-tag { background: var(--red-bg); color: var(--red); }
+  .pill { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 500; }
+  .pill.normal { background: var(--blue-bg); color: var(--blue); }
+  .pill.maint { background: var(--maint-bg); color: var(--maint-green); }
+  .pill.essential { background: var(--red-bg); color: var(--red); }
+  .pill.recommended { background: var(--amber-bg); color: var(--amber); }
+  .pill.optional { background: var(--bg3); color: var(--text2); border: 1px solid var(--border2); }
+  .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); margin: 20px 0 8px; }
+  .section-label:first-child { margin-top: 0; }
+  .table-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+  .table-row { display: grid; border-bottom: 1px solid var(--border); }
+  .table-row:last-child { border-bottom: none; }
+  .table-row.thead { background: var(--bg3); }
+  .table-cell { padding: 9px 12px; font-size: 12px; color: var(--text); line-height: 1.45; }
+  .table-cell.muted { color: var(--text2); }
+  .table-row.thead .table-cell { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text3); padding: 7px 12px; border-bottom: 1px solid var(--border); }
+  .col2 { grid-template-columns: 1fr 1fr; }
+  .col3 { grid-template-columns: 1.5fr 0.6fr 1.4fr; }
+  .col4 { grid-template-columns: 1.1fr 0.9fr 0.9fr 1.1fr; }
+  .cover-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+  .cover-card { background: var(--bg3); border-radius: var(--radius-sm); padding: 10px 12px; border: 1px solid var(--border2); }
+  .cover-card.danger { background: var(--red-bg); border-color: var(--red-border); }
+  .cover-card.caution { background: var(--amber-bg); border-color: var(--amber-border); }
+  .cover-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .cover-card.danger .cover-label { color: var(--red); }
+  .cover-card.caution .cover-label { color: var(--amber); }
+  .cover-item { font-size: 12px; color: var(--text2); line-height: 1.7; }
+  .gap-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 13px 14px; margin-bottom: 8px; }
+  .gap-item.have { border-color: var(--green-border); background: var(--green-bg); }
+  .gap-item.buy { border-color: var(--amber-border); background: var(--amber-bg); }
+  .gap-item.skip { opacity: 0.4; }
+  .gap-name { font-size: 14px; font-weight: 500; margin-bottom: 3px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .gap-item.have .gap-name { color: var(--green); }
+  .gap-item.buy .gap-name { color: var(--amber); }
+  .gap-why { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 8px; }
+  .gap-item.have .gap-why { color: #60a080; }
+  .gap-item.buy .gap-why { color: #a08040; }
+  .gap-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .gap-btn { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .gap-btn.sel-have { background: var(--green-bg); color: var(--green); border-color: var(--green-border); font-weight: 600; }
+  .gap-btn.sel-buy { background: var(--amber-bg); color: var(--amber); border-color: var(--amber-border); font-weight: 600; }
+  .gap-btn.sel-skip { background: var(--bg3); color: var(--text3); border-color: var(--border); font-weight: 600; }
+  .gap-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+  .gsum { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 10px 8px; text-align: center; }
+  .gsum .gnum { font-size: 22px; font-weight: 700; color: var(--text); display: block; }
+  .gsum .glbl { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .filter-btn { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .filter-btn.active { background: var(--bg3); color: var(--text); border-color: var(--border2); font-weight: 500; }
+  .chem-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 10px; }
+  .chem-header { background: var(--bg3); padding: 10px 13px; border-bottom: 1px solid var(--border); }
+  .chem-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .chem-cat { font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .chem-body { padding: 10px 13px; }
+  .chem-used { font-size: 12px; color: var(--text2); margin-bottom: 8px; line-height: 1.5; }
+  .dilution-row { background: var(--bg3); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 6px; border: 1px solid var(--border); }
+  .dilution-row:last-child { margin-bottom: 0; }
+  .dilution-context { font-size: 11px; color: var(--text3); margin-bottom: 3px; font-weight: 500; }
+  .dilution-ratio { font-size: 14px; font-weight: 700; color: var(--blue); }
+  .dilution-amount { font-size: 12px; color: var(--text); margin-top: 1px; }
+  .dilution-note { font-size: 11px; color: var(--text3); margin-top: 4px; line-height: 1.5; }
+  .loading { text-align: center; padding: 60px 20px; color: var(--text3); }
+  .error { text-align: center; padding: 40px 20px; color: var(--red); font-size: 14px; }
+  .version { font-size: 11px; color: var(--text3); text-align: center; padding: 20px 0 8px; }
+  @media (max-width: 400px) {
+    .cover-grid { grid-template-columns: 1fr; }
+    .gap-summary { grid-template-columns: repeat(2, 1fr); }
+    .col4 { grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="loading">Loading wash plan…</div>
+</div>
+
+<script>
+var DATA = null;
+var mode = 'normal';
+var done = new Set();
+var engDone = new Set();
+var gapState = {};
+var gapFilter = 'all';
+var activeTab = 'steps';
+
+try { done = new Set(JSON.parse(localStorage.getItem('gwp_done') || '[]')); } catch(e) {}
+try { engDone = new Set(JSON.parse(localStorage.getItem('gwp_eng') || '[]')); } catch(e) {}
+try { gapState = JSON.parse(localStorage.getItem('gwp_gaps') || '{}'); } catch(e) {}
+
+function save() {
+  try {
+    localStorage.setItem('gwp_done', JSON.stringify([...done]));
+    localStorage.setItem('gwp_eng', JSON.stringify([...engDone]));
+    localStorage.setItem('gwp_gaps', JSON.stringify(gapState));
+  } catch(e) {}
+}
+
+function h(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function render() {
+  var app = document.getElementById('app');
+  var m = DATA.meta;
+  app.innerHTML = renderHeader(m) + renderTabs() + renderPanels();
+  attachEvents();
+}
+
+function renderHeader(m) {
+  return '<div class="header">' +
+    '<h1>' + h(m.title) + '</h1>' +
+    '<div class="sub">' + h(m.car) + ' &nbsp;·&nbsp; v' + h(m.version) + ' &nbsp;·&nbsp; ' + h(m.lastUpdated) + '</div>' +
+    '<div class="mode-row">' +
+    '<button class="mode-btn ' + (mode==='normal'?'active-normal':'') + '" onclick="setMode(\'normal\')">Bi-weekly wash</button>' +
+    '<button class="mode-btn ' + (mode==='maint'?'active-maint':'') + '" onclick="setMode(\'maint\')">Ceramic maintenance</button>' +
+    '</div>' +
+    '</div>';
+}
+
+function renderTabs() {
+  var tabs = [
+    {id:'steps', label:'Steps'},
+    {id:'chems', label:'Chemicals'},
+    {id:'tools', label:'Tools'},
+    {id:'engine', label:'Engine Bay ⚙️'},
+    {id:'gaps', label:'Gaps'}
+  ];
+  return '<div class="tabs">' + tabs.map(function(t) {
+    return '<button class="tab ' + (activeTab===t.id?'active':'') + '" onclick="showTab(\'' + t.id + '\')">' + t.label + '</button>';
+  }).join('') + '</div>';
+}
+
+function renderPanels() {
+  return '<div id="panel-steps" class="panel ' + (activeTab==='steps'?'active':'') + '">' + renderStepsPanel() + '</div>' +
+    '<div id="panel-chems" class="panel ' + (activeTab==='chems'?'active':'') + '">' + renderChemsPanel() + '</div>' +
+    '<div id="panel-tools" class="panel ' + (activeTab==='tools'?'active':'') + '">' + renderToolsPanel() + '</div>' +
+    '<div id="panel-engine" class="panel ' + (activeTab==='engine'?'active':'') + '">' + renderEnginePanel() + '</div>' +
+    '<div id="panel-gaps" class="panel ' + (activeTab==='gaps'?'active':'') + '">' + renderGapsPanel() + '</div>';
+}
+
+function getVisibleSteps() {
+  var normal = DATA.washSteps.normal;
+  if (mode === 'normal') return normal;
+  var maint = DATA.washSteps.maintOnly;
+  var combined = normal.slice();
+  maint.forEach(function(ms) {
+    var idx = combined.findIndex(function(s) { return s.id === ms.insertAfter; });
+    if (idx >= 0) combined.splice(idx + 1, 0, Object.assign({}, ms, {isMaint: true}));
+    else combined.push(Object.assign({}, ms, {isMaint: true}));
+  });
+  return combined;
+}
+
+function renderStepsPanel() {
+  var steps = getVisibleSteps();
+  var n = steps.filter(function(s) { return done.has(s.id); }).length;
+  var t = steps.length;
+  var pct = t > 0 ? Math.round(n/t*100) : 0;
+
+  var html = '<div class="note ceramic"><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying only — zero towel contact on paint after rinsing.</div>';
+  html += '<div class="prog-row"><div class="prog-bar"><div class="prog-fill" style="width:' + pct + '%"></div></div><div class="prog-label">' + n + ' / ' + t + '</div></div>';
+  html += '<button class="reset-btn" onclick="resetSteps()">Reset all</button>';
+  html += '<div class="steps-list">';
+
+  steps.forEach(function(s, idx) {
+    var isDone = done.has(s.id);
+    var maintBadge = s.isMaint ? '<span class="pill maint">maint. only</span>' : '';
+    html += '<div class="step' + (isDone?' done':'') + (s.isMaint?' maint-step':'') + '" onclick="toggleStep(\'' + s.id + '\')">';
+    html += '<div class="step-num">' + (isDone ? '✓' : (idx+1)) + '</div>';
+    html += '<div class="step-body">';
+    html += '<div class="step-title">' + h(s.title) + maintBadge + '</div>';
+    html += '<div class="step-desc">' + h(s.desc) + '</div>';
+    if (s.tools && s.tools.length || s.chems && s.chems.length) {
+      html += '<div class="tags">';
+      (s.tools||[]).forEach(function(t) { html += '<span class="tag tool">' + h(t) + '</span>'; });
+      (s.chems||[]).forEach(function(c) { html += '<span class="tag chem">' + h(c) + '</span>'; });
+      html += '</div>';
+    }
+    html += '</div></div>';
+  });
+
+  html += '</div>';
+  return html;
+}
+
+function renderChemsPanel() {
+  var html = '<div class="note info"><strong>IK Foam sprayer vs foam cannon:</strong> CarPro\'s published 1:9 for Reset is a <em>pressure washer foam cannon</em> ratio — it does NOT apply to IK E Foam sprayers. IK sprayers deliver what you put in. Ratios listed here are specific to your IK E Foam 12 Pro (6L) and IK E Foam 2 (1.25L).</div>';
+
+  var chems = DATA.chemicals.filter(function(c) {
+    if (mode === 'normal') return c.modes.indexOf('normal') >= 0;
+    return true;
+  });
+
+  chems.forEach(function(c) {
+    var maintOnly = c.modes.length === 1 && c.modes[0] === 'maint';
+    html += '<div class="chem-card">';
+    html += '<div class="chem-header"><div class="chem-name">' + h(c.name) + (maintOnly ? ' <span class="pill maint">maint. only</span>' : '') + '</div>';
+    html += '<div class="chem-cat">' + h(c.category) + '</div></div>';
+    html += '<div class="chem-body">';
+    html += '<div class="chem-used">Used on: ' + h(c.usedOn) + '</div>';
+    c.dilutions.forEach(function(d) {
+      html += '<div class="dilution-row">';
+      html += '<div class="dilution-context">' + h(d.context) + '</div>';
+      html += '<div class="dilution-ratio">' + h(d.ratio) + '</div>';
+      if (d.amount && d.amount !== 'No dilution' && d.amount !== 'Direct') {
+        html += '<div class="dilution-amount">' + h(d.amount) + '</div>';
+      }
+      if (d.note) html += '<div class="dilution-note">' + h(d.note) + '</div>';
+      html += '</div>';
+    });
+    html += '<div style="font-size:11px;color:var(--text3);margin-top:8px;">Tool: ' + h(c.tool) + '</div>';
+    html += '</div></div>';
+  });
+  return html;
+}
+
+function renderToolsPanel() {
+  var cats = {};
+  DATA.tools.forEach(function(t) {
+    if (!cats[t.category]) cats[t.category] = [];
+    cats[t.category].push(t);
+  });
+
+  var html = '';
+  Object.keys(cats).forEach(function(cat) {
+    html += '<div class="section-label">' + h(cat) + '</div>';
+    html += '<div class="table-card">';
+    html += '<div class="table-row col3 thead"><div class="table-cell">Tool</div><div class="table-cell">Qty</div><div class="table-cell">Used for</div></div>';
+    cats[cat].forEach(function(t) {
+      html += '<div class="table-row col3"><div class="table-cell">' + h(t.name) + '</div><div class="table-cell muted">' + h(t.qty) + '</div><div class="table-cell muted">' + h(t.usedFor) + '</div></div>';
+    });
+    html += '</div>';
+  });
+  return html;
+}
+
+function renderEnginePanel() {
+  var eb = DATA.engineBay;
+  var n = eb.steps.filter(function(s) { return engDone.has(s.id); }).length;
+  var t = eb.steps.length;
+  var pct = t > 0 ? Math.round(n/t*100) : 0;
+
+  var html = '<div class="note optional"><strong>Optional — standalone session only.</strong> ' + h(eb.note) + '</div>';
+
+  html += '<div class="note warn"><strong>⚠ Cover or avoid before any water contact</strong>';
+  html += '<div class="cover-grid">';
+  html += '<div class="cover-card danger"><div class="cover-label">Bag + tape (critical)</div><div class="cover-item">' + eb.coverBeforeWater.bagAndTape.map(function(i) { return h(i); }).join('<br>') + '</div></div>';
+  html += '<div class="cover-card caution"><div class="cover-label">Avoid direct spray</div><div class="cover-item">' + eb.coverBeforeWater.avoidDirectSpray.map(function(i) { return h(i); }).join('<br>') + '</div></div>';
+  html += '</div>';
+  html += '<div style="font-size:12px;margin-top:6px;">Hose only — NEVER pressure washer in the engine bay. Low pressure, back to front, away from firewall looms.</div>';
+  html += '</div>';
+
+  html += '<div class="prog-row"><div class="prog-bar"><div class="prog-fill" style="width:' + pct + '%"></div></div><div class="prog-label">' + n + ' / ' + t + '</div></div>';
+  html += '<button class="reset-btn" onclick="resetEngine()">Reset engine steps</button>';
+  html += '<div class="steps-list">';
+
+  eb.steps.forEach(function(s, idx) {
+    var isDone = engDone.has(s.id);
+    var warnBadge = s.warn ? '<span class="tag warn-tag">⚠ cover first</span>' : '';
+    html += '<div class="step' + (isDone?' done':'') + '" onclick="toggleEngine(\'' + s.id + '\')">';
+    html += '<div class="step-num">' + (isDone ? '✓' : (idx+1)) + '</div>';
+    html += '<div class="step-body">';
+    html += '<div class="step-title">' + h(s.title) + warnBadge + '</div>';
+    html += '<div class="step-desc">' + h(s.desc) + '</div>';
+    if (s.tools && s.tools.length || s.chems && s.chems.length) {
+      html += '<div class="tags">';
+      (s.tools||[]).forEach(function(t) { html += '<span class="tag tool">' + h(t) + '</span>'; });
+      (s.chems||[]).forEach(function(c) { html += '<span class="tag chem">' + h(c) + '</span>'; });
+      html += '</div>';
+    }
+    html += '</div></div>';
+  });
+
+  html += '</div>';
+
+  html += '<div class="section-label" style="margin-top:20px;">Engine bay chemicals</div>';
+  html += '<div class="table-card">';
+  html += '<div class="table-row col4 thead"><div class="table-cell">Chemical</div><div class="table-cell">Where used</div><div class="table-cell">Dilution</div><div class="table-cell">Tool / notes</div></div>';
+  html += '<div class="table-row col4"><div class="table-cell">AllClean APC or CarPro MultiX</div><div class="table-cell muted">All plastic covers, hoses, bay walls, chassis</div><div class="table-cell muted">AllClean 5:1–10:1 / MultiX 10:1 general. 3:1 for heavy grease/oil.</div><div class="table-cell muted">IK E Foam 2 or spray bottle + detail brushes. Dwell 1–2 min.</div></div>';
+  html += '<div class="table-row col4"><div class="table-cell">Trim dressing</div><div class="table-cell muted">Plastic covers, hoses, rubber seals</div><div class="table-cell muted">RTU</div><div class="table-cell muted">Soft trim brush or foam pad. Apply thin near connectors.</div></div>';
+  html += '</div>';
+
+  return html;
+}
+
+function renderGapsPanel() {
+  var allItems = DATA.gaps.tools.concat(DATA.gaps.chemicals);
+  var h_ct = 0, b_ct = 0, s_ct = 0, n_ct = 0;
+  allItems.forEach(function(i) {
+    var st = gapState[i.id] || 'none';
+    if (st==='have') h_ct++;
+    else if (st==='buy') b_ct++;
+    else if (st==='skip') s_ct++;
+    else n_ct++;
+  });
+
+  var html = '<div class="gap-summary">';
+  html += '<div class="gsum"><span class="gnum" style="color:var(--green)">' + h_ct + '</span><span class="glbl">Have it</span></div>';
+  html += '<div class="gsum"><span class="gnum" style="color:var(--amber)">' + b_ct + '</span><span class="glbl">Need to buy</span></div>';
+  html += '<div class="gsum"><span class="gnum">' + s_ct + '</span><span class="glbl">Skipped</span></div>';
+  html += '<div class="gsum"><span class="gnum">' + n_ct + '</span><span class="glbl">Unreviewed</span></div>';
+  html += '</div>';
+
+  html += '<div class="filter-row">';
+  ['all','essential','recommended','optional','buy'].forEach(function(f) {
+    html += '<button class="filter-btn ' + (gapFilter===f?'active':'') + '" onclick="setGapFilter(\'' + f + '\')">' + (f==='buy'?'Need to buy':f.charAt(0).toUpperCase()+f.slice(1)) + '</button>';
+  });
+  html += '</div>';
+
+  html += '<div class="section-label">Tools & materials</div>';
+  html += renderGapList(DATA.gaps.tools);
+  html += '<div class="section-label">Chemicals</div>';
+  html += renderGapList(DATA.gaps.chemicals);
+  return html;
+}
+
+function renderGapList(items) {
+  var html = '';
+  var shown = 0;
+  items.forEach(function(item) {
+    if (gapFilter !== 'all' && gapFilter !== 'buy' && item.priority !== gapFilter) return;
+    if (gapFilter === 'buy' && (gapState[item.id] || 'none') !== 'buy') return;
+    shown++;
+    var st = gapState[item.id] || 'none';
+    var cls = 'gap-item' + (st==='have'?' have':st==='buy'?' buy':st==='skip'?' skip':'');
+    var maintOnly = item.washTypes && item.washTypes.length === 1 && item.washTypes[0] === 'maint';
+    html += '<div class="' + cls + '">';
+    html += '<div class="gap-name">' + h(item.name) + (maintOnly ? ' <span class="pill maint">maint. only</span>' : '') + ' <span class="pill ' + item.priority + '">' + item.priority + '</span></div>';
+    html += '<div class="gap-why">' + h(item.why) + '</div>';
+    html += '<div class="gap-btns">';
+    html += '<button class="gap-btn ' + (st==='have'?'sel-have':'') + '" onclick="setGap(\'' + item.id + '\',\'have\')">Have it</button>';
+    html += '<button class="gap-btn ' + (st==='buy'?'sel-buy':'') + '" onclick="setGap(\'' + item.id + '\',\'buy\')">Need to buy</button>';
+    html += '<button class="gap-btn ' + (st==='skip'?'sel-skip':'') + '" onclick="setGap(\'' + item.id + '\',\'skip\')">Skip</button>';
+    html += '</div></div>';
+  });
+  if (!shown) html = '<div style="font-size:13px;color:var(--text3);padding:10px 0;">No items match this filter.</div>';
+  return html;
+}
+
+function attachEvents() {}
+
+function setMode(m) {
+  mode = m;
+  render();
+}
+
+function showTab(id) {
+  activeTab = id;
+  render();
+}
+
+function toggleStep(id) {
+  if (done.has(id)) done.delete(id); else done.add(id);
+  save();
+  updateStepProgress();
+  var stepEls = document.querySelectorAll('.steps-list .step');
+  var steps = getVisibleSteps();
+  steps.forEach(function(s, idx) {
+    var el = stepEls[idx];
+    if (!el) return;
+    var isDone = done.has(s.id);
+    el.className = 'step' + (isDone?' done':'') + (s.isMaint?' maint-step':'');
+    el.querySelector('.step-num').textContent = isDone ? '✓' : (idx+1);
+  });
+}
+
+function updateStepProgress() {
+  var steps = getVisibleSteps();
+  var n = steps.filter(function(s) { return done.has(s.id); }).length;
+  var t = steps.length;
+  var pct = t > 0 ? Math.round(n/t*100) : 0;
+  var fill = document.querySelector('#panel-steps .prog-fill');
+  var label = document.querySelector('#panel-steps .prog-label');
+  if (fill) fill.style.width = pct + '%';
+  if (label) label.textContent = n + ' / ' + t;
+}
+
+function toggleEngine(id) {
+  if (engDone.has(id)) engDone.delete(id); else engDone.add(id);
+  save();
+  var steps = DATA.engineBay.steps;
+  var n = steps.filter(function(s) { return engDone.has(s.id); }).length;
+  var t = steps.length;
+  var pct = t > 0 ? Math.round(n/t*100) : 0;
+  var fill = document.querySelector('#panel-engine .prog-fill');
+  var label = document.querySelector('#panel-engine .prog-label');
+  if (fill) fill.style.width = pct + '%';
+  if (label) label.textContent = n + ' / ' + t;
+  var stepEls = document.querySelectorAll('#panel-engine .steps-list .step');
+  steps.forEach(function(s, idx) {
+    var el = stepEls[idx];
+    if (!el) return;
+    var isDone = engDone.has(s.id);
+    el.className = 'step' + (isDone?' done':'');
+    el.querySelector('.step-num').textContent = isDone ? '✓' : (idx+1);
+  });
+}
+
+function resetSteps() {
+  done.clear();
+  save();
+  render();
+}
+
+function resetEngine() {
+  engDone.clear();
+  save();
+  render();
+}
+
+function setGap(id, state) {
+  gapState[id] = state;
+  save();
+  render();
+}
+
+function setGapFilter(f) {
+  gapFilter = f;
+  render();
+}
+
+// Load JSON
+fetch('wash-plan.json')
+  .then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  })
+  .then(function(data) {
+    DATA = data;
+    render();
+  })
+  .catch(function(err) {
+    document.getElementById('app').innerHTML =
+      '<div class="error">' +
+      '<p style="font-size:18px;margin-bottom:12px;">⚠️ Could not load wash-plan.json</p>' +
+      '<p style="color:var(--text2);font-size:13px;line-height:1.7;">' +
+      'This viewer requires a local server or GitHub Pages to load the JSON data file.<br><br>' +
+      '<strong>To run locally:</strong><br>' +
+      'In your repo folder, run:<br>' +
+      '<code style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-size:12px;">python3 -m http.server 8080</code><br>' +
+      'Then open <code style="background:var(--bg3);padding:4px 8px;border-radius:4px;font-size:12px;">http://localhost:8080</code><br><br>' +
+      '<strong>Or enable GitHub Pages</strong> in your repo settings.<br><br>' +
+      '<em style="color:var(--text3);font-size:12px;">Error: ' + err.message + '</em>' +
+      '</p></div>';
+  });
+</script>
+</body>
+</html>
