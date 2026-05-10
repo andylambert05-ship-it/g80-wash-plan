@@ -397,19 +397,13 @@
       "usedOn": "Full exterior \u2014 mineral deposits & water spot etching in coating \u2014 panel by panel",
       "dilutions": [
         {
-          "context": "Hand application (applicator pad)",
+          "context": "2-bucket hand wash (maint. wash)",
           "ratio": "1:100",
-          "amount": "10ml Descale per 1L water",
-          "note": "Work one panel at a time. Dwell as long as possible without drying. Rinse each panel before moving on. ION Green makes mineral hazing very visible."
-        },
-        {
-          "context": "Spray bottle application",
-          "ratio": "1:10",
-          "amount": "100ml Descale per 1L water",
-          "note": "If applying via spray bottle to wet panel first, then following with applicator."
+          "amount": "10ml Descale per 1L water in wash bucket",
+          "note": "Replaces Reset in the maintenance wash contact stage. Use Bucket 2 for Descale solution, Bucket 3 for rinse. Work one panel at a time using the 2-bucket method. Dwell as long as possible without drying. Rinse each panel before moving on. ION Green makes mineral hazing very visible \u2014 inspect as you go."
         }
       ],
-      "tool": "Foam or MF applicator pad by hand"
+      "tool": "2-bucket method \u2014 dedicated Descale wash bucket + rinse bucket"
     },
     {
       "name": "CarPro ReTyre",
@@ -773,13 +767,13 @@
       {
         "id": "m02",
         "title": "CarPro Descale by hand \u2014 maint. step 2",
-        "desc": "Dilute 1:100 \u2014 10ml Descale per 1L water. Work one panel at a time with foam or MF applicator. Dwell as long as possible without letting it dry. Rinse each panel completely before moving to the next. ION Green makes mineral hazing very visible \u2014 inspect as you go.",
+        "desc": "Dilute 1:100 \u2014 10ml Descale per 1L water in Bucket 2. Use the 2-bucket method with Bucket 3 as the rinse bucket. Reset is not used in the maintenance wash \u2014 Descale replaces it for the contact wash stage. Work one panel at a time, top to bottom. Dwell as long as possible without letting it dry. Rinse each panel completely before moving to the next. ION Green makes mineral hazing very visible \u2014 inspect carefully as you go.",
         "tools": [
-          "Foam or MF applicator pad",
-          "Labeled spray bottle"
+          "2\u00d7 buckets with grit guards",
+          "Wash mitt"
         ],
         "chems": [
-          "CarPro Descale \u2014 1:100 (10ml per 1L water)"
+          "CarPro Descale \u2014 1:100 (10ml per 1L) in Bucket 2 \u2014 replaces Reset in maint. wash"
         ],
         "insertAfter": "m01"
       },
