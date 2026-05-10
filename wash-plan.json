@@ -626,6 +626,15 @@
         ]
       },
       {
+        "id": "n075",
+        "title": "Pre-rinse full car",
+        "desc": "Rinse the entire car top to bottom with a hose or pressure washer before applying Iron X. This removes loose surface contamination and ensures panels are wet, which helps Iron X spread evenly and prevents it from flashing dry on the ceramic coating.",
+        "tools": [
+          "Pressure washer / hose"
+        ],
+        "chems": []
+      },
+      {
         "id": "n08",
         "title": "Apply CarPro Iron X to paint",
         "desc": "Spray Iron X RTU across all painted panels. Dwell 3\u20135 min \u2014 purple bleed indicates iron in coating. Do NOT let dry on ceramic. Rinse completely.",
