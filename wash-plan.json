@@ -442,21 +442,22 @@
       "tool": "Dedicated foam tire applicator pads (Darkside-only, never mixed)"
     },
     {
-      "name": "CarPro HydrO2 Foam",
-      "category": "Ceramic coating topper (optional)",
+      "name": "CarPro HydrO2 Lite",
+      "category": "Drying aid",
       "modes": [
+        "normal",
         "maint"
       ],
-      "usedOn": "Full exterior after final rinse \u2014 refreshes ceramic SiO2 layer, fully touchless",
+      "usedOn": "All painted panels \u2014 applied while wet after final rinse, rinsed off before blower drying",
       "dilutions": [
         {
-          "context": "IK E Foam 12 Pro (6L fill)",
-          "ratio": "Per label",
-          "amount": "CarPro does not publish a specific IK foam sprayer ratio \u2014 use label as starting point and adjust for foam quality on 6L fill",
-          "note": "Apply to cool dry paint in shade. Flash 30-60 sec until tacky. Blow off with leaf blower \u2014 no wipe contact needed."
+          "context": "All use \u2014 spray on wet car",
+          "ratio": "RTU",
+          "amount": "No dilution",
+          "note": "Spray onto wet panels after final sheeting rinse. Rinse off completely within 30 seconds. Do not let dwell. Immediately blow dry with leaf blower."
         }
       ],
-      "tool": "IK E Foam 12 Pro + leaf blower"
+      "tool": "Labeled spray bottle or IK E Foam 2 \u2014 followed immediately by hose rinse then leaf blower"
     },
     {
       "name": "P21S Polishing Soap",
@@ -674,6 +675,17 @@
         "chems": []
       },
       {
+        "id": "n115",
+        "title": "Apply CarPro HydrO2 Lite \u2014 drying aid",
+        "desc": "With the car still wet after the final sheeting rinse, spray HydrO2 Lite across all painted panels. Work quickly panel by panel. Rinse off completely within 30 seconds \u2014 do not let it dwell longer. Immediately proceed to leaf blower drying.",
+        "tools": [
+          "Labeled spray bottle or IK E Foam 2"
+        ],
+        "chems": [
+          "CarPro HydrO2 Lite \u2014 RTU, rinse off within 30 sec"
+        ]
+      },
+      {
         "id": "n12",
         "title": "Touchless leaf blower drying \u2014 paint",
         "desc": "Blow all paint surfaces dry: roof \u2192 hood \u2192 trunk \u2192 sides \u2192 lower panels. Chase water from mirror housings, door jambs, badges, trim gaps, exhaust outlets. ZERO towel contact on paint.",
@@ -776,19 +788,6 @@
           "CarPro Descale \u2014 1:100 (10ml per 1L) in Bucket 2 \u2014 replaces Reset in maint. wash"
         ],
         "insertAfter": "m01"
-      },
-      {
-        "id": "m03",
-        "title": "Apply CarPro HydrO2 Foam \u2014 coating topper (optional)",
-        "desc": "After paint is fully blower-dried, load HydrO2 Foam into IK E Foam 12 Pro per label directions. Apply panel by panel to cool paint in shade. Let flash 30\u201360 sec until tacky. Blow off with leaf blower \u2014 no wipe contact needed. Refreshes the ceramic SiO2 layer touchlessly.",
-        "tools": [
-          "IK E Foam 12 Pro",
-          "Leaf blower"
-        ],
-        "chems": [
-          "CarPro HydrO2 Foam \u2014 per label (adjust for 6L fill)"
-        ],
-        "insertAfter": "n12"
       }
     ]
   },
