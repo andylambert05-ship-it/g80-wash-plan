@@ -7,15 +7,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
 :root{
-  --bg:#0a0a0c;--bg2:#111114;--bg3:#17171c;--bg4:#1e1e25;--bg5:#25252e;
-  --border:#28282e;--border2:#323239;--border3:#3e3e48;
-  --text:#f0f0f8;--text2:#8888a2;--text3:#4e4e65;
-  --blue:#1c6ef7;--blue-lt:#4d94ff;--blue-bg:rgba(28,110,247,0.1);--blue-bd:rgba(28,110,247,0.28);
-  --green:#00cc78;--green-bg:rgba(0,204,120,0.09);--green-bd:rgba(0,204,120,0.24);
-  --amber:#f0a020;--amber-bg:rgba(240,160,32,0.09);--amber-bd:rgba(240,160,32,0.24);
-  --red:#f04848;--red-bg:rgba(240,72,72,0.09);--red-bd:rgba(240,72,72,0.24);
-  --maint:#30d464;--maint-bg:rgba(48,212,100,0.09);--maint-bd:rgba(48,212,100,0.24);
-  --opt:#606080;--opt-bg:rgba(96,96,128,0.07);--opt-bd:rgba(96,96,128,0.18);
+  --bg:#f4f5f7;--bg2:#ffffff;--bg3:#f0f1f4;--bg4:#e8eaef;--bg5:#dde0e8;
+  --border:#dde0e8;--border2:#c8ccd8;--border3:#b0b5c5;
+  --text:#0f1117;--text2:#4a4f65;--text3:#9098b0;
+  --blue:#1358d4;--blue-lt:#1358d4;--blue-bg:rgba(19,88,212,0.07);--blue-bd:rgba(19,88,212,0.22);
+  --green:#0a7a4a;--green-bg:rgba(10,122,74,0.07);--green-bd:rgba(10,122,74,0.22);
+  --amber:#b06800;--amber-bg:rgba(176,104,0,0.07);--amber-bd:rgba(176,104,0,0.22);
+  --red:#c0282a;--red-bg:rgba(192,40,42,0.07);--red-bd:rgba(192,40,42,0.22);
+  --maint:#0a7a4a;--maint-bg:rgba(10,122,74,0.07);--maint-bd:rgba(10,122,74,0.22);
+  --opt:#707898;--opt-bg:rgba(112,120,152,0.07);--opt-bd:rgba(112,120,152,0.2);
   --r:10px;--r-sm:6px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -26,8 +26,8 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .bmw-badge{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border3);flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;}
 .bmw-badge::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--border3);}
 .bq{width:100%;height:100%;}
-.bq.bl{background:#1c6ef7;opacity:0.85;}
-.bq.wh{background:#e8e8f2;opacity:0.92;}
+.bq.bl{background:#1358d4;opacity:0.9;}
+.bq.wh{background:#f8f8fc;opacity:1;}
 .hdr-title{font-size:16px;font-weight:700;letter-spacing:-0.4px;color:var(--text);}
 .hdr-sub{font-size:11px;color:var(--text3);margin-top:1px;letter-spacing:0.02em;}
 .ver{font-size:10px;background:var(--bg4);border:1px solid var(--border2);color:var(--text3);padding:3px 9px;border-radius:20px;letter-spacing:0.05em;font-weight:600;}
@@ -45,7 +45,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .panel.active{display:block;}
 .notice{border-radius:var(--r-sm);padding:11px 14px;font-size:12px;line-height:1.65;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;}
 .notice i{font-size:14px;margin-top:1px;flex-shrink:0;}
-.notice.ceramic{background:rgba(180,40,90,0.08);border:1px solid rgba(180,40,90,0.22);color:#c07090;}
+.notice.ceramic{background:rgba(180,40,90,0.06);border:1px solid rgba(180,40,90,0.2);color:#a0304a;}
 .notice.info{background:var(--bg3);border:1px solid var(--border2);color:var(--text2);}
 .notice.warn{background:var(--red-bg);border:1px solid var(--red-bd);color:#d07070;}
 .notice.opt-notice{background:var(--maint-bg);border:1px solid var(--maint-bd);color:var(--maint);}
@@ -54,7 +54,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .prog-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);}
 .prog-ct{font-size:14px;font-weight:700;color:var(--text);}
 .prog-track{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;}
-.prog-bar{height:100%;background:linear-gradient(90deg,var(--blue) 0%,var(--green) 100%);border-radius:2px;transition:width 0.4s cubic-bezier(.4,0,.2,1);}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--blue) 0%,#0a9a5a 100%);border-radius:2px;transition:width 0.4s cubic-bezier(.4,0,.2,1);}
 .rbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border2);background:transparent;color:var(--text3);font-size:10px;padding:5px 12px;border-radius:20px;cursor:pointer;margin-bottom:14px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;-webkit-tap-highlight-color:transparent;}
 .rbtn:hover{color:var(--text2);border-color:var(--border3);}
 .rbtn i{font-size:12px;}
