@@ -621,6 +621,24 @@
         ]
       },
       {
+        "id": "n076",
+        "title": "Clean door jambs \u2014 APC (optional)",
+        "desc": "Optional \u2014 every 3\u20134 washes or when visibly dirty. Work one door at a time, door fully open. Pre-rinse with low-pressure hose top to bottom, flushing drain holes. Spray AllClean (3:1\u20135:1) or MultiX (10:1) into jamb, dwell 1\u20132 min. Agitate flat surfaces with a soft detail brush, hinge hardware and striker plate with a stiff brush, and rubber seals thoroughly. Rinse completely top to bottom \u2014 ensure all APC is flushed from drain holes or it will streak down paint when door opens. Blow dry with leaf blower into hinge recesses and drain holes, follow with MF towel on flat surfaces. Dress rubber seals with trim dressing after drying.",
+        "tools": [
+          "Detail brushes (soft + stiff)",
+          "Hose (low pressure)",
+          "Leaf blower",
+          "MF towel",
+          "Soft trim brush"
+        ],
+        "chems": [
+          "AllClean 3:1\u20135:1 or MultiX 10:1",
+          "Trim dressing \u2014 RTU (seals)"
+        ],
+        "optional": true,
+        "normalOnly": true
+      },
+      {
         "id": "n075",
         "title": "Pre-rinse full car",
         "desc": "Rinse the entire car top to bottom with a hose or pressure washer before applying Iron X. This removes loose surface contamination and ensures panels are wet, which helps Iron X spread evenly and prevents it from flashing dry on the ceramic coating.",
@@ -788,6 +806,23 @@
           "CarPro Descale \u2014 1:100 (10ml per 1L) in Bucket 2 \u2014 replaces Reset in maint. wash"
         ],
         "insertAfter": "m01"
+      },
+      {
+        "id": "m00",
+        "title": "Clean door jambs \u2014 APC",
+        "desc": "Standard step on every maintenance wash. Work one door at a time, door fully open. Pre-rinse with low-pressure hose top to bottom, flushing drain holes. Spray AllClean (3:1\u20135:1) or MultiX (10:1) into jamb, dwell 1\u20132 min. Agitate flat surfaces with a soft detail brush, hinge hardware and striker plate with a stiff brush, rubber seals thoroughly. The G80 B-pillar has exposed wiring \u2014 rinse around connectors, not directly at them. Rinse completely top to bottom, flush drain holes fully. Blow dry with leaf blower into hinges, drain holes, and seal channel. MF towel on flat surfaces. Dress rubber seals and inner seal lip with trim dressing after drying.",
+        "tools": [
+          "Detail brushes (soft + stiff)",
+          "Hose (low pressure)",
+          "Leaf blower",
+          "MF towel",
+          "Soft trim brush"
+        ],
+        "chems": [
+          "AllClean 3:1\u20135:1 or MultiX 10:1",
+          "Trim dressing \u2014 RTU (seals)"
+        ],
+        "insertAfter": "n07"
       }
     ]
   },
