@@ -7,31 +7,49 @@
     "version": "1.0"
   },
   "sprayers": {
-    "ikFoam12": {
-      "name": "IK E Foam 12 Pro",
-      "type": "Electric battery foam sprayer",
+    "ikFoamPro12": {
+      "name": "IK E Foam Pro 12",
+      "type": "Electric battery-powered foam sprayer",
       "usableVolume": "6L",
-      "note": "NOT a pressure washer foam cannon. Ratios listed are for this sprayer specifically."
+      "note": "Primary pre-soak sprayer. Used for Reset pre-foam, BH Touchless (maint. wash)."
     },
-    "ikFoam2": {
-      "name": "IK E Foam 2 Plus",
-      "type": "Hybrid \u2014 manual pump or powered via Xiaomi Mi Portable Electric Air Compressor 2",
-      "usableVolume": "1.25L",
-      "note": "Can be operated manually or connected to Xiaomi Mi Portable Electric Air Compressor 2 for powered operation. Used for MWC on wheels and engine bay APC."
+    "ikFoamPro2": {
+      "name": "IK E Foam Pro 2",
+      "type": "Electric battery-powered foam sprayer (dual mode \u2014 manual or electric)",
+      "usableVolume": "1.5L",
+      "note": "Battery-powered with built-in compressor. Also operable manually. Used for Koch Chemie MWC on wheels and engine bay APC."
+    },
+    "ikFoam2Plus": {
+      "name": "IK Foam 2+",
+      "type": "Manual pump sprayer \u2014 optional Xiaomi Mi Portable Electric Air Compressor 2",
+      "usableVolume": "1.5L",
+      "note": "Primarily manual pump. Can be powered via Xiaomi Mi Portable Electric Air Compressor 2 for hands-free operation."
     }
   },
   "tools": [
     {
       "category": "Foam / Pre-wash",
-      "name": "IK E Foam 12 Pro (electric)",
+      "name": "IK E Foam Pro 12",
       "qty": "1",
       "usedFor": "Snow foam pre-soak \u2014 Reset; BH Touchless (maint.); HydrO2 Foam (maint.)"
     },
     {
       "category": "Foam / Pre-wash",
-      "name": "IK E Foam 2 Plus",
+      "name": "IK E Foam Pro 2",
       "qty": "1",
       "usedFor": "Koch Chemie MWC on wheels; engine bay APC"
+    },
+    {
+      "category": "Foam / Pre-wash",
+      "name": "IK Foam 2+",
+      "qty": "1",
+      "usedFor": "Manual pump sprayer with optional Xiaomi Mi Portable Electric Air Compressor 2 \u2014 secondary foam tasks, spot treatment"
+    },
+    {
+      "category": "Foam / Pre-wash",
+      "name": "Xiaomi Mi Portable Electric Air Compressor 2",
+      "qty": "1",
+      "usedFor": "Powers the IK Foam 2+ for hands-free operation \u2014 alternative to manual pump"
     },
     {
       "category": "Buckets",
@@ -207,7 +225,7 @@
       "usedOn": "All painted panels \u2014 pH neutral, ceramic-safe",
       "dilutions": [
         {
-          "context": "IK E Foam 12 Pro pre-foam (6L fill)",
+          "context": "IK E Foam Pro 12 pre-foam (6L fill)",
           "ratio": "~1:50",
           "amount": "approx. 120ml (4oz) per 6L fill",
           "note": "CarPro's published 1:9 is foam cannon only \u2014 does not apply to IK foam sprayers"
@@ -219,7 +237,7 @@
           "note": "Official CarPro spec"
         }
       ],
-      "tool": "IK E Foam 12 Pro pre-foam + 2-bucket wash (Buckets 2 & 3)"
+      "tool": "IK E Foam Pro 12 pre-foam + 2-bucket wash (Buckets 2 & 3)"
     },
     {
       "name": "CarPro Iron X",
@@ -285,13 +303,13 @@
       "usedOn": "All wheel surfaces \u2014 iron-reactive, acid-free, viscous cling",
       "dilutions": [
         {
-          "context": "IK E Foam 2 Plus (1.25L) or spray",
+          "context": "IK E Foam Pro 2 (1.25L) or spray",
           "ratio": "RTU",
           "amount": "No dilution \u2014 load undiluted",
           "note": "Dwell 2-5 min until red iron-reaction bleed visible. Agitate with EZ Detail brushes + Barrel Blade. Rinse thoroughly."
         }
       ],
-      "tool": "IK E Foam 2 Plus or spray direct"
+      "tool": "IK E Foam Pro 2 or spray direct"
     },
     {
       "name": "Brake Buster",
@@ -380,13 +398,13 @@
       "usedOn": "Full exterior \u2014 touchless alkaline pre-soak before Descale",
       "dilutions": [
         {
-          "context": "IK E Foam 12 Pro (6L fill)",
+          "context": "IK E Foam Pro 12 (6L fill)",
           "ratio": "1\u20131.5% PIR",
           "amount": "60\u201390ml per 6L fill",
-          "note": "PIR = Panel Impact Ratio. One-time calibration required: fill IK E Foam 12 with 6L water, discharge into bucket, measure total output. Multiply output volume by 0.01\u20130.015 to get ml of Touchless needed. Adjust once you see results."
+          "note": "PIR = Panel Impact Ratio. One-time calibration required: fill IK E Foam Pro 12 with 6L water, discharge into bucket, measure total output. Multiply output volume by 0.01\u20130.015 to get ml of Touchless needed. Adjust once you see results."
         }
       ],
-      "tool": "IK E Foam 12 Pro \u2014 thick coat top to bottom, dwell 1-5 min, do not dry, rinse completely"
+      "tool": "IK E Foam Pro 12 \u2014 thick coat top to bottom, dwell 1-5 min, do not dry, rinse completely"
     },
     {
       "name": "CarPro Descale",
@@ -457,7 +475,7 @@
           "note": "Spray onto wet panels after final sheeting rinse. Rinse off completely within 30 seconds. Do not let dwell. Immediately blow dry with leaf blower."
         }
       ],
-      "tool": "Labeled spray bottle or IK E Foam 2 Plus \u2014 followed immediately by hose rinse then leaf blower"
+      "tool": "Labeled spray bottle or IK E Foam Pro 2 \u2014 followed immediately by hose rinse then leaf blower"
     },
     {
       "name": "P21S Polishing Soap",
@@ -547,7 +565,7 @@
       "usedOn": "Full exterior painted surfaces, glass, plastics, metals \u2014 durable hydrophobic ceramic protection treatment. Also acts as a low-foaming shampoo for the bucket wash stage. Designed to be used after BH Touch-Less pre-wash.",
       "dilutions": [
         {
-          "context": "IK E Foam 12 Pro or lance reservoir",
+          "context": "IK E Foam Pro 12 or lance reservoir",
           "ratio": "30ml : 300ml",
           "amount": "Empty 1\u00d7 30ml sachet into reservoir, top up to 300ml with cool water",
           "note": "Apply at low pressure over full exterior. Rinse away, then dry with MF cloth. Do not allow to air dry \u2014 water spotting may occur."
@@ -565,7 +583,7 @@
           "note": "Spray liberally panel by panel, then rinse thoroughly with hose or pressure washer."
         }
       ],
-      "tool": "IK E Foam 12 Pro / trigger spray / wash bucket + mitt \u2014 one 30ml sachet per application session"
+      "tool": "IK E Foam Pro 12 / trigger spray / wash bucket + mitt \u2014 one 30ml sachet per application session"
     },
     {
       "name": "Bilt Hamber Korrosol",
@@ -637,7 +655,7 @@
           "note": "Per BH: 1\u20132% for upholstery. 2\u20133% for headlining and sun visors."
         }
       ],
-      "tool": "Labeled spray bottle + appropriate brush (stiff for exterior, soft for interior); IK E Foam 2 Plus for larger areas"
+      "tool": "Labeled spray bottle + appropriate brush (stiff for exterior, soft for interior); IK E Foam Pro 2 for larger areas"
     },
     {
       "name": "Bilt Hamber Auto Wheel",
@@ -727,9 +745,9 @@
       {
         "id": "n05",
         "title": "Apply Koch Chemie MWC to wheels",
-        "desc": "Load MWC RTU into IK E Foam 2 Plus (1.25L) undiluted or spray direct. Dwell 2\u20135 min until red iron-bleed visible. Agitate face/spokes with EZ Detail Big Brush, inner barrel with Autofiber Barrel Blade, tight gaps with Little Brush and detail brushes. Rinse thoroughly. Use Brake Buster if heavily contaminated.",
+        "desc": "Load MWC RTU into IK E Foam Pro 2 (1.25L) undiluted or spray direct. Dwell 2\u20135 min until red iron-bleed visible. Agitate face/spokes with EZ Detail Big Brush, inner barrel with Autofiber Barrel Blade, tight gaps with Little Brush and detail brushes. Rinse thoroughly. Use Brake Buster if heavily contaminated.",
         "tools": [
-          "IK E Foam 2 Plus",
+          "IK E Foam Pro 2",
           "EZ Detail Big Brush",
           "EZ Detail Little Brush",
           "Autofiber Barrel Blade",
@@ -805,12 +823,12 @@
       {
         "id": "n09",
         "title": "Snow foam pre-soak \u2014 CarPro Reset",
-        "desc": "Add approx. 120ml (4oz) Reset to IK E Foam 12 Pro, fill to 6L mark with water (~1:50). Apply thick foam top to bottom, dwell 5 min. Do not let dry. Rinse off completely before contact wash. NOTE: CarPro's published 1:9 ratio is for pressure washer foam cannons only \u2014 not applicable here.",
+        "desc": "Add approx. 120ml (4oz) Reset to IK E Foam Pro 12, fill to 6L mark with water (~1:50). Apply thick foam top to bottom, dwell 5 min. Do not let dry. Rinse off completely before contact wash. NOTE: CarPro's published 1:9 ratio is for pressure washer foam cannons only \u2014 not applicable here.",
         "tools": [
-          "IK E Foam 12 Pro"
+          "IK E Foam Pro 12"
         ],
         "chems": [
-          "CarPro Reset \u2014 ~120ml per 6L (~1:50 in IK E Foam 12 Pro)"
+          "CarPro Reset \u2014 ~120ml per 6L (~1:50 in IK E Foam Pro 12)"
         ],
         "normalOnly": true
       },
@@ -841,7 +859,7 @@
         "title": "Apply CarPro HydrO2 Lite \u2014 drying aid",
         "desc": "With the car still wet after the final sheeting rinse, spray HydrO2 Lite across all painted panels. Work quickly panel by panel. Rinse off completely within 30 seconds \u2014 do not let it dwell longer. Immediately proceed to leaf blower drying.",
         "tools": [
-          "Labeled spray bottle or IK E Foam 2 Plus"
+          "Labeled spray bottle or IK E Foam Pro 2"
         ],
         "chems": [
           "CarPro HydrO2 Lite \u2014 RTU, rinse off within 30 sec"
@@ -929,9 +947,9 @@
       {
         "id": "m01",
         "title": "Bilt Hamber Touchless pre-soak \u2014 maint. step 1",
-        "desc": "One-time calibration: fill IK E Foam 12 Pro with 6L water, discharge into bucket, measure total output volume. Multiply by 0.01\u20130.015 to get ml of Touchless needed (typically 60\u201390ml for 6L at 1\u20131.5% PIR). Apply thick coat top to bottom. Dwell 1\u20135 min. Do NOT let dry. Rinse completely before Descale.",
+        "desc": "One-time calibration: fill IK E Foam Pro 12 with 6L water, discharge into bucket, measure total output volume. Multiply by 0.01\u20130.015 to get ml of Touchless needed (typically 60\u201390ml for 6L at 1\u20131.5% PIR). Apply thick coat top to bottom. Dwell 1\u20135 min. Do NOT let dry. Rinse completely before Descale.",
         "tools": [
-          "IK E Foam 12 Pro"
+          "IK E Foam Pro 12"
         ],
         "chems": [
           "Bilt Hamber Touchless \u2014 60\u201390ml per 6L (1\u20131.5% PIR \u2014 calibrate to your unit)"
@@ -1021,9 +1039,9 @@
       {
         "id": "e04",
         "title": "Apply APC \u2014 AllClean or MultiX",
-        "desc": "Load AllClean (5:1\u201310:1) or MultiX (10:1) into IK E Foam 2 Plus or labeled spray bottle. Apply top to bottom across all plastic covers, hoses, bay walls, chassis surfaces. Strengthen to 3:1 for heavy grease or oil deposits. Dwell 1\u20132 min. Keep APC off coil packs and any uncovered sensor connectors.",
+        "desc": "Load AllClean (5:1\u201310:1) or MultiX (10:1) into IK E Foam Pro 2 or labeled spray bottle. Apply top to bottom across all plastic covers, hoses, bay walls, chassis surfaces. Strengthen to 3:1 for heavy grease or oil deposits. Dwell 1\u20132 min. Keep APC off coil packs and any uncovered sensor connectors.",
         "tools": [
-          "IK E Foam 2 Plus or labeled spray bottle",
+          "IK E Foam Pro 2 or labeled spray bottle",
           "Detail brushes (assorted)"
         ],
         "chems": [
@@ -1222,7 +1240,7 @@
         "id": "c04",
         "priority": "recommended",
         "name": "CarPro HydrO2 Foam (ceramic SiO2 topper)",
-        "why": "Slotted into maint. wash as touchless coating topper. Applied via IK E Foam 12 Pro, flashes and blows off with leaf blower.",
+        "why": "Slotted into maint. wash as touchless coating topper. Applied via IK E Foam Pro 12, flashes and blows off with leaf blower.",
         "washTypes": [
           "maint"
         ]
