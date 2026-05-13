@@ -536,6 +536,150 @@
         }
       ],
       "tool": "Labeled spray bottle + clean MF towel"
+    },
+    {
+      "name": "Bilt Hamber Touch-On",
+      "category": "Ceramic coating topper / paint protection",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "Full exterior painted surfaces, glass, plastics, metals \u2014 durable hydrophobic ceramic protection treatment. Also acts as a low-foaming shampoo for the bucket wash stage. Designed to be used after BH Touch-Less pre-wash.",
+      "dilutions": [
+        {
+          "context": "IK E Foam 12 Pro or lance reservoir",
+          "ratio": "30ml : 300ml",
+          "amount": "Empty 1\u00d7 30ml sachet into reservoir, top up to 300ml with cool water",
+          "note": "Apply at low pressure over full exterior. Rinse away, then dry with MF cloth. Do not allow to air dry \u2014 water spotting may occur."
+        },
+        {
+          "context": "Wash bucket (bucket wash stage)",
+          "ratio": "30ml : 15L",
+          "amount": "Empty 1\u00d7 30ml sachet into 15L bucket of warm water",
+          "note": "Apply with wash mitt. Rinse and dry. Do not use more than once per month per BH guidance."
+        },
+        {
+          "context": "Trigger spray",
+          "ratio": "30ml : 1L",
+          "amount": "Empty 1\u00d7 30ml sachet into trigger bottle, top up to 1L with demineralised/deionised water. Shake well.",
+          "note": "Spray liberally panel by panel, then rinse thoroughly with hose or pressure washer."
+        }
+      ],
+      "tool": "IK E Foam 12 Pro / trigger spray / wash bucket + mitt \u2014 one 30ml sachet per application session"
+    },
+    {
+      "name": "Bilt Hamber Korrosol",
+      "category": "Iron / fallout remover \u2014 paint",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "All painted panels \u2014 removes embedded airborne metallic particles and brake dust from paintwork and lacquer. Non-acid, non-alkaline. Alternative/complement to CarPro Iron X.",
+      "dilutions": [
+        {
+          "context": "All use",
+          "ratio": "RTU",
+          "amount": "No dilution",
+          "note": "Spray onto cool surface. Wait for colour-changing reaction (normally 3\u20135 min depending on contamination level). For heavily contaminated areas multiple applications, agitation, or longer dwell may be needed. Rinse thoroughly. Treat vehicle every 6\u201312 months or when contamination is felt with fingertips."
+        }
+      ],
+      "tool": "Trigger spray bottle \u2014 spray direct"
+    },
+    {
+      "name": "Bilt Hamber Surfex HD",
+      "category": "All-purpose cleaner / degreaser (APC)",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "Wheel wells, door jambs, engine bay, tyres, brake calipers, interior plastics \u2014 versatile APC covering exterior and interior surfaces. Alternative/complement to AllClean and MultiX.",
+      "dilutions": [
+        {
+          "context": "Wheel wells / wheel arches / tyres",
+          "ratio": "5%\u201310%",
+          "amount": "50\u2013100ml per 1L water",
+          "note": "Per BH: 5\u201310% dilution suitable for wheel arches and tyres."
+        },
+        {
+          "context": "Brake calipers",
+          "ratio": "10%",
+          "amount": "100ml per 1L water",
+          "note": "Per BH: 10% in water. Safe on rubber seals."
+        },
+        {
+          "context": "Door jambs / general exterior",
+          "ratio": "5%\u201310%",
+          "amount": "50\u2013100ml per 1L water",
+          "note": "Saturate cool surface, dwell 1\u20135 min, agitate heavy soil with stiff brush, rinse with clean cold water."
+        },
+        {
+          "context": "Engine bay \u2014 general",
+          "ratio": "5%\u201310%",
+          "amount": "50\u2013100ml per 1L water",
+          "note": "Saturate, dwell 1\u20135 min, agitate with brushes, rinse."
+        },
+        {
+          "context": "Engine bay \u2014 heavy grease / oil",
+          "ratio": "Neat to 50%",
+          "amount": "Use concentrated or up to 50% in water",
+          "note": "Per BH: can be used up to 100% concentration for maximum grease/oil removal."
+        },
+        {
+          "context": "Interior plastics / door cards",
+          "ratio": "2%\u20133%",
+          "amount": "20\u201330ml per 1L water",
+          "note": "Per BH: 2\u20133% for interior lower door cards and plastic surfaces."
+        },
+        {
+          "context": "Interior upholstery / headlining",
+          "ratio": "1%\u20132%",
+          "amount": "10\u201320ml per 1L water",
+          "note": "Per BH: 1\u20132% for upholstery. 2\u20133% for headlining and sun visors."
+        }
+      ],
+      "tool": "Labeled spray bottle + appropriate brush (stiff for exterior, soft for interior); IK E Foam 2 for larger areas"
+    },
+    {
+      "name": "Bilt Hamber Auto Wheel",
+      "category": "Wheel cleaner \u2014 iron-reactive",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "Alloy and steel wheel faces \u2014 non-acid, non-alkaline iron-reactive wheel cleaner. Alternative/complement to Koch Chemie MWC and Brake Buster.",
+      "dilutions": [
+        {
+          "context": "All use \u2014 apply to DRY wheels",
+          "ratio": "RTU",
+          "amount": "No dilution",
+          "note": "Apply to DRY wheels per BH guidance. Spray liberally \u2014 avoid spraying directly at centre caps (spray radially outward from centre). Wait for colour-changing reaction, normally 1\u20135 min. Wash thoroughly with hose or jetwash. Not necessary every wash \u2014 use when brake dust contamination is observed, typically every 4 months."
+        }
+      ],
+      "tool": "Trigger spray direct onto dry wheel face; EZ Detail brushes + Barrel Blade for agitation; hose/jetwash to rinse"
+    },
+    {
+      "name": "Bilt Hamber Traceless (Trace-Less)",
+      "category": "Glass cleaner",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "All interior and exterior glass \u2014 windshield, side glass, rear screen, mirrors, acrylics, infotainment screens. 100% evaporating surfactants \u2014 leaves zero residue. Replaces Autofinesse Window Cleaner.",
+      "dilutions": [
+        {
+          "context": "Exterior glass",
+          "ratio": "RTU",
+          "amount": "No dilution \u2014 shake well before use",
+          "note": "Atomise fine mist onto glass surface OR spray onto waffle-weave MF towel. Wipe over glass turning cloth regularly, buff until dry. For maximum streak-free finish, reapply a very fine mist and buff with suede MF. Use on cool glass out of direct sunlight. Avoid overspray onto surrounding painted surfaces."
+        },
+        {
+          "context": "Interior glass \u2014 incl. windshield via Reach & Clean Tool",
+          "ratio": "RTU",
+          "amount": "No dilution \u2014 shake well before use",
+          "note": "Spray onto MF head of Invisible Glass Reach & Clean Tool \u2014 NOT directly onto glass. First pass damp to clean, swap to fresh/suede head for dry buff pass. Only use lint-free cloths free of detergents and fabric conditioners \u2014 these will cause smearing."
+        }
+      ],
+      "tool": "Spray direct onto glass or onto MF towel. Interior: Invisible Glass Reach & Clean Tool. Waffle-weave MF first pass, suede MF for second buff pass."
     }
   ],
   "washSteps": {
