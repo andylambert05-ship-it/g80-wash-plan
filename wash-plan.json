@@ -14,10 +14,10 @@
       "note": "NOT a pressure washer foam cannon. Ratios listed are for this sprayer specifically."
     },
     "ikFoam2": {
-      "name": "IK E Foam 2",
-      "type": "Manual pump foam sprayer",
+      "name": "IK E Foam 2 Plus",
+      "type": "Hybrid \u2014 manual pump or powered via Xiaomi Mi Portable Electric Air Compressor 2",
       "usableVolume": "1.25L",
-      "note": "Used for wheels (MWC) and engine bay APC."
+      "note": "Can be operated manually or connected to Xiaomi Mi Portable Electric Air Compressor 2 for powered operation. Used for MWC on wheels and engine bay APC."
     }
   },
   "tools": [
@@ -29,7 +29,7 @@
     },
     {
       "category": "Foam / Pre-wash",
-      "name": "IK E Foam 2 (manual pump)",
+      "name": "IK E Foam 2 Plus",
       "qty": "1",
       "usedFor": "Koch Chemie MWC on wheels; engine bay APC"
     },
@@ -285,13 +285,13 @@
       "usedOn": "All wheel surfaces \u2014 iron-reactive, acid-free, viscous cling",
       "dilutions": [
         {
-          "context": "IK E Foam 2 (1.25L) or spray",
+          "context": "IK E Foam 2 Plus (1.25L) or spray",
           "ratio": "RTU",
           "amount": "No dilution \u2014 load undiluted",
           "note": "Dwell 2-5 min until red iron-reaction bleed visible. Agitate with EZ Detail brushes + Barrel Blade. Rinse thoroughly."
         }
       ],
-      "tool": "IK E Foam 2 or spray direct"
+      "tool": "IK E Foam 2 Plus or spray direct"
     },
     {
       "name": "Brake Buster",
@@ -457,7 +457,7 @@
           "note": "Spray onto wet panels after final sheeting rinse. Rinse off completely within 30 seconds. Do not let dwell. Immediately blow dry with leaf blower."
         }
       ],
-      "tool": "Labeled spray bottle or IK E Foam 2 \u2014 followed immediately by hose rinse then leaf blower"
+      "tool": "Labeled spray bottle or IK E Foam 2 Plus \u2014 followed immediately by hose rinse then leaf blower"
     },
     {
       "name": "P21S Polishing Soap",
@@ -637,7 +637,7 @@
           "note": "Per BH: 1\u20132% for upholstery. 2\u20133% for headlining and sun visors."
         }
       ],
-      "tool": "Labeled spray bottle + appropriate brush (stiff for exterior, soft for interior); IK E Foam 2 for larger areas"
+      "tool": "Labeled spray bottle + appropriate brush (stiff for exterior, soft for interior); IK E Foam 2 Plus for larger areas"
     },
     {
       "name": "Bilt Hamber Auto Wheel",
@@ -727,9 +727,9 @@
       {
         "id": "n05",
         "title": "Apply Koch Chemie MWC to wheels",
-        "desc": "Load MWC RTU into IK E Foam 2 (1.25L) undiluted or spray direct. Dwell 2\u20135 min until red iron-bleed visible. Agitate face/spokes with EZ Detail Big Brush, inner barrel with Autofiber Barrel Blade, tight gaps with Little Brush and detail brushes. Rinse thoroughly. Use Brake Buster if heavily contaminated.",
+        "desc": "Load MWC RTU into IK E Foam 2 Plus (1.25L) undiluted or spray direct. Dwell 2\u20135 min until red iron-bleed visible. Agitate face/spokes with EZ Detail Big Brush, inner barrel with Autofiber Barrel Blade, tight gaps with Little Brush and detail brushes. Rinse thoroughly. Use Brake Buster if heavily contaminated.",
         "tools": [
-          "IK E Foam 2",
+          "IK E Foam 2 Plus",
           "EZ Detail Big Brush",
           "EZ Detail Little Brush",
           "Autofiber Barrel Blade",
@@ -841,7 +841,7 @@
         "title": "Apply CarPro HydrO2 Lite \u2014 drying aid",
         "desc": "With the car still wet after the final sheeting rinse, spray HydrO2 Lite across all painted panels. Work quickly panel by panel. Rinse off completely within 30 seconds \u2014 do not let it dwell longer. Immediately proceed to leaf blower drying.",
         "tools": [
-          "Labeled spray bottle or IK E Foam 2"
+          "Labeled spray bottle or IK E Foam 2 Plus"
         ],
         "chems": [
           "CarPro HydrO2 Lite \u2014 RTU, rinse off within 30 sec"
@@ -1021,9 +1021,9 @@
       {
         "id": "e04",
         "title": "Apply APC \u2014 AllClean or MultiX",
-        "desc": "Load AllClean (5:1\u201310:1) or MultiX (10:1) into IK E Foam 2 or labeled spray bottle. Apply top to bottom across all plastic covers, hoses, bay walls, chassis surfaces. Strengthen to 3:1 for heavy grease or oil deposits. Dwell 1\u20132 min. Keep APC off coil packs and any uncovered sensor connectors.",
+        "desc": "Load AllClean (5:1\u201310:1) or MultiX (10:1) into IK E Foam 2 Plus or labeled spray bottle. Apply top to bottom across all plastic covers, hoses, bay walls, chassis surfaces. Strengthen to 3:1 for heavy grease or oil deposits. Dwell 1\u20132 min. Keep APC off coil packs and any uncovered sensor connectors.",
         "tools": [
-          "IK E Foam 2 or labeled spray bottle",
+          "IK E Foam 2 Plus or labeled spray bottle",
           "Detail brushes (assorted)"
         ],
         "chems": [
