@@ -218,6 +218,12 @@
       "name": "Nitrile gloves",
       "qty": "several pairs",
       "usedFor": "Hand protection during all chemical stages \u2014 Iron X, Tar X, Bug Out, APC, ReTyre, Descale, and engine bay work. Change between stages when switching between strong chemicals."
+    },
+    {
+      "category": "Safety / PPE",
+      "name": "Safety glasses / eye protection",
+      "qty": "1 pair",
+      "usedFor": "Eye protection during all spray chemical stages \u2014 Iron X, Tar X, Bug Out, ReTyre, APC, Descale, and engine bay work. Essential when using IK foam sprayers overhead."
     }
   ],
   "chemicals": [
