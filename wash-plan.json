@@ -212,6 +212,12 @@
       "name": "Painter's tape",
       "qty": "1 roll",
       "usedFor": "Securing bags over sensitive components"
+    },
+    {
+      "category": "Safety / PPE",
+      "name": "Nitrile gloves",
+      "qty": "several pairs",
+      "usedFor": "Hand protection during all chemical stages \u2014 Iron X, Tar X, Bug Out, APC, ReTyre, Descale, and engine bay work. Change between stages when switching between strong chemicals."
     }
   ],
   "chemicals": [
