@@ -718,7 +718,7 @@
       "tool": "Spray direct onto glass or onto MF towel. Interior: Invisible Glass Reach & Clean Tool. Waffle-weave MF first pass, suede MF for second buff pass."
     },
     {
-      "name": "Koch Chemie Nano Magic Screen",
+      "name": "Koch Chemie Speed Glass (GC)",
       "category": "Screen cleaner \u2014 interior",
       "modes": [
         "normal",
@@ -730,7 +730,7 @@
           "context": "iDrive screen \u2014 car off, screens blanked",
           "ratio": "RTU",
           "amount": "1\u20132 pumps onto dedicated screen MF cloth only",
-          "note": "BLANK SCREENS FIRST: hold volume roller button with car off until screens go dark. Spray onto cloth, never direct on screen. Wipe in straight lines, minimal pressure. Buff with dry side immediately. Do not use any glass cleaner, alcohol, or BH Traceless on the iDrive display."
+          "note": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both iDrive screens go completely dark. Spray 1\u20132 pumps onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff with dry side of cloth. Koch Chemie confirms Speed Glass/GC is safe on screens, piano black, and glossy surfaces. Non-alcohol based \u2014 safe on the iDrive oleophobic coating."
         }
       ],
       "tool": "Dedicated ultra-soft screen MF cloth \u2014 screen use only, never used on any other surface"
@@ -1339,8 +1339,8 @@
       {
         "id": "c07",
         "priority": "essential",
-        "name": "Koch Chemie Nano Magic Screen",
-        "why": "Confirmed product for iDrive curved display cleaning. Alcohol-free, anti-static. Add to cart if not yet purchased.",
+        "name": "Koch Chemie Speed Glass (GC)",
+        "why": "Real Koch Chemie product \u2014 non-alcohol based, confirmed safe on iDrive screens, piano black, and glossy surfaces. Use for iDrive display cleaning.",
         "washTypes": [
           "interior"
         ]
@@ -1369,7 +1369,7 @@
     "note": "Optional \u2014 as needed. Complete interior detail. Work with all doors and windows open in shade. Car off, screens blanked (hold volume roller button with car off).",
     "chemicals": [
       {
-        "name": "Meguiar's Cockpit Premium / Interior Detailer",
+        "name": "nextzett Cockpit Premium",
         "category": "Interior quick detailer / maintenance spray",
         "usedOn": "Dash, door cards, plastic trim, centre console \u2014 light maintenance between full details",
         "dilutions": [
@@ -1437,7 +1437,7 @@
         "tool": "Labeled spray bottle + appropriate brush + MF towels"
       },
       {
-        "name": "Koch Chemie Nano Magic Screen",
+        "name": "Koch Chemie Speed Glass (GC)",
         "category": "Screen cleaner \u2014 iDrive curved display",
         "usedOn": "iDrive curved display, instrument cluster screen, head-up display housing \u2014 alcohol-free, anti-static",
         "dilutions": [
@@ -1445,7 +1445,7 @@
             "context": "All use",
             "ratio": "RTU",
             "amount": "No dilution",
-            "note": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both iDrive screens go completely dark \u2014 this prevents accidental inputs during cleaning. Spray 1\u20132 pumps onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff with dry side of cloth. Do NOT use BH Traceless, Autofinesse Window Cleaner, or any alcohol-based glass cleaner on the iDrive display \u2014 alcohol degrades the oleophobic coating on the curved glass panel."
+            "note": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both iDrive screens go completely dark \u2014 prevents accidental inputs during cleaning. Spray 1\u20132 pumps onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff with dry side of cloth. Koch Chemie confirms Speed Glass/GC is safe on screens, piano black, and glossy surfaces. Non-alcohol based \u2014 safe on iDrive oleophobic coating. Do NOT use BH Traceless or Autofinesse Window Cleaner on the iDrive display."
           }
         ],
         "tool": "Dedicated screen MF cloth (ultra-soft, lint-free) \u2014 never used on any other surface"
@@ -1539,12 +1539,12 @@
       {
         "id": "int06",
         "title": "Clean iDrive curved display and instrument cluster",
-        "desc": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both screens go completely dark. Spray 1\u20132 pumps of Koch Chemie Nano Magic Screen onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff immediately with dry side of cloth. Do NOT use BH Traceless, Autofinesse Window Cleaner, or any alcohol or glass cleaner on the iDrive display.",
+        "desc": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both screens go completely dark. Spray 1\u20132 pumps of Koch Chemie Speed Glass (GC) onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff immediately with dry side of cloth. Do NOT use BH Traceless, Autofinesse Window Cleaner, or any alcohol or glass cleaner on the iDrive display.",
         "tools": [
           "Dedicated screen MF cloth (ultra-soft, screen-only)"
         ],
         "chems": [
-          "Koch Chemie Nano Magic Screen \u2014 RTU, onto cloth only. NEVER spray direct on screen."
+          "Koch Chemie Speed Glass (GC) \u2014 RTU, onto cloth only. NEVER spray direct on screen."
         ]
       },
       {
