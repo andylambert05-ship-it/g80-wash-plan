@@ -478,22 +478,22 @@
       "tool": "Dedicated foam tire applicator pads (Darkside-only, never mixed)"
     },
     {
-      "name": "CarPro HydrO2 Lite",
-      "category": "Drying aid",
+      "name": "CarPro Reload 2.0",
+      "category": "Paint sealant / coating topper \u2014 both modes",
       "modes": [
         "normal",
         "maint"
       ],
-      "usedOn": "All painted panels \u2014 applied while wet after final rinse, rinsed off before blower drying",
+      "usedOn": "All painted panels after blower drying \u2014 silica-based spray sealant, up to 3 months protection. Safe on wet or dry paint, rubber, and plastic trim. Do not apply to glass.",
       "dilutions": [
         {
-          "context": "All use \u2014 spray on wet car",
+          "context": "All use \u2014 apply after blower drying",
           "ratio": "RTU",
-          "amount": "No dilution",
-          "note": "Spray onto wet panels after final sheeting rinse. Rinse off completely within 30 seconds. Do not let dwell. Immediately blow dry with leaf blower."
+          "amount": "3\u20134 sprays per section (~50x50cm) onto MF towel, OR 1\u20132 sprays directly on panel",
+          "note": "Shake well. Work one panel at a time. Spread evenly with MF towel immediately after spraying. Wait 30\u201360 sec until almost flashed. Flip towel and buff in further. Switch to a second clean MF towel and buff off completely. Do NOT apply in direct sunlight. Check each panel before moving to next \u2014 if uneven or hazy, wipe off with IPA immediately and re-apply."
         }
       ],
-      "tool": "Labeled spray bottle or IK E Foam Pro 2 \u2014 followed immediately by hose rinse then leaf blower"
+      "tool": "2 dedicated MF towels per session \u2014 one to spread, one to buff off. Never use on glass."
     },
     {
       "name": "P21S Polishing Soap",
@@ -891,17 +891,6 @@
         "chems": []
       },
       {
-        "id": "n115",
-        "title": "Apply CarPro HydrO2 Lite \u2014 drying aid",
-        "desc": "With the car still wet after the final sheeting rinse, spray HydrO2 Lite across all painted panels. Work quickly panel by panel. Rinse off completely within 30 seconds \u2014 do not let it dwell longer. Immediately proceed to leaf blower drying.",
-        "tools": [
-          "Labeled spray bottle or IK E Foam Pro 2"
-        ],
-        "chems": [
-          "CarPro HydrO2 Lite \u2014 RTU, rinse off within 30 sec"
-        ]
-      },
-      {
         "id": "n12",
         "title": "Touchless leaf blower drying \u2014 paint",
         "desc": "Blow all paint surfaces dry: roof \u2192 hood \u2192 trunk \u2192 sides \u2192 lower panels. Chase water from mirror housings, door jambs, badges, trim gaps, exhaust outlets. ZERO towel contact on paint.",
@@ -909,6 +898,17 @@
           "Leaf blower"
         ],
         "chems": []
+      },
+      {
+        "id": "n115",
+        "title": "Apply CarPro Reload 2.0 \u2014 paint sealant",
+        "desc": "Apply after paint is fully blower-dried. Work one panel at a time. Shake well. Spray 3\u20134 sprays onto a dedicated MF towel (or 1\u20132 sprays directly on panel). Spread evenly immediately. Wait 30\u201360 sec until almost flashed. Flip towel and buff in. Switch to a second clean dry MF towel and buff off completely. Do NOT apply in direct sunlight. Do NOT apply to glass. If uneven or hazy after buffing, wipe off with IPA and re-apply.",
+        "tools": [
+          "2\u00d7 dedicated MF towels (spread + buff off)"
+        ],
+        "chems": [
+          "CarPro Reload 2.0 \u2014 RTU, 3\u20134 sprays per section onto towel"
+        ]
       },
       {
         "id": "n13",
