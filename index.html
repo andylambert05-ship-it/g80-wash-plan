@@ -192,20 +192,51 @@ function renderInterior(){
     var isDone=intDone.has(s.id);
     var cls='step ns'+(isDone?' done':'')+(s.optional?' os':'');
     var ob=s.optional?'<span class="pill po">optional</span>':'';
-    html+='<div class="'+cls+'" onclick="toggleInterior(''+s.id+'')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';
-    if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
-    html+='</div></div>';
+    var stepHtml='<div class="'+cls+'" id="int-step-'+s.id+'" onclick="toggleInterior(this,\''+s.id+'\')" ><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';
+    if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){
+      stepHtml+='<div class="tags">';
+      (s.tools||[]).forEach(function(t){stepHtml+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});
+      (s.chems||[]).forEach(function(c){stepHtml+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});
+      stepHtml+='</div>';
+    }
+    stepHtml+='</div></div>';
+    html+=stepHtml;
   });
   html+='</div>';
-  html+='<div class="slbl" style="margin-top:20px;">Interior chemicals & dilutions</div>';
+  html+='<div class="slbl" style="margin-top:20px;">Interior chemicals &amp; dilutions</div>';
   DATA.interiorDetail.chemicals.forEach(function(c){
     html+='<div class="chem-card"><div class="chem-hd"><div><div class="chem-nm">'+esc(c.name)+'</div><div class="chem-cat">'+esc(c.category)+'</div></div></div><div class="chem-bd"><div class="chem-used">'+esc(c.usedOn)+'</div>';
-    c.dilutions.forEach(function(d){html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';if(d.amount&&d.amount!=='No dilution')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';html+='</div>';});
+    c.dilutions.forEach(function(d){
+      html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';
+      if(d.amount&&d.amount!=='No dilution')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';
+      if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';
+      html+='</div>';
+    });
     html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div></div></div>';
   });
   return html;
 }
-function toggleInterior(id){if(intDone.has(id))intDone.delete(id);else intDone.add(id);save();var steps=DATA.interiorDetail.steps;var n=steps.filter(function(s){return intDone.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var bar=document.getElementById('int-bar');if(bar)bar.style.width=pct+'%';var ct=document.querySelector('#panel-interior .prog-ct');if(ct)ct.textContent=n+' / '+t;steps.forEach(function(s,idx){var el=document.querySelector('[onclick="toggleInterior(''+s.id+'')"]');if(!el)return;var isDone=intDone.has(s.id);el.className='step ns'+(isDone?' done':'')+(s.optional?' os':'');var nn=el.querySelector('.step-n');if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);});}
+function toggleInterior(el,id){
+  if(intDone.has(id))intDone.delete(id);else intDone.add(id);
+  save();
+  var steps=DATA.interiorDetail.steps;
+  var n=steps.filter(function(s){return intDone.has(s.id);}).length;
+  var t=steps.length;
+  var pct=t>0?Math.round(n/t*100):0;
+  var bar=document.getElementById('int-bar');
+  if(bar)bar.style.width=pct+'%';
+  var ct=document.querySelector('#panel-interior .prog-ct');
+  if(ct)ct.textContent=n+' / '+t;
+  steps.forEach(function(s,idx){
+    var stepEl=document.getElementById('int-step-'+s.id);
+    if(!stepEl)return;
+    var isDone=intDone.has(s.id);
+    stepEl.className='step ns'+(isDone?' done':'')+(s.optional?' os':'');
+    var nn=stepEl.querySelector('.step-n');
+    if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);
+  });
+}
+
 function resetInterior(){intDone.clear();save();render();}
 
 fetch('wash-plan.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(data){DATA=data;render();}).catch(function(err){document.getElementById('app').innerHTML='<div class="error-box"><h2><i class="ti ti-alert-triangle"></i>Could not load wash-plan.json</h2><p>This viewer requires a local server or GitHub Pages.<br><br><strong>Run locally:</strong><br><code>python3 -m http.server 8080</code><br>Then open <code>http://localhost:8080</code><br><br><strong>Or enable GitHub Pages</strong> in repo Settings → Pages → main / root.<br><br><span style="font-size:11px;opacity:0.5;">Error: '+err.message+'</span></p></div>';});
