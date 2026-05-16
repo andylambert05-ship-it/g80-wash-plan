@@ -224,6 +224,12 @@
       "name": "Safety glasses / eye protection",
       "qty": "1 pair",
       "usedFor": "Eye protection during all spray chemical stages \u2014 Iron X, Tar X, Bug Out, ReTyre, APC, Descale, and engine bay work. Essential when using IK foam sprayers overhead."
+    },
+    {
+      "category": "Interior detail",
+      "name": "Bissell 3624 Spot Clean Professional",
+      "qty": "1",
+      "usedFor": "Carpet and fabric extraction \u2014 used with Adam's Polishes Carpet Cleaner for carpet deep cleaning and TuxMat cleaning"
     }
   ],
   "chemicals": [
@@ -710,6 +716,24 @@
         }
       ],
       "tool": "Spray direct onto glass or onto MF towel. Interior: Invisible Glass Reach & Clean Tool. Waffle-weave MF first pass, suede MF for second buff pass."
+    },
+    {
+      "name": "Koch Chemie Nano Magic Screen",
+      "category": "Screen cleaner \u2014 interior",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "iDrive curved display and instrument cluster screen only \u2014 alcohol-free, anti-static",
+      "dilutions": [
+        {
+          "context": "iDrive screen \u2014 car off, screens blanked",
+          "ratio": "RTU",
+          "amount": "1\u20132 pumps onto dedicated screen MF cloth only",
+          "note": "BLANK SCREENS FIRST: hold volume roller button with car off until screens go dark. Spray onto cloth, never direct on screen. Wipe in straight lines, minimal pressure. Buff with dry side immediately. Do not use any glass cleaner, alcohol, or BH Traceless on the iDrive display."
+        }
+      ],
+      "tool": "Dedicated ultra-soft screen MF cloth \u2014 screen use only, never used on any other surface"
     }
   ],
   "washSteps": {
@@ -1215,6 +1239,42 @@
           "normal",
           "maint"
         ]
+      },
+      {
+        "id": "g12",
+        "priority": "essential",
+        "name": "Dedicated screen MF cloth (ultra-soft, screen-only)",
+        "why": "Required for iDrive screen cleaning. Must be ultra-soft, lint-free, and used exclusively on screens \u2014 never on paint, glass, or any other surface.",
+        "washTypes": [
+          "interior"
+        ]
+      },
+      {
+        "id": "g13",
+        "priority": "essential",
+        "name": "Soft leather brush",
+        "why": "For Colourlock Leather Mild Cleaner application \u2014 gentler than a MF applicator on perforated or textured leather. Not confirmed in inventory.",
+        "washTypes": [
+          "interior"
+        ]
+      },
+      {
+        "id": "g14",
+        "priority": "essential",
+        "name": "Stiff carpet brush",
+        "why": "Needed for carpet and TuxMat agitation. A dedicated stiff-bristle brush for carpet/fabric \u2014 not a wheel brush.",
+        "washTypes": [
+          "interior"
+        ]
+      },
+      {
+        "id": "g15",
+        "priority": "recommended",
+        "name": "Bissell 3624 Spot Clean Professional",
+        "why": "Confirmed carpet extractor for use with Adam's Polishes Carpet Cleaner. Add if not yet purchased.",
+        "washTypes": [
+          "interior"
+        ]
       }
     ],
     "chemicals": [
@@ -1275,6 +1335,301 @@
         "washTypes": [
           "maint"
         ]
+      },
+      {
+        "id": "c07",
+        "priority": "essential",
+        "name": "Koch Chemie Nano Magic Screen",
+        "why": "Confirmed product for iDrive curved display cleaning. Alcohol-free, anti-static. Add to cart if not yet purchased.",
+        "washTypes": [
+          "interior"
+        ]
+      },
+      {
+        "id": "c08",
+        "priority": "recommended",
+        "name": "Gtechniq C6 or CarPro Carbon C2 (carbon fibre protectant)",
+        "why": "For the factory interior CF trim panels. Protects gloss CF weave and maintains finish. Not needed on open-pore matte CF. Not confirmed in inventory.",
+        "washTypes": [
+          "interior"
+        ]
+      },
+      {
+        "id": "c09",
+        "priority": "recommended",
+        "name": "Koch Chemie Textil Star or CarPro Carpro (carpet cleaner)",
+        "why": "Dedicated carpet/fabric cleaner for deeper cleaning than APC alone. Surfex HD covers light carpet work but a dedicated product handles heavier soiling better.",
+        "washTypes": [
+          "interior"
+        ]
+      }
+    ]
+  },
+  "interiorDetail": {
+    "note": "Optional \u2014 as needed. Complete interior detail. Work with all doors and windows open in shade. Car off, screens blanked (hold volume roller button with car off).",
+    "chemicals": [
+      {
+        "name": "Meguiar's Cockpit Premium / Interior Detailer",
+        "category": "Interior quick detailer / maintenance spray",
+        "usedOn": "Dash, door cards, plastic trim, centre console \u2014 light maintenance between full details",
+        "dilutions": [
+          {
+            "context": "All use",
+            "ratio": "RTU",
+            "amount": "No dilution",
+            "note": "Spray onto MF towel, not directly onto surface. Wipe in straight lines. Do not use on screens or carbon fibre."
+          }
+        ],
+        "tool": "Dedicated interior MF towel"
+      },
+      {
+        "name": "Colourlock Leather Mild Cleaner",
+        "category": "Leather cleaner",
+        "usedOn": "All leather surfaces \u2014 seats, bolsters, steering wheel, door cards, gear selector",
+        "dilutions": [
+          {
+            "context": "All use",
+            "ratio": "RTU",
+            "amount": "No dilution \u2014 or dilute 1:1 with water for maintenance cleaning",
+            "note": "Apply to leather brush or MF applicator \u2014 not directly onto leather. Work in circular motion, wipe off with clean MF towel. Do not saturate. Allow to dry before conditioning."
+          }
+        ],
+        "tool": "Soft leather brush or MF applicator pad + clean MF towel"
+      },
+      {
+        "name": "Colourlock Leather Conditioner",
+        "category": "Leather conditioner",
+        "usedOn": "All leather surfaces after cleaning \u2014 restores suppleness and UV protection",
+        "dilutions": [
+          {
+            "context": "All use",
+            "ratio": "RTU",
+            "amount": "No dilution \u2014 thin coat",
+            "note": "Apply after leather is clean and dry. Work into leather with MF applicator in circular motion. Allow to absorb 5\u201310 min. Buff off any excess with clean MF towel. Do not over-apply \u2014 thin coats only."
+          }
+        ],
+        "tool": "MF applicator pad + clean MF towel"
+      },
+      {
+        "name": "Bilt Hamber Surfex HD (APC)",
+        "category": "Interior APC \u2014 plastics, carpet, trim",
+        "usedOn": "Door jambs, floor mats, carpet, plastic door cards, boot/trunk lining",
+        "dilutions": [
+          {
+            "context": "Carpet / floor mats",
+            "ratio": "2%\u20135%",
+            "amount": "20\u201350ml per 1L water",
+            "note": "Spray on, agitate with stiff carpet brush, extract or blot with clean MF towel. Air dry fully."
+          },
+          {
+            "context": "Interior plastic trim / door cards",
+            "ratio": "2%\u20133%",
+            "amount": "20\u201330ml per 1L water",
+            "note": "Spray onto brush or towel, wipe surfaces, follow with a dry MF wipe."
+          },
+          {
+            "context": "TuxMat wipe-down",
+            "ratio": "2%\u20133%",
+            "amount": "20\u201330ml per 1L water",
+            "note": "Spray on, wipe with stiff brush or MF, rinse if possible or wipe with damp MF."
+          }
+        ],
+        "tool": "Labeled spray bottle + appropriate brush + MF towels"
+      },
+      {
+        "name": "Koch Chemie Nano Magic Screen",
+        "category": "Screen cleaner \u2014 iDrive curved display",
+        "usedOn": "iDrive curved display, instrument cluster screen, head-up display housing \u2014 alcohol-free, anti-static",
+        "dilutions": [
+          {
+            "context": "All use",
+            "ratio": "RTU",
+            "amount": "No dilution",
+            "note": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both iDrive screens go completely dark \u2014 this prevents accidental inputs during cleaning. Spray 1\u20132 pumps onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff with dry side of cloth. Do NOT use BH Traceless, Autofinesse Window Cleaner, or any alcohol-based glass cleaner on the iDrive display \u2014 alcohol degrades the oleophobic coating on the curved glass panel."
+          }
+        ],
+        "tool": "Dedicated screen MF cloth (ultra-soft, lint-free) \u2014 never used on any other surface"
+      },
+      {
+        "name": "Gtechniq C6 Carbon Fibre or CarPro Carbon C2",
+        "category": "Carbon fibre interior cleaner / protectant",
+        "usedOn": "All exposed interior carbon fibre trim panels \u2014 dash, centre console, door cards (gloss or open-pore matte)",
+        "dilutions": [
+          {
+            "context": "All use",
+            "ratio": "RTU",
+            "amount": "No dilution",
+            "note": "Your G80 M3 factory interior carbon fibre trim is GLOSS finish. Clean with Surfex HD (2%) on a soft brush along the weave direction. Wipe clean with soft MF towel. Apply a thin coat of Gtechniq C6 or CarPro Carbon C2 with MF applicator to protect and add depth. Buff off excess. Do not use Cockpit Premium, silicone-based products, or any matte/satin dressings on gloss CF."
+          }
+        ],
+        "tool": "Soft detail brush (cleaning) + MF applicator pad (protection)"
+      },
+      {
+        "name": "Adam's Polishes Carpet Cleaner",
+        "category": "Carpet & fabric cleaner",
+        "usedOn": "Carpet, boot/trunk lining, fabric headliner (if needed) \u2014 used with Bissell 3624 Spot Clean Professional for extraction",
+        "dilutions": [
+          {
+            "context": "Bissell 3624 Spot Clean Professional",
+            "ratio": "Per label",
+            "amount": "Follow Adam's dilution instructions for the Bissell tank \u2014 typically diluted per product directions",
+            "note": "Spray Adam's Carpet Cleaner onto carpet section, agitate with stiff carpet brush in straight lines, then extract with Bissell 3624. Repeat passes until water runs clear. Allow to dry fully with doors open \u2014 1\u20132 hours minimum. Do not close car until fully dry."
+          }
+        ],
+        "tool": "Bissell 3624 Spot Clean Professional + stiff carpet brush"
+      }
+    ],
+    "steps": [
+      {
+        "id": "int01",
+        "title": "Prepare \u2014 open all doors and windows, blank screens",
+        "desc": "Park in shade. Open all four doors and all windows for ventilation. Turn car off. BLANK THE SCREENS: press and hold the volume roller button until both iDrive screens go completely dark \u2014 do this before any cleaning. Have all products, towels and brushes ready before starting.",
+        "tools": [
+          "All interior MF towels",
+          "All interior brushes"
+        ],
+        "chems": []
+      },
+      {
+        "id": "int02",
+        "title": "Vacuum \u2014 full interior including TuxMats",
+        "desc": "Remove TuxMats first. Vacuum all carpet, seats, door card pockets, boot floor, and under seats. Use crevice tool for seat rails, console gaps, and door pockets. Use a soft brush attachment on seats and door cards to avoid scratching. Vacuum TuxMats separately.",
+        "tools": [
+          "Vacuum + attachments (crevice, soft brush)",
+          "Detail brushes (to loosen debris from gaps)"
+        ],
+        "chems": []
+      },
+      {
+        "id": "int03",
+        "title": "TuxMat wipe-down",
+        "desc": "Spray Surfex HD at 2\u20133% onto TuxMats. Agitate with a stiff brush. Wipe clean with MF towel or rinse if outside. Allow to dry before reinstalling.",
+        "tools": [
+          "Stiff brush",
+          "MF towels",
+          "Labeled spray bottle"
+        ],
+        "chems": [
+          "Surfex HD 2\u20133% or AllClean 5:1"
+        ]
+      },
+      {
+        "id": "int04",
+        "title": "Carpet \u2014 clean as needed",
+        "desc": "Spray Adam's Polishes Carpet Cleaner onto carpet sections. Agitate with stiff carpet brush in straight lines \u2014 do not scrub in circles. Extract with Bissell 3624 Spot Clean Professional. Run repeated passes until the extracted water runs clear. Allow to dry fully with doors open \u2014 minimum 1\u20132 hours before closing the car.",
+        "tools": [
+          "Stiff carpet brush",
+          "Bissell 3624 Spot Clean Professional"
+        ],
+        "chems": [
+          "Adam's Polishes Carpet Cleaner \u2014 per label dilution for Bissell 3624"
+        ]
+      },
+      {
+        "id": "int05",
+        "title": "Headliner \u2014 spot clean if needed",
+        "desc": "Spot clean only \u2014 do not saturate. Spray Surfex HD at 1\u20132% onto a MF cloth and blot gently \u2014 never rub or scrub. Work from outside of stain inward. Allow to air dry fully.",
+        "tools": [
+          "Soft MF cloth"
+        ],
+        "chems": [
+          "Surfex HD 1\u20132% on cloth \u2014 not sprayed direct"
+        ]
+      },
+      {
+        "id": "int06",
+        "title": "Clean iDrive curved display and instrument cluster",
+        "desc": "BLANK SCREENS FIRST: with car off, press and hold the volume roller button until both screens go completely dark. Spray 1\u20132 pumps of Koch Chemie Nano Magic Screen onto a dedicated ultra-soft screen MF cloth \u2014 NEVER spray directly onto screen. Wipe gently in straight lines with minimal pressure. Buff immediately with dry side of cloth. Do NOT use BH Traceless, Autofinesse Window Cleaner, or any alcohol or glass cleaner on the iDrive display.",
+        "tools": [
+          "Dedicated screen MF cloth (ultra-soft, screen-only)"
+        ],
+        "chems": [
+          "Koch Chemie Nano Magic Screen \u2014 RTU, onto cloth only. NEVER spray direct on screen."
+        ]
+      },
+      {
+        "id": "int07",
+        "title": "Clean plastic trim and dash",
+        "desc": "Spray Surfex HD (2\u20133%) or Cockpit Premium onto a MF towel. Wipe all plastic surfaces \u2014 dash, centre console, door cards, vents. Use detail brushes on vent slats and button edges. Follow with a dry MF wipe. Do not use Cockpit Premium on screens or carbon fibre trim.",
+        "tools": [
+          "MF towels",
+          "Detail brushes (soft)",
+          "Labeled spray bottle"
+        ],
+        "chems": [
+          "Surfex HD 2\u20133% or Cockpit Premium \u2014 RTU (on cloth)"
+        ]
+      },
+      {
+        "id": "int08",
+        "title": "Clean interior carbon fibre trim",
+        "desc": "Spray Surfex HD (2%) onto a soft detail brush. Gently agitate the CF trim panels \u2014 work along the weave direction. Wipe clean with a soft MF towel. For GLOSS CF: apply a thin coat of Gtechniq C6 or CarPro Carbon C2 with MF applicator, buff off. For MATTE/open-pore CF: dry wipe only after cleaning \u2014 no dressings or coating products.",
+        "tools": [
+          "Soft detail brush",
+          "MF applicator pad",
+          "MF towel"
+        ],
+        "chems": [
+          "Surfex HD 2% (cleaning)",
+          "Gtechniq C6 or CarPro Carbon C2 \u2014 RTU (gloss CF only)"
+        ]
+      },
+      {
+        "id": "int09",
+        "title": "Clean leather \u2014 all surfaces",
+        "desc": "Apply Colourlock Leather Mild Cleaner to a soft leather brush or MF applicator \u2014 not directly onto leather. Work in circular motions on all leather surfaces: seats, bolsters, steering wheel (avoid airbag seam), door cards, gear selector. Wipe off with clean MF towel. Do not saturate \u2014 multiple light passes better than one heavy soak. Allow leather to dry before conditioning.",
+        "tools": [
+          "Soft leather brush or MF applicator",
+          "Clean MF towel"
+        ],
+        "chems": [
+          "Colourlock Leather Mild Cleaner \u2014 RTU or 1:1 dilution"
+        ]
+      },
+      {
+        "id": "int10",
+        "title": "Condition leather \u2014 all surfaces",
+        "desc": "Apply Colourlock Leather Conditioner to a MF applicator in a thin even coat. Work into all leather surfaces in circular motion. Allow to absorb 5\u201310 min. Buff off any excess with a clean dry MF towel. Do not over-apply \u2014 leather should feel supple, not greasy.",
+        "tools": [
+          "MF applicator pad",
+          "Clean dry MF towel"
+        ],
+        "chems": [
+          "Colourlock Leather Conditioner \u2014 RTU, thin coat"
+        ]
+      },
+      {
+        "id": "int11",
+        "title": "Interior glass \u2014 all windows",
+        "desc": "Spray Autofinesse Window Cleaner or BH Traceless onto a dedicated interior MF glass towel. Wipe all interior glass surfaces \u2014 side windows, rear screen, windshield (use Reach & Clean Tool). Do not use on the iDrive screen.",
+        "tools": [
+          "MF glass towels (interior \u2014 dedicated)",
+          "Invisible Glass Reach & Clean Tool (95160)"
+        ],
+        "chems": [
+          "BH Traceless or Autofinesse Window Cleaner \u2014 RTU (onto cloth)"
+        ]
+      },
+      {
+        "id": "int12",
+        "title": "Dress interior trim (optional)",
+        "desc": "Apply a light coat of interior trim dressing or Cockpit Premium to plastic trim and rubber seals if desired. Avoid gloss finish products \u2014 use matte/satin dressings to match the BMW interior's OEM finish. Do not dress steering wheel, pedals, gear selector, or any grip surface.",
+        "tools": [
+          "MF applicator pad or soft trim brush"
+        ],
+        "chems": [
+          "Cockpit Premium or interior trim dressing \u2014 RTU (on cloth)"
+        ],
+        "optional": true
+      },
+      {
+        "id": "int13",
+        "title": "Reinstall TuxMats \u2014 final check",
+        "desc": "Ensure TuxMats are fully dry before reinstalling. Walk through the interior with a flashlight at low angle \u2014 check for missed spots, streaks on screens, and any damp areas. Leave doors open until fully dry.",
+        "tools": [
+          "Flashlight"
+        ],
+        "chems": []
       }
     ]
   }
