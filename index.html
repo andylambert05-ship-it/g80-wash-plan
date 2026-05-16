@@ -23,8 +23,8 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .hdr{background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
 .hdr-top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 12px;}
 .hdr-left{display:flex;align-items:center;gap:12px;}
-.bmw-badge{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border3);flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;}
-.bmw-badge::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--border3);}
+.bmw-badge{width:36px;height:36px;border-radius:50%;border:2.5px solid #0f1117;flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;}
+.bmw-badge::after{content:'';position:absolute;inset:0;border-radius:50%;border:2.5px solid #0f1117;}
 .bq{width:100%;height:100%;}
 .bq.bl{background:#1358d4;opacity:0.9;}
 .bq.wh{background:#f8f8fc;opacity:1;}
@@ -151,16 +151,18 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 <body>
 <div id="app"><div class="loading"><i class="ti ti-loader" style="font-size:24px;display:block;margin-bottom:10px;"></i>Loading wash plan…</div></div>
 <script>
-var DATA=null,mode='normal',done=new Set(),engDone=new Set(),gapState={},gapFilter='all',activeTab='steps';
+var DATA=null,mode='normal',done=new Set(),engDone=new Set(),intDone=new Set(),gapState={},gapFilter='all',activeTab='steps';
 try{done=new Set(JSON.parse(localStorage.getItem('gwp_done')||'[]'));}catch(e){}
 try{engDone=new Set(JSON.parse(localStorage.getItem('gwp_eng')||'[]'));}catch(e){}
+try{intDone=new Set(JSON.parse(localStorage.getItem('gwp_int')||'[]'));}catch(e){}
 try{gapState=JSON.parse(localStorage.getItem('gwp_gaps')||'{}');}catch(e){}
-function save(){try{localStorage.setItem('gwp_done',JSON.stringify([...done]));localStorage.setItem('gwp_eng',JSON.stringify([...engDone]));localStorage.setItem('gwp_gaps',JSON.stringify(gapState));}catch(e){}}
+function save(){try{localStorage.setItem('gwp_done',JSON.stringify([...done]));localStorage.setItem('gwp_eng',JSON.stringify([...engDone]));localStorage.setItem('gwp_int',JSON.stringify([...intDone]));localStorage.setItem('gwp_gaps',JSON.stringify(gapState));}catch(e){}}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function render(){document.getElementById('app').innerHTML=renderHeader()+renderTabs()+renderPanels();}
 function renderHeader(){var m=DATA.meta;return'<div class="hdr"><div class="hdr-top"><div class="hdr-left"><div class="bmw-badge"><div class="bq bl"></div><div class="bq wh"></div><div class="bq wh"></div><div class="bq bl"></div></div><div><div class="hdr-title">'+esc(m.title)+'</div><div class="hdr-sub">'+esc(m.car)+'</div></div></div><div class="ver">v'+esc(m.version)+'</div></div><div class="mode-row"><button class="mbtn '+(mode==='normal'?'an':'')+'" onclick="setMode(\'normal\')"><i class="ti ti-droplet" aria-hidden="true"></i>Bi-weekly wash</button><button class="mbtn '+(mode==='maint'?'am':'')+'" onclick="setMode(\'maint\')"><i class="ti ti-shield-check" aria-hidden="true"></i>Ceramic maintenance</button></div></div>';}
-function renderTabs(){return'<div class="tabs">'+[{id:'steps',l:'Steps'},{id:'chems',l:'Chemicals'},{id:'tools',l:'Tools'},{id:'engine',l:'Engine Bay'},{id:'gaps',l:'Gaps'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
-function renderPanels(){return['steps','chems','tools','engine','gaps'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,gaps:renderGaps}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
+function renderTabs(){return'<div class="tabs">'+[{id:'steps',l:'Steps'},{id:'chems',l:'Chemicals'},{id:'tools',l:'Tools'},{id:'engine',l:'Engine Bay'},{id:'interior',l:'Interior'},
+    {id:'gaps',l:'Gaps'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
+function renderPanels(){return['steps','chems','tools','engine','interior','gaps'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,gaps:renderGaps}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
 function getVis(){var n=DATA.washSteps.normal;if(mode==='normal')return n;var f=n.filter(function(s){return!s.normalOnly;});var c=f.slice();DATA.washSteps.maintOnly.forEach(function(ms){var i=c.findIndex(function(s){return s.id===ms.insertAfter;});var e=Object.assign({},ms,{isMaint:true});if(i>=0)c.splice(i+1,0,e);else c.push(e);});return c;}
 function renderSteps(){var steps=getVis();var n=steps.filter(function(s){return done.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var html='<div class="notice ceramic"><i class="ti ti-shield-half" aria-hidden="true"></i><span><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying — zero towel contact on paint after rinsing.</span></div>';html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:'+pct+'%"></div></div></div>';html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';html+='<div class="steps-list">';steps.forEach(function(s,idx){var isDone=done.has(s.id);var cls='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');var mb=s.isMaint?'<span class="pill pm">maint.</span>':'';var ob=s.optional?'<span class="pill po">optional</span>':'';html+='<div class="'+cls+'" onclick="toggleStep(\''+s.id+'\')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+mb+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}html+='</div></div>';});html+='</div>';return html;}
 function renderChems(){var html='<div class="notice info"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Ratios are for IK E Foam sprayers — not pressure washer foam cannons. CarPro\'s published 1:9 for Reset is foam cannon only and does not apply here.</span></div>';var cats={};DATA.chemicals.forEach(function(c){if(mode==='normal'&&c.modes.indexOf('normal')<0)return;if(!cats[c.category])cats[c.category]=[];cats[c.category].push(c);});Object.keys(cats).forEach(function(cat){html+='<div class="slbl">'+esc(cat)+'</div>';cats[cat].forEach(function(c){var mo=c.modes.length===1&&c.modes[0]==='maint';html+='<div class="chem-card"><div class="chem-hd"><div><div class="chem-nm">'+esc(c.name)+'</div><div class="chem-cat">'+esc(c.category)+'</div></div>'+(mo?'<span class="pill pm">maint. only</span>':'')+'</div><div class="chem-bd"><div class="chem-used">'+esc(c.usedOn)+'</div>';c.dilutions.forEach(function(d){html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';if(d.amount&&d.amount!=='No dilution'&&d.amount!=='Direct')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';html+='</div>';});html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div></div></div>';});});return html;}
@@ -176,6 +178,36 @@ function toggleStep(id){if(done.has(id))done.delete(id);else done.add(id);save()
 function toggleEngine(id){if(engDone.has(id))engDone.delete(id);else engDone.add(id);save();var steps=DATA.engineBay.steps;var n=steps.filter(function(s){return engDone.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var bar=document.getElementById('eng-bar');if(bar)bar.style.width=pct+'%';var ct=document.querySelector('#panel-engine .prog-ct');if(ct)ct.textContent=n+' / '+t;steps.forEach(function(s,idx){var el=document.querySelector('[onclick="toggleEngine(\''+s.id+'\')"]');if(!el)return;var isDone=engDone.has(s.id);el.className='step ns'+(isDone?' done':'');var nn=el.querySelector('.step-n');if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);});}
 function resetSteps(){done.clear();save();render();}
 function resetEngine(){engDone.clear();save();render();}
+
+function renderInterior(){
+  var id=DATA.interiorDetail;
+  var n=id.steps.filter(function(s){return intDone.has(s.id);}).length;
+  var t=id.steps.length;
+  var pct=t>0?Math.round(n/t*100):0;
+  var html='<div class="notice opt-notice"><i class="ti ti-info-circle" aria-hidden="true"></i><span><strong>Optional — as needed.</strong> '+esc(id.note)+'</span></div>';
+  html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="int-bar" style="width:'+pct+'%"></div></div></div>';
+  html+='<button class="rbtn" onclick="resetInterior()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset interior steps</button>';
+  html+='<div class="steps-list">';
+  id.steps.forEach(function(s,idx){
+    var isDone=intDone.has(s.id);
+    var cls='step ns'+(isDone?' done':'')+(s.optional?' os':'');
+    var ob=s.optional?'<span class="pill po">optional</span>':'';
+    html+='<div class="'+cls+'" onclick="toggleInterior(''+s.id+'')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';
+    if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
+    html+='</div></div>';
+  });
+  html+='</div>';
+  html+='<div class="slbl" style="margin-top:20px;">Interior chemicals & dilutions</div>';
+  DATA.interiorDetail.chemicals.forEach(function(c){
+    html+='<div class="chem-card"><div class="chem-hd"><div><div class="chem-nm">'+esc(c.name)+'</div><div class="chem-cat">'+esc(c.category)+'</div></div></div><div class="chem-bd"><div class="chem-used">'+esc(c.usedOn)+'</div>';
+    c.dilutions.forEach(function(d){html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';if(d.amount&&d.amount!=='No dilution')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';html+='</div>';});
+    html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div></div></div>';
+  });
+  return html;
+}
+function toggleInterior(id){if(intDone.has(id))intDone.delete(id);else intDone.add(id);save();var steps=DATA.interiorDetail.steps;var n=steps.filter(function(s){return intDone.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var bar=document.getElementById('int-bar');if(bar)bar.style.width=pct+'%';var ct=document.querySelector('#panel-interior .prog-ct');if(ct)ct.textContent=n+' / '+t;steps.forEach(function(s,idx){var el=document.querySelector('[onclick="toggleInterior(''+s.id+'')"]');if(!el)return;var isDone=intDone.has(s.id);el.className='step ns'+(isDone?' done':'')+(s.optional?' os':'');var nn=el.querySelector('.step-n');if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);});}
+function resetInterior(){intDone.clear();save();render();}
+
 fetch('wash-plan.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(data){DATA=data;render();}).catch(function(err){document.getElementById('app').innerHTML='<div class="error-box"><h2><i class="ti ti-alert-triangle"></i>Could not load wash-plan.json</h2><p>This viewer requires a local server or GitHub Pages.<br><br><strong>Run locally:</strong><br><code>python3 -m http.server 8080</code><br>Then open <code>http://localhost:8080</code><br><br><strong>Or enable GitHub Pages</strong> in repo Settings → Pages → main / root.<br><br><span style="font-size:11px;opacity:0.5;">Error: '+err.message+'</span></p></div>';});
 </script>
 </body>
