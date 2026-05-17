@@ -419,10 +419,28 @@
       "usedOn": "Full exterior \u2014 touchless alkaline pre-soak before Descale",
       "dilutions": [
         {
-          "context": "IK E Foam Pro 12 / pump spray / trigger \u2014 per bilthamber.com",
-          "ratio": "0.5%\u20132% PIR",
-          "amount": "Minimum 0.5% PIR for light cleaning, up to 2% PIR for very dirty vehicles. One-time calibration required: fill IK E Foam Pro 12 with 6L water, discharge into bucket, measure total output. Multiply output by 0.005\u20130.02 to get ml of Touchless needed.",
-          "note": "Apply to cool panels in shaded conditions. Do not allow to dry in use. Power-wash or rinse off completely. 1 litre of diluted product should last 4\u20135 washes. Contains corrosion inhibitors. Sugar-based, biodegradable, eco-friendly \u2014 no phosphates, solvents, NTA, or caustic soda."
+          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 1% PIR light clean",
+          "ratio": "1% PIR",
+          "amount": "2 oz (60ml) Touchless into 6L fill",
+          "note": "Use for lightly soiled vehicles or maintenance washes. Fill tank to 6L usable mark, add 60ml Touchless. Apply to cool panels in shade, dwell 1\u20135 min, do not allow to dry, rinse completely."
+        },
+        {
+          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 2% PIR heavy clean",
+          "ratio": "2% PIR",
+          "amount": "4 oz (120ml) Touchless into 6L fill",
+          "note": "Use for heavily contaminated vehicles. Maximum recommended PIR per bilthamber.com. Apply to cool panels in shade, dwell 1\u20135 min, do not allow to dry, rinse completely. 1L of diluted product should last 4\u20135 washes."
+        },
+        {
+          "context": "IK E Foam Pro 2 (1.5L \u2014 fill to ~41 oz) \u2014 1% PIR light clean",
+          "ratio": "1% PIR",
+          "amount": "0.42 oz (12ml) Touchless into ~41 oz fill",
+          "note": "Use for spot treatment or lightly soiled areas. Fill tank to ~41 oz (leaving headspace), add 12ml Touchless."
+        },
+        {
+          "context": "IK E Foam Pro 2 (1.5L \u2014 fill to ~41 oz) \u2014 2% PIR heavy clean",
+          "ratio": "2% PIR",
+          "amount": "0.84 oz (25ml) Touchless into ~41 oz fill",
+          "note": "Maximum recommended PIR per bilthamber.com. Fill tank to ~41 oz (leaving headspace), add 25ml Touchless."
         }
       ],
       "tool": "IK E Foam Pro 12 (primary); also compatible with pump spray or trigger spray per BH"
