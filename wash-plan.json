@@ -246,16 +246,16 @@
       "usedOn": "All painted panels \u2014 pH neutral, ceramic-safe",
       "dilutions": [
         {
-          "context": "IK E Foam Pro 12 pre-foam (6L fill)",
-          "ratio": "~1:50",
-          "amount": "approx. 120ml per 6L fill",
-          "note": "CarPro does not publish a specific IK foam sprayer ratio. 1:50 is a practical starting point \u2014 adjust for desired foam density. Do not allow to dry on surface."
+          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 per carpro-us.com",
+          "ratio": "400\u2013500:1",
+          "amount": "13ml (0.45 oz) Touchless into 6L fill",
+          "note": "Midpoint of CarPro's published 400\u2013500:1 ratio. Add Reset first, then fill to 6L usable mark. Do not allow to dry on surface. IK E Foam Pro 2 is not recommended for Reset \u2014 volume too small for accurate measurement at correct dilution."
         },
         {
-          "context": "Wash bucket (Bucket 2) \u2014 per carpro-us.com",
+          "context": "Wash bucket \u2014 recommended 4 gallon working fill \u2014 per carpro-us.com",
           "ratio": "400\u2013500:1",
-          "amount": "~1oz (approx. 30ml) per 3\u20134 gallons of water",
-          "note": "Fill bucket as water runs in to activate foam. 4 capfuls = 1oz. Wash top down, out of direct sun. Rinse mitt in second bucket periodically. Do not allow to dry on surface."
+          "amount": "30ml (1 oz) Reset into 4 gallons of water",
+          "note": "Per carpro-us.com: ~1oz per 3\u20134 gallons. 4 gallon fill recommended \u2014 leaves headspace, avoids splashing. Reference: 3 gal = 22ml (0.75 oz), 4 gal = 30ml (1 oz), 5 gal = 38ml (1.25 oz). Fill bucket as water runs in to activate foam. Do not allow to dry on surface."
         }
       ],
       "tool": "IK E Foam Pro 12 pre-foam + 2-bucket wash (Buckets 2 & 3)"
