@@ -610,7 +610,7 @@
     },
     {
       "name": "Bilt Hamber Korrosol",
-      "category": "Iron / fallout remover \u2014 paint",
+      "category": "Iron / fallout decon",
       "modes": [
         "normal",
         "maint"
@@ -628,7 +628,7 @@
     },
     {
       "name": "Bilt Hamber Surfex HD",
-      "category": "All-purpose cleaner / degreaser (APC)",
+      "category": "All-purpose cleaner",
       "modes": [
         "normal",
         "maint"
@@ -676,7 +676,7 @@
     },
     {
       "name": "Bilt Hamber Auto Wheel",
-      "category": "Wheel cleaner \u2014 iron-reactive",
+      "category": "Wheel cleaner",
       "modes": [
         "normal",
         "maint"
