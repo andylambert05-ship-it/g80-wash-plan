@@ -140,6 +140,15 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .cvr.danger .cvr-lbl{color:var(--red);}
 .cvr.caution .cvr-lbl{color:var(--amber);}
 .cvr-items{font-size:12px;color:var(--text2);line-height:1.75;}
+.sl-header{margin-bottom:18px;}
+.sl-title{display:block;font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.2px;}
+.sl-sub{display:block;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:500;}
+.sl-list{display:flex;flex-direction:column;gap:2px;}
+.sl-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:0.5px solid var(--border);}
+.sl-item:last-child{border-bottom:none;}
+.sl-num{font-size:12px;font-weight:700;color:var(--text3);width:22px;flex-shrink:0;text-align:right;font-variant-numeric:tabular-nums;}
+.sl-text{font-size:14px;color:var(--text);line-height:1.4;flex:1;}
+.sl-note{font-size:12px;color:var(--text2);font-weight:400;}
 .loading{text-align:center;padding:80px 20px;color:var(--text3);font-size:14px;}
 .error-box{margin:20px;background:var(--bg2);border:1px solid var(--red-bd);border-radius:var(--r);padding:24px;}
 .error-box h2{font-size:16px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
@@ -161,8 +170,8 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function render(){document.getElementById('app').innerHTML=renderHeader()+renderTabs()+renderPanels();}
 function renderHeader(){var m=DATA.meta;return'<div class="hdr"><div class="hdr-top"><div class="hdr-left"><div class="bmw-badge"><div class="bq bl"></div><div class="bq wh"></div><div class="bq wh"></div><div class="bq bl"></div></div><div><div class="hdr-title">'+esc(m.title)+'</div><div class="hdr-sub">'+esc(m.car)+'</div></div></div><div class="ver">v'+esc(m.version)+'</div></div><div class="mode-row"><button class="mbtn '+(mode==='normal'?'an':'')+'" onclick="setMode(\'normal\')"><i class="ti ti-droplet" aria-hidden="true"></i>Bi-weekly wash</button><button class="mbtn '+(mode==='maint'?'am':'')+'" onclick="setMode(\'maint\')"><i class="ti ti-shield-check" aria-hidden="true"></i>Ceramic maintenance</button></div></div>';}
 function renderTabs(){return'<div class="tabs">'+[{id:'steps',l:'Steps'},{id:'chems',l:'Chemicals'},{id:'tools',l:'Tools'},{id:'engine',l:'Engine Bay'},{id:'interior',l:'Interior'},
-    {id:'gaps',l:'Gaps'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
-function renderPanels(){return['steps','chems','tools','engine','interior','gaps'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,gaps:renderGaps}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
+    {id:'shortlist',l:'ShortList'},{id:'gaps',l:'Gaps'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
+function renderPanels(){return['steps','chems','tools','engine','interior','shortlist','gaps'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,shortlist:renderShortList,gaps:renderGaps}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
 function getVis(){var n=DATA.washSteps.normal;if(mode==='normal')return n;var f=n.filter(function(s){return!s.normalOnly;});var c=f.slice();DATA.washSteps.maintOnly.forEach(function(ms){var i=c.findIndex(function(s){return s.id===ms.insertAfter;});var e=Object.assign({},ms,{isMaint:true});if(i>=0)c.splice(i+1,0,e);else c.push(e);});return c;}
 function renderSteps(){var steps=getVis();var n=steps.filter(function(s){return done.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var html='<div class="notice ceramic"><i class="ti ti-shield-half" aria-hidden="true"></i><span><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying — zero towel contact on paint after rinsing.</span></div>';html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:'+pct+'%"></div></div></div>';html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';html+='<div class="steps-list">';steps.forEach(function(s,idx){var isDone=done.has(s.id);var cls='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');var mb=s.isMaint?'<span class="pill pm">maint.</span>':'';var ob=s.optional?'<span class="pill po">optional</span>':'';html+='<div class="'+cls+'" onclick="toggleStep(\''+s.id+'\')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+mb+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}html+='</div></div>';});html+='</div>';return html;}
 function renderChems(){var modeLabel=mode==='normal'?'Bi-weekly wash':'Ceramic maintenance wash';var html='<div class="notice info"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Showing chemicals for: <strong>'+modeLabel+'</strong>. Ratios are for IK E Foam sprayers — not pressure washer foam cannons.</span></div>';var cats={};DATA.chemicals.forEach(function(c){if(c.modes.indexOf(mode)<0)return;if(!cats[c.category])cats[c.category]=[];cats[c.category].push(c);});var catOrder=['Spot pre-treatment','Wheel cleaner','Wheel cleaner (option)','Wheel cleaner — iron-reactive','Tire cleaner','All-purpose cleaner','All-purpose cleaner / degreaser (APC)','Iron / fallout decon','Iron / fallout remover — paint','Ceramic maintenance pre-wash — step 1','Ceramic maintenance pre-wash — step 2','Main wash shampoo','Tire dressing','Paint sealant / coating topper — both modes','Exhaust & metal cleaning','Glass cleaner','Glass cleaner — alternative to BH Trace-Less','Screen cleaner — interior','Trim & finishing','Finishing','Ceramic coating topper / paint protection'];var sortedCats=Object.keys(cats).sort(function(a,b){var ai=catOrder.indexOf(a);var bi=catOrder.indexOf(b);if(ai<0)ai=99;if(bi<0)bi=99;return ai-bi;});sortedCats.forEach(function(cat){html+='<div class="slbl">'+esc(cat)+'</div>';cats[cat].forEach(function(c){var normalOnly=c.modes.length===1&&c.modes[0]==='normal';var maintOnly=c.modes.length===1&&c.modes[0]==='maint';var badge=maintOnly?'<span class="pill pm">maint. only</span>':normalOnly?'<span class="pill pn">normal only</span>':'';html+='<div class="chem-card"><div class="chem-hd"><div><div class="chem-nm">'+esc(c.name)+'</div><div class="chem-cat">'+esc(c.category)+'</div></div>'+badge+'</div><div class="chem-bd"><div class="chem-used">'+esc(c.usedOn)+'</div>';c.dilutions.forEach(function(d){html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';if(d.amount&&d.amount!=='No dilution'&&d.amount!=='Direct')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';html+='</div>';});html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div></div></div>';});});return html;}
@@ -238,6 +247,56 @@ function toggleInterior(el,id){
 }
 
 function resetInterior(){intDone.clear();save();render();}
+
+
+function renderShortList(){
+  var isNormal = mode === 'normal';
+  var title = isNormal ? 'Bi-weekly Wash' : 'Ceramic Maintenance Wash';
+
+  var normal = [
+    {n:1,  text:'CarPro Bug Out'},
+    {n:2,  text:'CarPro Tar X'},
+    {n:3,  text:'Koch Chemie MWC <span class="sl-note">(+ Brake Buster if heavily contaminated)</span>'},
+    {n:4,  text:'CarPro ReTyre'},
+    {n:5,  text:'AllClean or CarPro MultiX — wheel wells'},
+    {n:6,  text:'CarPro Iron X'},
+    {n:7,  text:'CarPro Reset — IK E Foam Pro 12 pre-foam <span class="sl-note">(13ml / 6L)</span>'},
+    {n:8,  text:'CarPro Reset — wash bucket <span class="sl-note">(30ml / 4 gal)</span>'},
+    {n:9,  text:'CarPro Reload 2.0'},
+    {n:10, text:'P21S Polishing Soap — exhaust tips'},
+    {n:11, text:'BH Trace-Less or Autofinesse Crystal — exterior &amp; interior glass'},
+    {n:12, text:'CarPro Darkside — tire sidewalls'},
+    {n:13, text:'Trim dressing — exterior trim &amp; rubber seals'},
+    {n:14, text:'QD / spot detailer — final inspection'}
+  ];
+
+  var maint = [
+    {n:1,  text:'CarPro Bug Out'},
+    {n:2,  text:'CarPro Tar X'},
+    {n:3,  text:'Koch Chemie MWC <span class="sl-note">(+ Brake Buster if heavily contaminated)</span>'},
+    {n:4,  text:'CarPro ReTyre'},
+    {n:5,  text:'AllClean or CarPro MultiX — wheel wells &amp; door jambs'},
+    {n:6,  text:'CarPro Iron X'},
+    {n:7,  text:'BH Touchless — IK E Foam Pro 12 <span class="sl-note">(60ml / 6L @ 1% PIR or 120ml @ 2% PIR)</span>'},
+    {n:8,  text:'CarPro Descale — wash bucket <span class="sl-note">(150ml / 4 gal)</span>'},
+    {n:9,  text:'CarPro Reload 2.0'},
+    {n:10, text:'P21S Polishing Soap — exhaust tips'},
+    {n:11, text:'BH Trace-Less or Autofinesse Crystal — exterior &amp; interior glass'},
+    {n:12, text:'CarPro Darkside — tire sidewalls'},
+    {n:13, text:'Trim dressing — exterior trim &amp; rubber seals'},
+    {n:14, text:'QD / spot detailer — final inspection'}
+  ];
+
+  var list = isNormal ? normal : maint;
+
+  var html = '<div class="sl-header"><span class="sl-title">' + title + '</span><span class="sl-sub">Chemicals in wash sequence order</span></div>';
+  html += '<div class="sl-list">';
+  list.forEach(function(item){
+    html += '<div class="sl-item"><span class="sl-num">' + item.n + '</span><span class="sl-text">' + item.text + '</span></div>';
+  });
+  html += '</div>';
+  return html;
+}
 
 fetch('wash-plan.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(data){DATA=data;render();}).catch(function(err){document.getElementById('app').innerHTML='<div class="error-box"><h2><i class="ti ti-alert-triangle"></i>Could not load wash-plan.json</h2><p>This viewer requires a local server or GitHub Pages.<br><br><strong>Run locally:</strong><br><code>python3 -m http.server 8080</code><br>Then open <code>http://localhost:8080</code><br><br><strong>Or enable GitHub Pages</strong> in repo Settings → Pages → main / root.<br><br><span style="font-size:11px;opacity:0.5;">Error: '+err.message+'</span></p></div>';});
 </script>
