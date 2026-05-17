@@ -3,8 +3,12 @@
     "title": "G80 M3 Car Wash Plan",
     "car": "Isle of Man Green BMW M3 G80 (ceramic coated)",
     "coating": "Ceramic coated",
-    "lastUpdated": "2025-01-01",
-    "version": "1.0"
+    "lastUpdated": "2026-05-16",
+    "version": "2.0",
+    "changelog": [
+      "v2.0 (2026-05-16) \u2014 Full redesign: BMW automotive theme, light mode, 5 tabs, interior detail tab, engine bay tab. All CarPro specs verified from carpro-us.com. All BH specs from bilthamber.com. Koch Chemie + Colourlock from kcxusa.com. Autofinesse Crystal from autofinesse.com. 23 chemicals, 34 tools, mode-aware chemicals tab with wash sequence sort order. HydrO2 Lite replaced with Reload 2.0. All IK sprayer names corrected. nextzett Cockpit Premium brand fixed. Koch Chemie Speed Glass confirmed as iDrive screen cleaner.",
+      "v1.0 (initial) \u2014 Basic wash plan with steps, chemicals, tools, gaps checklist."
+    ]
   },
   "sprayers": {
     "ikFoamPro12": {
