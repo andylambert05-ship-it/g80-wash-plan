@@ -583,22 +583,40 @@
       "tool": "Soft trim brush or foam applicator pad"
     },
     {
-      "name": "QD / spot detailer",
-      "category": "Finishing",
+      "name": "McKee's 37 N-914 Rinseless Wash V2",
+      "category": "Quick detailer / rinseless wash",
       "modes": [
         "normal",
         "maint"
       ],
-      "usedOn": "Final inspection pass \u2014 spot correction of water marks, fingerprints, missed areas",
+      "usedOn": "All painted surfaces \u2014 quick detailer for final inspection pass, between-wash maintenance, spot correction. Also usable as rinseless wash, waterless wash, and clay lubricant. Safe on ceramic coatings, clear coat, matte/satin finishes, PPF. Does not leave film or alter coating characteristics.",
       "dilutions": [
         {
-          "context": "All use",
-          "ratio": "RTU",
-          "amount": "No dilution",
-          "note": "Recommended: CarPro Reload or Gyeon Q\u00b2M Cure \u2014 both coating-safe."
+          "context": "Quick detailer \u2014 labeled spray bottle",
+          "ratio": "2\u20133 oz : 32 oz water",
+          "amount": "2\u20133 oz (60\u201390ml) N-914 into 32 oz (950ml) water in spray bottle",
+          "note": "Mist onto paint surface and wipe with clean soft MF towel. Shake bottle before use. Remaining mixture can be saved for later use. Use for final inspection pass, between-wash dust and fingerprint removal, and spot correction."
+        },
+        {
+          "context": "Rinseless wash \u2014 bucket",
+          "ratio": "1 oz : 2 gallons",
+          "amount": "1 oz (30ml) N-914 into 2 gallons of water",
+          "note": "No rinsing required. Wash one panel at a time, immediately dry with MF drying towel. Move to next panel. Can complete full wash in 15 minutes or less. Ideal for garage/winter washes or water-restricted areas."
+        },
+        {
+          "context": "Waterless wash \u2014 spray bottle",
+          "ratio": "1 oz : 1 gallon",
+          "amount": "1 oz (30ml) N-914 into 1 gallon (128 oz) water",
+          "note": "Spray liberally onto one panel at a time. Wipe clean with soft MF towel. Switch towels frequently as you work around the vehicle."
+        },
+        {
+          "context": "Clay lubricant",
+          "ratio": "1 oz : 1 gallon",
+          "amount": "1 oz (30ml) N-914 into 1 gallon water in spray bottle",
+          "note": "Spray onto surface before clay bar work. Provides sufficient lubrication to prevent marring."
         }
       ],
-      "tool": "Labeled spray bottle + clean MF towel"
+      "tool": "Labeled spray bottle (quick detailer / waterless / clay lube); bucket + MF wash mitt (rinseless wash); soft MF towels for all applications"
     },
     {
       "name": "Bilt Hamber Touch-On",
@@ -991,14 +1009,14 @@
       },
       {
         "id": "n18",
-        "title": "Final inspection pass",
-        "desc": "Walk car in direct sunlight at raking angle. ION Green metallic is unforgiving of water spots, missed panels, or glass haze. Spot-correct with QD and a clean MF towel.",
+        "title": "Final inspection \u2014 McKee's 37 N-914 spot correction",
+        "desc": "Walk car in direct sunlight at raking angle. ION Green metallic reveals water spots, missed panels, and glass haze easily. Spot-correct with McKee's 37 N-914 quick detailer (2\u20133 oz per 32 oz water in spray bottle). Mist onto panel and wipe with clean soft MF towel. Shake bottle before use.",
         "tools": [
           "Labeled spray bottle",
           "Clean MF towel"
         ],
         "chems": [
-          "QD / spot detailer \u2014 RTU"
+          "McKee's 37 N-914 \u2014 2\u20133 oz per 32 oz water in spray bottle"
         ]
       }
     ],
@@ -1304,8 +1322,8 @@
       {
         "id": "c01",
         "priority": "essential",
-        "name": "Quick detailer / spot detailer (QD)",
-        "why": "Required for final inspection pass. Not yet confirmed. CarPro Reload or Gyeon Q\u00b2M Cure recommended \u2014 both coating-safe.",
+        "name": "McKee's 37 N-914 Rinseless Wash V2",
+        "why": "Confirmed quick detailer for final inspection pass. Also usable as rinseless wash, waterless wash, and clay lubricant \u2014 4-in-1 product.",
         "washTypes": [
           "normal",
           "maint"
