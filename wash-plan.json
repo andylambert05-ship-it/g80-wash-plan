@@ -145,7 +145,7 @@
       "category": "Glass",
       "name": "MF glass towels (exterior \u2014 dedicated)",
       "qty": "3-4",
-      "usedFor": "Exterior glass \u2014 Bilt Hamber Trace-Less only"
+      "usedFor": "Exterior glass \u2014 Bilt Hamber Trace-Less / Crystal only"
     },
     {
       "category": "Glass",
@@ -187,7 +187,7 @@
       "category": "Finishing",
       "name": "Labeled spray bottles",
       "qty": "6+",
-      "usedFor": "Iron X, APC, Bug Out, Tar X, Trace-Less, QD"
+      "usedFor": "Iron X, APC, Bug Out, Tar X, Trace-Less / Crystal, QD"
     },
     {
       "category": "Finishing",
@@ -710,6 +710,30 @@
         }
       ],
       "tool": "Spray onto dedicated screen MF cloth or glass MF towel \u2014 wipe and buff"
+    },
+    {
+      "name": "Autofinesse Crystal",
+      "category": "Glass cleaner \u2014 alternative to BH Trace-Less",
+      "modes": [
+        "normal",
+        "maint"
+      ],
+      "usedOn": "All exterior and interior glass, tinted windows, polycarbonate/acrylic surfaces. Safe on ceramic-coated glass. Use interchangeably with BH Trace-Less.",
+      "dilutions": [
+        {
+          "context": "Exterior glass \u2014 per autofinesse.com",
+          "ratio": "RTU",
+          "amount": "Light mist \u2014 ~3 sprays per panel, or spray onto dedicated MF glass towel",
+          "note": "Spray light mist directly onto glass OR onto cloth. Wipe in straight lines with light pressure \u2014 horizontal outside, vertical inside to avoid missing spots. Buff immediately with dry side of towel. Do not apply in direct sunlight or extreme temperatures. Alcohol-based with balanced distilled solvents. Safe on ceramic coated glass \u2014 will not degrade coating. Also works on wiper blades: spray directly onto blade and wipe with clean MF cloth."
+        },
+        {
+          "context": "Interior glass \u2014 incl. windshield via Reach & Clean Tool \u2014 per autofinesse.com",
+          "ratio": "RTU",
+          "amount": "Light spritz onto MF cloth \u2014 NOT directly onto glass where possible",
+          "note": "For lightly soiled interior glass, spray onto cloth and buff. For heavier interior haze, spray directly onto glass and wipe. Use with Invisible Glass Reach & Clean Tool for windshield. Best results with dedicated waffle-weave MF glass towel."
+        }
+      ],
+      "tool": "Dedicated MF glass towels (waffle-weave preferred) \u2014 separate exterior and interior towels. Interior: Invisible Glass Reach & Clean Tool."
     }
   ],
   "washSteps": {
@@ -899,25 +923,27 @@
       },
       {
         "id": "n14",
-        "title": "Clean exterior glass \u2014 Bilt Hamber Trace-Less",
-        "desc": "Spray Bilt Hamber Trace-Less RTU directly onto each exterior pane. Wipe in overlapping strokes with dedicated exterior MF glass towels. Second dry pass if any haze remains.",
+        "title": "Clean exterior glass \u2014 BH Trace-Less or Autofinesse Crystal",
+        "desc": "Use either BH Trace-Less or Autofinesse Crystal \u2014 both RTU, both safe on ceramic-coated glass. BH Trace-Less: shake well, atomise fine mist on glass, wipe with waffle-weave MF turning cloth regularly, buff dry with suede MF. Autofinesse Crystal: spray light mist directly on glass or onto cloth, wipe in straight lines (horizontal outside), buff with dry side of towel immediately. Do not apply in direct sunlight. Use dedicated exterior MF glass towels only.",
         "tools": [
           "MF glass towels (exterior \u2014 dedicated)"
         ],
         "chems": [
-          "Bilt Hamber Trace-Less \u2014 RTU"
+          "BH Trace-Less \u2014 RTU (shake well)",
+          "OR Autofinesse Crystal \u2014 RTU (~3 sprays per panel)"
         ]
       },
       {
         "id": "n15",
-        "title": "Clean interior glass \u2014 BH Trace-Less + Reach & Clean Tool",
-        "desc": "Spray Bilt Hamber Trace-Less RTU onto MF head of Invisible Glass Reach & Clean Tool \u2014 NOT directly on glass (product migrates to dash). Damp first pass to clean; swap to fresh head for dry buff pass. Use separate interior MF towels for side glass.",
+        "title": "Clean interior glass \u2014 BH Trace-Less or Autofinesse Crystal + Reach & Clean Tool",
+        "desc": "Use either BH Trace-Less or Autofinesse Crystal. Spray onto MF head of Invisible Glass Reach & Clean Tool \u2014 NOT directly onto glass. First pass damp to clean; swap to fresh head for dry buff pass. Use separate dedicated interior MF glass towels for side windows. Only use lint-free cloths free of detergents and fabric conditioners \u2014 these cause smearing.",
         "tools": [
           "Invisible Glass Reach & Clean Tool (95160)",
           "MF glass towels (interior \u2014 dedicated)"
         ],
         "chems": [
-          "Bilt Hamber Trace-Less \u2014 RTU (onto tool head)"
+          "BH Trace-Less \u2014 RTU (onto tool head)",
+          "OR Autofinesse Crystal \u2014 RTU (onto tool head)"
         ]
       },
       {
@@ -1576,14 +1602,15 @@
       },
       {
         "id": "int11",
-        "title": "Interior glass \u2014 all windows",
-        "desc": "Spray Bilt Hamber Trace-Less or BH Trace-Less onto a dedicated interior MF glass towel. Wipe all interior glass surfaces \u2014 side windows, rear screen, windshield (use Reach & Clean Tool). Do not use on the iDrive screen.",
+        "title": "Interior glass \u2014 BH Trace-Less or Autofinesse Crystal",
+        "desc": "Use BH Trace-Less or Autofinesse Crystal. Spray onto MF head of Invisible Glass Reach & Clean Tool \u2014 NOT directly onto glass. First pass damp to clean; swap to fresh suede/waffle head for dry buff pass. Use separate dedicated interior MF glass towels for side windows. Only use clean lint-free cloths free of detergents and fabric conditioners.",
         "tools": [
           "MF glass towels (interior \u2014 dedicated)",
           "Invisible Glass Reach & Clean Tool (95160)"
         ],
         "chems": [
-          "BH Trace-Less or Bilt Hamber Trace-Less \u2014 RTU (onto cloth)"
+          "BH Trace-Less \u2014 RTU (onto tool head)",
+          "OR Autofinesse Crystal \u2014 RTU (onto tool head)"
         ]
       },
       {
