@@ -460,10 +460,10 @@
           "note": "For light contamination: apply as snow foam, allow maximum dwell without drying, rinse, then hand wash. Do not allow to dry on surface. Test on inconspicuous area before use. Not for regular weekly washing \u2014 use Reset for that."
         },
         {
-          "context": "Bucket washing \u2014 per carpro-us.com",
+          "context": "5 gallon bucket \u2014 recommended 4 gallon working fill \u2014 per carpro-us.com",
           "ratio": "1:100",
-          "amount": "1 part Descale to 100 parts water",
-          "note": "For heavier contamination: wash panel by panel starting with horizontal panels. Allow to dwell as long as possible without drying. Repeat if necessary. Rinse thoroughly."
+          "amount": "150ml (5 oz) Descale into 4 gallons of water",
+          "note": "4 gallon fill recommended \u2014 leaves headspace, avoids splashing when dunking mitt. Reference: 3 gal = 113ml (3.8 oz), 4 gal = 150ml (5 oz), 5 gal = 189ml (6.4 oz). Use 2-bucket method: Bucket 2 with Descale solution, Bucket 3 as rinse. Work one panel at a time top to bottom. Dwell as long as possible without drying. Rinse each panel before moving on. ION Green makes mineral hazing very visible \u2014 inspect as you go. Replaces Reset in maintenance wash."
         }
       ],
       "tool": "2-bucket method \u2014 dedicated Descale wash bucket + rinse bucket"
