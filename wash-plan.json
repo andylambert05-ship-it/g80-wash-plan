@@ -837,6 +837,90 @@
         "estMins": 2
       },
       {
+        "id": "n04",
+        "title": "Pre-rinse wheels & wheel wells",
+        "desc": "Blast loose brake dust and debris from all four wheels and wells before chemical contact. M compound brakes shed heavy iron.",
+        "tools": [
+          "Pressure washer / hose"
+        ],
+        "chems": [],
+        "phase": "Pre-treatment",
+        "phaseIcon": "\ud83d\udd34",
+        "estMins": 3
+      },
+      {
+        "id": "n05",
+        "title": "Apply Koch Chemie MWC to wheels",
+        "desc": "Load MWC RTU into IK E Foam Pro 2 (1.25L) undiluted or spray direct. Dwell 2\u20135 min until red iron-bleed visible. Agitate face/spokes with EZ Detail Big Brush, inner barrel with Autofiber Barrel Blade, tight gaps with Little Brush and detail brushes. Rinse thoroughly. Use Brake Buster if heavily contaminated.",
+        "tools": [
+          "IK E Foam Pro 2",
+          "EZ Detail Big Brush",
+          "EZ Detail Little Brush",
+          "Autofiber Barrel Blade",
+          "Detail brushes"
+        ],
+        "chems": [
+          "Koch Chemie MWC \u2014 RTU",
+          "Brake Buster \u2014 RTU (option)"
+        ],
+        "phase": "Pre-treatment",
+        "phaseIcon": "\ud83d\udd34",
+        "estMins": 8,
+        "dwellMins": "2\u20135"
+      },
+      {
+        "id": "n06",
+        "title": "Clean tire sidewalls \u2014 CarPro ReTyre",
+        "desc": "Rinse tire first. Spray ReTyre RTU with foaming nozzle ONLY. Dwell 30 sec. Agitate with stiff tire brush. Rinse completely. If ReTyre contacts wheel face, dilute and rinse immediately. This is the ONLY ReTyre step \u2014 not repeated before dressing.",
+        "tools": [
+          "Labeled spray bottle (foaming nozzle)",
+          "Tire scrub brush"
+        ],
+        "chems": [
+          "CarPro ReTyre \u2014 RTU"
+        ],
+        "phase": "Pre-treatment",
+        "phaseIcon": "\ud83d\udd34",
+        "estMins": 4,
+        "dwellMins": "0.5"
+      },
+      {
+        "id": "n07",
+        "title": "Agitate wheel wells \u2014 APC",
+        "desc": "Spray AllClean (5:1\u201310:1) or MultiX (10:1) into wheel wells. Agitate with Detail Factory Fender Well Brush. Rinse.",
+        "tools": [
+          "Detail Factory Fender Well Brush",
+          "Labeled spray bottle"
+        ],
+        "chems": [
+          "AllClean 5:1\u201310:1 or CarPro MultiX 10:1"
+        ],
+        "phase": "Pre-treatment",
+        "phaseIcon": "\ud83d\udd34",
+        "estMins": 4
+      },
+      {
+        "id": "n076",
+        "title": "Clean door jambs \u2014 APC (optional)",
+        "desc": "Optional \u2014 every 3\u20134 washes or when visibly dirty. Work one door at a time, door fully open. Pre-rinse with low-pressure hose top to bottom, flushing drain holes. Spray AllClean (3:1\u20135:1) or MultiX (10:1) into jamb, dwell 1\u20132 min. Agitate flat surfaces with a soft detail brush, hinge hardware and striker plate with a stiff brush, and rubber seals thoroughly. Rinse completely top to bottom \u2014 ensure all APC is flushed from drain holes or it will streak down paint when door opens. Blow dry with leaf blower into hinge recesses and drain holes, follow with MF towel on flat surfaces. Dress rubber seals with trim dressing after drying.",
+        "tools": [
+          "Detail brushes (soft + stiff)",
+          "Hose (low pressure)",
+          "Leaf blower",
+          "MF towel",
+          "Soft trim brush"
+        ],
+        "chems": [
+          "AllClean 3:1\u20135:1 or MultiX 10:1",
+          "Trim dressing \u2014 RTU (seals)"
+        ],
+        "optional": true,
+        "normalOnly": true,
+        "phase": "Pre-treatment",
+        "phaseIcon": "\ud83d\udd34",
+        "estMins": 10
+      },
+      {
         "id": "n02",
         "title": "Spot-treat bugs \u2014 CarPro Bug Out",
         "desc": "Spray Bug Out on front bumper, hood edge, lower windshield, and mirrors on DRY surface. Dwell 5\u201330 sec (up to 2 min max for baked-on). Agitate gently with soft MF. Neutralise residue with Reset or ECH2O. Do not leave more than 5 min. Proceed to Tar X before any rinsing.",
@@ -869,90 +953,6 @@
         "dwellMins": "2\u20133"
       },
       {
-        "id": "n04",
-        "title": "Pre-rinse wheels & wheel wells",
-        "desc": "Blast loose brake dust and debris from all four wheels and wells before chemical contact. M compound brakes shed heavy iron.",
-        "tools": [
-          "Pressure washer / hose"
-        ],
-        "chems": [],
-        "phase": "Wheels & Tires",
-        "phaseIcon": "\ud83d\udd35",
-        "estMins": 3
-      },
-      {
-        "id": "n05",
-        "title": "Apply Koch Chemie MWC to wheels",
-        "desc": "Load MWC RTU into IK E Foam Pro 2 (1.25L) undiluted or spray direct. Dwell 2\u20135 min until red iron-bleed visible. Agitate face/spokes with EZ Detail Big Brush, inner barrel with Autofiber Barrel Blade, tight gaps with Little Brush and detail brushes. Rinse thoroughly. Use Brake Buster if heavily contaminated.",
-        "tools": [
-          "IK E Foam Pro 2",
-          "EZ Detail Big Brush",
-          "EZ Detail Little Brush",
-          "Autofiber Barrel Blade",
-          "Detail brushes"
-        ],
-        "chems": [
-          "Koch Chemie MWC \u2014 RTU",
-          "Brake Buster \u2014 RTU (option)"
-        ],
-        "phase": "Wheels & Tires",
-        "phaseIcon": "\ud83d\udd35",
-        "estMins": 8,
-        "dwellMins": "2\u20135"
-      },
-      {
-        "id": "n06",
-        "title": "Clean tire sidewalls \u2014 CarPro ReTyre",
-        "desc": "Rinse tire first. Spray ReTyre RTU with foaming nozzle ONLY. Dwell 30 sec. Agitate with stiff tire brush. Rinse completely. If ReTyre contacts wheel face, dilute and rinse immediately. This is the ONLY ReTyre step \u2014 not repeated before dressing.",
-        "tools": [
-          "Labeled spray bottle (foaming nozzle)",
-          "Tire scrub brush"
-        ],
-        "chems": [
-          "CarPro ReTyre \u2014 RTU"
-        ],
-        "phase": "Wheels & Tires",
-        "phaseIcon": "\ud83d\udd35",
-        "estMins": 4,
-        "dwellMins": "0.5"
-      },
-      {
-        "id": "n07",
-        "title": "Agitate wheel wells \u2014 APC",
-        "desc": "Spray AllClean (5:1\u201310:1) or MultiX (10:1) into wheel wells. Agitate with Detail Factory Fender Well Brush. Rinse.",
-        "tools": [
-          "Detail Factory Fender Well Brush",
-          "Labeled spray bottle"
-        ],
-        "chems": [
-          "AllClean 5:1\u201310:1 or CarPro MultiX 10:1"
-        ],
-        "phase": "Wheels & Tires",
-        "phaseIcon": "\ud83d\udd35",
-        "estMins": 4
-      },
-      {
-        "id": "n076",
-        "title": "Clean door jambs \u2014 APC (optional)",
-        "desc": "Optional \u2014 every 3\u20134 washes or when visibly dirty. Work one door at a time, door fully open. Pre-rinse with low-pressure hose top to bottom, flushing drain holes. Spray AllClean (3:1\u20135:1) or MultiX (10:1) into jamb, dwell 1\u20132 min. Agitate flat surfaces with a soft detail brush, hinge hardware and striker plate with a stiff brush, and rubber seals thoroughly. Rinse completely top to bottom \u2014 ensure all APC is flushed from drain holes or it will streak down paint when door opens. Blow dry with leaf blower into hinge recesses and drain holes, follow with MF towel on flat surfaces. Dress rubber seals with trim dressing after drying.",
-        "tools": [
-          "Detail brushes (soft + stiff)",
-          "Hose (low pressure)",
-          "Leaf blower",
-          "MF towel",
-          "Soft trim brush"
-        ],
-        "chems": [
-          "AllClean 3:1\u20135:1 or MultiX 10:1",
-          "Trim dressing \u2014 RTU (seals)"
-        ],
-        "optional": true,
-        "normalOnly": true,
-        "phase": "Wheels & Tires",
-        "phaseIcon": "\ud83d\udd35",
-        "estMins": 10
-      },
-      {
         "id": "n075",
         "title": "Pre-rinse full car",
         "desc": "Rinse the entire car top to bottom with a hose or pressure washer before applying Iron X. This removes loose surface contamination and ensures panels are wet, which helps Iron X spread evenly and prevents it from flashing dry on the ceramic coating.",
@@ -963,6 +963,22 @@
         "phase": "Paint Decon",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 3
+      },
+      {
+        "id": "n09",
+        "title": "Snow foam pre-soak \u2014 CarPro Reset",
+        "desc": "Add approx. 120ml (4oz) Reset to IK E Foam Pro 12, fill to 6L mark with water (~1:50). Apply thick foam top to bottom, dwell 5 min. Do not let dry. Rinse off completely before contact wash. NOTE: CarPro's published 1:9 ratio is for pressure washer foam cannons only \u2014 not applicable here.",
+        "tools": [
+          "IK E Foam Pro 12"
+        ],
+        "chems": [
+          "CarPro Reset \u2014 ~120ml per 6L (~1:50 in IK E Foam Pro 12)"
+        ],
+        "normalOnly": true,
+        "phase": "Paint Decon",
+        "phaseIcon": "\ud83d\udfe3",
+        "estMins": 6,
+        "dwellMins": "5"
       },
       {
         "id": "n08",
@@ -978,22 +994,6 @@
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 7,
         "dwellMins": "3\u20135"
-      },
-      {
-        "id": "n09",
-        "title": "Snow foam pre-soak \u2014 CarPro Reset",
-        "desc": "Add approx. 120ml (4oz) Reset to IK E Foam Pro 12, fill to 6L mark with water (~1:50). Apply thick foam top to bottom, dwell 5 min. Do not let dry. Rinse off completely before contact wash. NOTE: CarPro's published 1:9 ratio is for pressure washer foam cannons only \u2014 not applicable here.",
-        "tools": [
-          "IK E Foam Pro 12"
-        ],
-        "chems": [
-          "CarPro Reset \u2014 ~120ml per 6L (~1:50 in IK E Foam Pro 12)"
-        ],
-        "normalOnly": true,
-        "phase": "Wash",
-        "phaseIcon": "\ud83d\udfe1",
-        "estMins": 6,
-        "dwellMins": "5"
       },
       {
         "id": "n10",
@@ -1149,7 +1149,7 @@
         "chems": [
           "Bilt Hamber Touchless \u2014 60\u201390ml per 6L (1\u20131.5% PIR \u2014 calibrate to your unit)"
         ],
-        "insertAfter": "n08",
+        "insertAfter": "n075",
         "phase": "Paint Decon",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 8,
@@ -1166,7 +1166,7 @@
         "chems": [
           "CarPro Descale \u2014 1:100 (10ml per 1L) in Bucket 2 \u2014 replaces Reset in maint. wash"
         ],
-        "insertAfter": "m01",
+        "insertAfter": "n08",
         "phase": "Wash",
         "phaseIcon": "\ud83d\udfe1",
         "estMins": 20,
@@ -1188,8 +1188,8 @@
           "Trim dressing \u2014 RTU (seals)"
         ],
         "insertAfter": "n07",
-        "phase": "Wheels & Tires",
-        "phaseIcon": "\ud83d\udd35",
+        "phase": "Pre-treatment",
+        "phaseIcon": "\ud83d\udd34",
         "estMins": 10
       }
     ]
