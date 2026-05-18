@@ -1856,7 +1856,7 @@
     "location": "Colorado Front Range / Denver corridor",
     "seasons": [
       {
-        "season": "Winter (Nov\u2013Mar)",
+        "season": "Winter (Nov-Mar)",
         "icon": "\u2744\ufe0f",
         "notes": [
           "Road salt and mag chloride are extremely aggressive on ceramic coatings \u2014 rinse or wash more frequently, ideally within 48 hours of driving on treated roads.",
@@ -1868,7 +1868,7 @@
         ]
       },
       {
-        "season": "Spring (Mar\u2013May)",
+        "season": "Spring (Mar-May)",
         "icon": "\ud83c\udf31",
         "notes": [
           "Spring is the ideal time for a full ceramic maintenance wash \u2014 decon the coating from winter salt, fallout, and road film buildup.",
@@ -1879,7 +1879,7 @@
         ]
       },
       {
-        "season": "Summer (Jun\u2013Sep)",
+        "season": "Summer (Jun-Sep)",
         "icon": "\u2600\ufe0f",
         "notes": [
           "Never wash or apply chemicals in direct sunlight \u2014 ION Green metallic and ceramic coatings flash-dry in minutes in Colorado summer heat and altitude UV.",
@@ -1891,7 +1891,7 @@
         ]
       },
       {
-        "season": "Fall (Sep\u2013Nov)",
+        "season": "Fall (Sep-Nov)",
         "icon": "\ud83c\udf42",
         "notes": [
           "Tree sap and falling leaves accelerate \u2014 park away from trees where possible.",

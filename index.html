@@ -405,7 +405,7 @@ function toggleBW(el,id){
 function renderSeasonal(){
   var sn=DATA.seasonalNotes;
   if(!sn)return'<div class="notice info">Seasonal data not found.</div>';
-  var seasonColors={'Winter (Nov–Mar)':'#1358d4','Spring (Mar–May)':'#0a7a4a','Summer (Jun–Sep)':'#b07000','Fall (Sep–Nov)':'#c0282a'};
+  var seasonColors={'Winter (Nov-Mar)':'#1358d4','Spring (Mar-May)':'#0a7a4a','Summer (Jun-Sep)':'#b07000','Fall (Sep-Nov)':'#c0282a'};
   var html='<div class="notice info"><i class="ti ti-map-pin" aria-hidden="true"></i><span><strong>'+esc(sn.location)+'</strong> — season-specific guidance for washing, chemical application, and coating care.</span></div>';
   sn.seasons.forEach(function(s){
     var col=seasonColors[s.season]||'var(--text3)';
