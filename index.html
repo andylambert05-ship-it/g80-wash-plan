@@ -251,7 +251,7 @@ function renderSteps(){
   var n=steps.filter(function(s){return done.has(s.id);}).length;
   var t=steps.length;
   var pct=t>0?Math.round(n/t*100):0;
-  var html='<div class="notice ceramic"><i class="ti ti-shield-half" aria-hidden="true"></i><span><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying — zero towel contact on paint after rinsing.</span></div>';
+  var html='';
   html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:'+pct+'%"></div></div></div>';
   html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';
   html+='<div class="steps-list">';
