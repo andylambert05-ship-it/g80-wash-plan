@@ -221,7 +221,7 @@ function renderSteps(){
   html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';
   html+='<div class="steps-list">';
   var lastPhase='';
-  var phaseColors={'Pre-treatment':'#c0282a','Wheels & Tires':'#1358d4','Paint Decon':'#7a3db0','Wash':'#b07000','Dry & Protect':'#0a7a4a','Finish':'#505068'};
+  var phaseColors={'Wheels & Tires':'#1358d4','Pre-treatment':'#c0282a','Prewash':'#7a3db0','2-Bucket Method Wash':'#b07000','Dry & Protect':'#0a7a4a','Finish':'#505068'};
   steps.forEach(function(s,idx){
     var isDone=done.has(s.id);
     var cls='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');

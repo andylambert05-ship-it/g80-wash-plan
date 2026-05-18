@@ -832,8 +832,8 @@
         "desc": "Never wash a hot car or in direct sunlight. Ceramic coating accelerates flash-drying on ION Green metallic. All chemical applications require cool surfaces.",
         "tools": [],
         "chems": [],
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 2
       },
       {
@@ -844,8 +844,8 @@
           "Pressure washer / hose"
         ],
         "chems": [],
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 3
       },
       {
@@ -863,8 +863,8 @@
           "Koch Chemie MWC \u2014 RTU",
           "Brake Buster \u2014 RTU (option)"
         ],
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 8,
         "dwellMins": "2\u20135"
       },
@@ -879,8 +879,8 @@
         "chems": [
           "CarPro ReTyre \u2014 RTU"
         ],
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 4,
         "dwellMins": "0.5"
       },
@@ -895,8 +895,8 @@
         "chems": [
           "AllClean 5:1\u201310:1 or CarPro MultiX 10:1"
         ],
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 4
       },
       {
@@ -916,8 +916,8 @@
         ],
         "optional": true,
         "normalOnly": true,
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 10
       },
       {
@@ -960,7 +960,7 @@
           "Pressure washer / hose"
         ],
         "chems": [],
-        "phase": "Paint Decon",
+        "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 3
       },
@@ -975,7 +975,7 @@
           "CarPro Reset \u2014 ~120ml per 6L (~1:50 in IK E Foam Pro 12)"
         ],
         "normalOnly": true,
-        "phase": "Paint Decon",
+        "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 6,
         "dwellMins": "5"
@@ -990,7 +990,7 @@
         "chems": [
           "CarPro Iron X \u2014 RTU"
         ],
-        "phase": "Paint Decon",
+        "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 7,
         "dwellMins": "3\u20135"
@@ -1007,7 +1007,7 @@
           "CarPro Reset \u2014 1.35oz (40ml) per 5 gal / 1:500"
         ],
         "normalOnly": true,
-        "phase": "Wash",
+        "phase": "2-Bucket Method Wash",
         "phaseIcon": "\ud83d\udfe1",
         "estMins": 15
       },
@@ -1019,7 +1019,7 @@
           "Hose (no nozzle tip)"
         ],
         "chems": [],
-        "phase": "Wash",
+        "phase": "2-Bucket Method Wash",
         "phaseIcon": "\ud83d\udfe1",
         "estMins": 3
       },
@@ -1150,7 +1150,7 @@
           "Bilt Hamber Touchless \u2014 60\u201390ml per 6L (1\u20131.5% PIR \u2014 calibrate to your unit)"
         ],
         "insertAfter": "n075",
-        "phase": "Paint Decon",
+        "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 8,
         "dwellMins": "1\u20135"
@@ -1167,7 +1167,7 @@
           "CarPro Descale \u2014 1:100 (10ml per 1L) in Bucket 2 \u2014 replaces Reset in maint. wash"
         ],
         "insertAfter": "n08",
-        "phase": "Wash",
+        "phase": "2-Bucket Method Wash",
         "phaseIcon": "\ud83d\udfe1",
         "estMins": 20,
         "dwellMins": "panel by panel"
@@ -1188,8 +1188,8 @@
           "Trim dressing \u2014 RTU (seals)"
         ],
         "insertAfter": "n07",
-        "phase": "Pre-treatment",
-        "phaseIcon": "\ud83d\udd34",
+        "phase": "Wheels & Tires",
+        "phaseIcon": "\ud83d\udd35",
         "estMins": 10
       }
     ]
