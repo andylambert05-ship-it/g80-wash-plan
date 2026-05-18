@@ -565,22 +565,22 @@
       "tool": "Dedicated exterior MF glass towels; Invisible Glass Reach & Clean Tool (interior)"
     },
     {
-      "name": "Plastic / rubber trim dressing",
+      "name": "303 Products Aerospace Protectant",
       "category": "Trim & finishing",
       "modes": [
         "normal",
         "maint"
       ],
-      "usedOn": "All exterior black trim, door seals, weatherstripping; engine bay plastics and hoses",
+      "usedOn": "Exterior black trim, door seals, weatherstripping, rubber, vinyl, plastics \u2014 interior and exterior. Also safe on finished leather, carbon fibre, synthetic rubber, PVC, gel coat. NOT for use on clear plastics, unfinished leather (suede), headlights, gauge panels, or glass.",
       "dilutions": [
         {
-          "context": "All use",
+          "context": "All use \u2014 exterior trim, rubber seals, interior plastics \u2014 per 303products.com",
           "ratio": "RTU",
-          "amount": "No dilution",
-          "note": "Exterior: soft trim brush or foam pad. Engine bay: apply thin \u2014 do not over-saturate near hot surfaces or connectors."
+          "amount": "Spray directly onto surface or onto clean MF towel",
+          "note": "Use only on clean, dry surfaces \u2014 clean first before applying. Apply out of direct sunlight. Spray onto surface or MF towel and WIPE COMPLETELY DRY \u2014 this is critical for performance. Product does NOT air dry. If streaking occurs, too much product was used \u2014 remove excess with damp towel and immediately wipe completely dry. Extra buffing increases bonding, repellency, and durability. Dries to a clear matte finish \u2014 no greasy residue. Reapply every 3\u20135 weeks for maximum UV protection. Do NOT use on clear plastics, unfinished leather (suede), canvas, flooring, gauge panels, or headlights. Do NOT allow overspray on glass."
         }
       ],
-      "tool": "Soft trim brush or foam applicator pad"
+      "tool": "Spray direct or onto soft MF towel / foam applicator \u2014 dedicated trim applicator recommended to avoid glass overspray"
     },
     {
       "name": "McKee's 37 N-914 Rinseless Wash V2",
@@ -998,13 +998,13 @@
       },
       {
         "id": "n17",
-        "title": "Dress exterior trim & rubber seals",
-        "desc": "Apply trim dressing RTU to all exterior black trim, door seals, and weatherstripping with soft trim brush.",
+        "title": "Dress exterior trim & rubber seals \u2014 303 Aerospace Protectant",
+        "desc": "Apply 303 Aerospace Protectant to all exterior black trim, door seals, and weatherstripping. Use on clean dry surfaces only. Apply out of direct sunlight \u2014 spray onto foam applicator or MF towel (never spray directly near glass). Wipe completely dry \u2014 product does NOT air dry. Extra buffing increases durability. Do not apply to glass, headlights, or clear plastics.",
         "tools": [
           "Soft trim brush"
         ],
         "chems": [
-          "Trim dressing \u2014 RTU"
+          "303 Aerospace Protectant \u2014 RTU, wipe completely dry. Reapply every 3\u20135 weeks."
         ]
       },
       {
@@ -1332,8 +1332,8 @@
       {
         "id": "c02",
         "priority": "essential",
-        "name": "Plastic / rubber trim dressing (specific product)",
-        "why": "Used every wash and in engine bay but no specific product confirmed. 303 Aerospace, CarPro PERL, or similar water-based dressing.",
+        "name": "303 Products Aerospace Protectant",
+        "why": "Confirmed product for exterior trim, rubber seals, door seals, and interior plastics. RTU, wipe completely dry.",
         "washTypes": [
           "normal",
           "maint"

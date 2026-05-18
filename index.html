@@ -191,8 +191,8 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function render(){document.getElementById('app').innerHTML=renderHeader()+renderTabs()+renderPanels();}
 function renderHeader(){var m=DATA.meta;return'<div class="hdr"><div class="hdr-top"><div class="hdr-left"><div class="bmw-badge"><div class="bq bl"></div><div class="bq wh"></div><div class="bq wh"></div><div class="bq bl"></div></div><div><div class="hdr-title">'+esc(m.title)+'</div><div class="hdr-sub">'+esc(m.car)+'</div></div></div><div class="ver">v'+esc(m.version)+'</div></div><div class="mode-row"><button class="mbtn '+(mode==='normal'?'an':'')+'" onclick="setMode(\'normal\')"><i class="ti ti-droplet" aria-hidden="true"></i>Bi-weekly wash</button><button class="mbtn '+(mode==='maint'?'am':'')+'" onclick="setMode(\'maint\')"><i class="ti ti-shield-check" aria-hidden="true"></i>Ceramic maintenance</button></div></div>';}
 function renderTabs(){return'<div class="tabs">'+[{id:'steps',l:'Steps'},{id:'chems',l:'Chemicals'},{id:'tools',l:'Tools'},{id:'engine',l:'Engine Bay'},{id:'interior',l:'Interior'},
-    {id:'shortlist',l:'ShortList'},{id:'gaps',l:'Gaps'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
-function renderPanels(){return['steps','chems','tools','engine','interior','shortlist','gaps'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,shortlist:renderShortList,gaps:renderGaps}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
+    {id:'shortlist',l:'ShortList'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
+function renderPanels(){return['steps','chems','tools','engine','interior','shortlist'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,shortlist:renderShortList}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
 function getVis(){var n=DATA.washSteps.normal;if(mode==='normal')return n;var f=n.filter(function(s){return!s.normalOnly;});var c=f.slice();DATA.washSteps.maintOnly.forEach(function(ms){var i=c.findIndex(function(s){return s.id===ms.insertAfter;});var e=Object.assign({},ms,{isMaint:true});if(i>=0)c.splice(i+1,0,e);else c.push(e);});return c;}
 function renderSteps(){var steps=getVis();var n=steps.filter(function(s){return done.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var html='<div class="notice ceramic"><i class="ti ti-shield-half" aria-hidden="true"></i><span><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying — zero towel contact on paint after rinsing.</span></div>';html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:'+pct+'%"></div></div></div>';html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';html+='<div class="steps-list">';steps.forEach(function(s,idx){var isDone=done.has(s.id);var cls='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');var mb=s.isMaint?'<span class="pill pm">maint.</span>':'';var ob=s.optional?'<span class="pill po">optional</span>':'';html+='<div class="'+cls+'" onclick="toggleStep(\''+s.id+'\')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+mb+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}html+='</div></div>';});html+='</div>';return html;}
 function getBrand(name){
@@ -337,7 +337,7 @@ function renderShortList(){
     {n:10, text:'P21S Polishing Soap — exhaust tips'},
     {n:11, text:'BH Trace-Less or Autofinesse Crystal — exterior &amp; interior glass'},
     {n:12, text:'CarPro Darkside — tire sidewalls'},
-    {n:13, text:'Trim dressing — exterior trim &amp; rubber seals'},
+    {n:13, text:'303 Aerospace Protectant — exterior trim &amp; rubber seals <span class="sl-note">(wipe completely dry)</span>'},
     {n:14, text:'McKee\'s 37 N-914 — final inspection <span class="sl-note">(2–3 oz per 32 oz water)</span>'}
   ];
 
@@ -354,7 +354,7 @@ function renderShortList(){
     {n:10, text:'P21S Polishing Soap — exhaust tips'},
     {n:11, text:'BH Trace-Less or Autofinesse Crystal — exterior &amp; interior glass'},
     {n:12, text:'CarPro Darkside — tire sidewalls'},
-    {n:13, text:'Trim dressing — exterior trim &amp; rubber seals'},
+    {n:13, text:'303 Aerospace Protectant — exterior trim &amp; rubber seals <span class="sl-note">(wipe completely dry)</span>'},
     {n:14, text:'McKee\'s 37 N-914 — final inspection <span class="sl-note">(2–3 oz per 32 oz water)</span>'}
   ];
 
