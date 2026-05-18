@@ -249,14 +249,14 @@
         {
           "context": "IK E Foam Pro 12 (6L usable fill) \u2014 per carpro-us.com",
           "ratio": "400\u2013500:1",
-          "amount": "12\u201315ml (0.4\u20130.5oz) per 6L usable fill",
+          "amount": "12\u201315ml per 6L usable fill",
           "note": "Per carpro-us.com 400\u2013500:1 ratio. At 400:1: 15ml per 6L. At 500:1: 12ml per 6L. Add Reset first, then fill to 6L usable mark. Do not allow to dry on surface. CarPro's published 1:9 is foam cannon only \u2014 does not apply to IK foam sprayers."
         },
         {
           "context": "Wash bucket \u2014 recommended 4 gallon working fill \u2014 per carpro-us.com",
           "ratio": "400\u2013500:1",
-          "amount": "30ml (1 oz) Reset into 4 gallons of water",
-          "note": "Per carpro-us.com: ~1oz per 3\u20134 gallons. 4 gallon fill recommended \u2014 leaves headspace, avoids splashing. Reference: 3 gal = 22ml (0.75 oz), 4 gal = 30ml (1 oz), 5 gal = 38ml (1.25 oz). Fill bucket as water runs in to activate foam. Do not allow to dry on surface."
+          "amount": "30ml Reset into 4 gallons (15L) of water",
+          "note": "Per carpro-us.com: ~1oz per 3\u20134 gallons. 4 gallon fill recommended \u2014 leaves headspace, avoids splashing. Reference: 3 gal = 22ml, 4 gal = 30ml, 5 gal = 38ml. Fill bucket as water runs in to activate foam. Do not allow to dry on surface."
         }
       ],
       "tool": "IK E Foam Pro 12 pre-foam + 2-bucket wash (Buckets 2 & 3)",
@@ -435,28 +435,28 @@
       "usedOn": "Full exterior \u2014 touchless alkaline pre-soak before Descale",
       "dilutions": [
         {
-          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 1% PIR light clean",
+          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 1% PIR light clean \u2014 per bilthamber.com",
           "ratio": "1% PIR",
-          "amount": "2 oz (60ml) Touchless into 6L fill",
-          "note": "Use for lightly soiled vehicles or maintenance washes. Fill tank to 6L usable mark, add 60ml Touchless. Apply to cool panels in shade, dwell 1\u20135 min, do not allow to dry, rinse completely."
+          "amount": "60ml Touchless into 6L fill",
+          "note": "Use for lightly soiled vehicles or maintenance washes. Apply to cool panels in shade, dwell 1\u20135 min, do not allow to dry, rinse completely."
         },
         {
-          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 2% PIR heavy clean",
+          "context": "IK E Foam Pro 12 (6L usable fill) \u2014 2% PIR heavy clean \u2014 per bilthamber.com",
           "ratio": "2% PIR",
-          "amount": "4 oz (120ml) Touchless into 6L fill",
-          "note": "Use for heavily contaminated vehicles. Maximum recommended PIR per bilthamber.com. Apply to cool panels in shade, dwell 1\u20135 min, do not allow to dry, rinse completely. 1L of diluted product should last 4\u20135 washes."
+          "amount": "120ml Touchless into 6L fill",
+          "note": "Maximum recommended PIR per bilthamber.com. Use for heavily contaminated vehicles. Apply to cool panels in shade, dwell 1\u20135 min, do not allow to dry, rinse completely."
         },
         {
-          "context": "IK E Foam Pro 2 (1.5L \u2014 fill to ~41 oz) \u2014 1% PIR light clean",
+          "context": "IK E Foam Pro 2 (~1.2L usable fill) \u2014 1% PIR \u2014 per bilthamber.com",
           "ratio": "1% PIR",
-          "amount": "0.42 oz (12ml) Touchless into ~41 oz fill",
-          "note": "Use for spot treatment or lightly soiled areas. Fill tank to ~41 oz (leaving headspace), add 12ml Touchless."
+          "amount": "12ml Touchless into ~1.2L fill",
+          "note": "Use for spot treatment or lightly soiled areas."
         },
         {
-          "context": "IK E Foam Pro 2 (1.5L \u2014 fill to ~41 oz) \u2014 2% PIR heavy clean",
+          "context": "IK E Foam Pro 2 (~1.2L usable fill) \u2014 2% PIR \u2014 per bilthamber.com",
           "ratio": "2% PIR",
-          "amount": "0.84 oz (25ml) Touchless into ~41 oz fill",
-          "note": "Maximum recommended PIR per bilthamber.com. Fill tank to ~41 oz (leaving headspace), add 25ml Touchless."
+          "amount": "25ml Touchless into ~1.2L fill",
+          "note": "Maximum recommended PIR per bilthamber.com."
         }
       ],
       "tool": "IK E Foam Pro 12 (primary); also compatible with pump spray or trigger spray per BH",
@@ -481,8 +481,8 @@
         {
           "context": "5 gallon bucket \u2014 recommended 4 gallon working fill \u2014 per carpro-us.com",
           "ratio": "1:100",
-          "amount": "150ml (5 oz) Descale into 4 gallons of water",
-          "note": "4 gallon fill recommended \u2014 leaves headspace, avoids splashing when dunking mitt. Reference: 3 gal = 113ml (3.8 oz), 4 gal = 150ml (5 oz), 5 gal = 189ml (6.4 oz). Use 2-bucket method: Bucket 2 with Descale solution, Bucket 3 as rinse. Work one panel at a time top to bottom. Dwell as long as possible without drying. Rinse each panel before moving on. ION Green makes mineral hazing very visible \u2014 inspect as you go. Replaces Reset in maintenance wash."
+          "amount": "150ml Descale into 4 gallons (15L) of water",
+          "note": "4 gallon fill recommended \u2014 leaves headspace, avoids splashing when dunking mitt. Reference: 3 gal = 113ml, 4 gal = 150ml, 5 gal = 189ml. Use 2-bucket method: Bucket 2 with Descale solution, Bucket 3 as rinse. Work one panel at a time top to bottom. Dwell as long as possible without drying. Rinse each panel before moving on. ION Green makes mineral hazing very visible \u2014 inspect as you go. Replaces Reset in maintenance wash."
         }
       ],
       "tool": "2-bucket method \u2014 dedicated Descale wash bucket + rinse bucket",
@@ -630,26 +630,26 @@
       "dilutions": [
         {
           "context": "Quick detailer \u2014 labeled spray bottle",
-          "ratio": "2\u20133 oz : 32 oz water",
-          "amount": "2\u20133 oz (60\u201390ml) N-914 into 32 oz (950ml) water in spray bottle",
+          "ratio": "60\u201390ml : 950ml water",
+          "amount": "60\u201390ml N-914 into 950ml water in spray bottle",
           "note": "Mist onto paint surface and wipe with clean soft MF towel. Shake bottle before use. Remaining mixture can be saved for later use. Use for final inspection pass, between-wash dust and fingerprint removal, and spot correction."
         },
         {
           "context": "Rinseless wash \u2014 bucket",
-          "ratio": "1 oz : 2 gallons",
-          "amount": "1 oz (30ml) N-914 into 2 gallons of water",
+          "ratio": "30ml : 7.5L water",
+          "amount": "30ml N-914 into 7.5L of water",
           "note": "No rinsing required. Wash one panel at a time, immediately dry with MF drying towel. Move to next panel. Can complete full wash in 15 minutes or less. Ideal for garage/winter washes or water-restricted areas."
         },
         {
           "context": "Waterless wash \u2014 spray bottle",
-          "ratio": "1 oz : 1 gallon",
-          "amount": "1 oz (30ml) N-914 into 1 gallon (128 oz) water",
+          "ratio": "30ml : 3.8L water",
+          "amount": "30ml N-914 into 3.8L water",
           "note": "Spray liberally onto one panel at a time. Wipe clean with soft MF towel. Switch towels frequently as you work around the vehicle."
         },
         {
           "context": "Clay lubricant",
-          "ratio": "1 oz : 1 gallon",
-          "amount": "1 oz (30ml) N-914 into 1 gallon water in spray bottle",
+          "ratio": "30ml : 3.8L water",
+          "amount": "30ml N-914 into 3.8L water in spray bottle",
           "note": "Spray onto surface before clay bar work. Provides sufficient lubrication to prevent marring."
         }
       ],
@@ -897,7 +897,7 @@
           "Labeled spray bottle"
         ],
         "chems": [
-          "AllClean 5:1\u201310:1 or CarPro MultiX 10:1"
+          "AllClean 5:1\u201310:1 or CarPro MultiX 1:20"
         ],
         "phase": "Wheels & Tires",
         "phaseIcon": "\ud83d\udd35",
@@ -915,8 +915,8 @@
           "Soft trim brush"
         ],
         "chems": [
-          "AllClean 3:1\u20135:1 or MultiX 10:1",
-          "Trim dressing \u2014 RTU (seals)"
+          "AllClean 3:1\u20135:1 or MultiX 1:10",
+          "303 Aerospace Protectant \u2014 RTU (seals)"
         ],
         "optional": true,
         "normalOnly": true,
@@ -1010,13 +1010,13 @@
       {
         "id": "n10",
         "title": "Two-bucket contact wash \u2014 top to bottom",
-        "desc": "Fill Bucket 2 (WASH) with 5 gal water + 1.35oz (40ml) Reset (1:500). Work one panel at a time, top to bottom. Rinse mitt in Bucket 3 (RINSE) after each panel, drag across grit guard before reloading. Light pressure only. Never use paint mitts on wheels.",
+        "desc": "Fill Bucket 2 (WASH) with 4 gallons (15L) of water and add 30ml of Reset (400\u2013500:1). Work one panel at a time, top to bottom. Rinse mitt in Bucket 3 (RINSE) after each panel, drag across grit guard before reloading. Light pressure only. Never use paint mitts on wheels.",
         "tools": [
           "Wash mitt",
           "Bucket 2 (WASH) + Bucket 3 (RINSE) with grit guards"
         ],
         "chems": [
-          "CarPro Reset \u2014 1.35oz (40ml) per 5 gal / 1:500"
+          "CarPro Reset \u2014 30ml per 4 gallons (15L) in Bucket 2"
         ],
         "normalOnly": true,
         "phase": "2-Bucket Method Wash",
@@ -1137,13 +1137,13 @@
       {
         "id": "n18",
         "title": "Final inspection \u2014 McKee's 37 N-914 spot correction",
-        "desc": "Walk car in direct sunlight at raking angle. ION Green metallic reveals water spots, missed panels, and glass haze easily. Spot-correct with McKee's 37 N-914 quick detailer (2\u20133 oz per 32 oz water in spray bottle). Mist onto panel and wipe with clean soft MF towel. Shake bottle before use.",
+        "desc": "Walk car in direct sunlight at raking angle. ION Green metallic reveals water spots, missed panels, and glass haze easily. Spot-correct with McKee's 37 N-914 quick detailer (60\u201390ml per 950ml water in spray bottle). Mist onto panel and wipe with clean soft MF towel. Shake bottle before use.",
         "tools": [
           "Labeled spray bottle",
           "Clean MF towel"
         ],
         "chems": [
-          "McKee's 37 N-914 \u2014 2\u20133 oz per 32 oz water in spray bottle"
+          "McKee's 37 N-914 \u2014 60\u201390ml per 950ml water in spray bottle"
         ],
         "phase": "Finish",
         "phaseIcon": "\u26aa",
@@ -1154,12 +1154,12 @@
       {
         "id": "m01",
         "title": "Bilt Hamber Touchless pre-soak \u2014 maint. step 1",
-        "desc": "One-time calibration: fill IK E Foam Pro 12 with 6L water, discharge into bucket, measure total output volume. Multiply by 0.01\u20130.015 to get ml of Touchless needed (typically 60\u201390ml for 6L at 1\u20131.5% PIR). Apply thick coat top to bottom. Dwell 1\u20135 min. Do NOT let dry. Rinse completely before Descale.",
+        "desc": "Add 60ml Touchless for a light clean (1% PIR) or up to 120ml for heavy contamination (2% PIR) into the IK E Foam Pro 12, then fill to the 6L usable mark with water. Apply thick coat top to bottom. Dwell 1\u20135 min \u2014 do not let dry. Rinse completely before next step.",
         "tools": [
           "IK E Foam Pro 12"
         ],
         "chems": [
-          "Bilt Hamber Touchless \u2014 60\u201390ml per 6L (1\u20131.5% PIR \u2014 calibrate to your unit)"
+          "Bilt Hamber Touchless \u2014 60ml (1% PIR) to 120ml (2% PIR) per 6L fill in IK E Foam Pro 12"
         ],
         "insertAfter": "n075",
         "phase": "Prewash",
@@ -1198,8 +1198,8 @@
           "Soft trim brush"
         ],
         "chems": [
-          "AllClean 3:1\u20135:1 or MultiX 10:1",
-          "Trim dressing \u2014 RTU (seals)"
+          "AllClean 3:1\u20135:1 or MultiX 1:10",
+          "303 Aerospace Protectant \u2014 RTU (seals)"
         ],
         "insertAfter": "n07",
         "phase": "Wheels & Tires",
@@ -1824,13 +1824,13 @@
       {
         "id": "bw01",
         "title": "Act immediately on bird drops and tree sap",
-        "desc": "Bird droppings and tree sap are the most damaging contaminants on a ceramic coating \u2014 do not leave them. Saturate with McKee's 37 N-914 (2\u20133 oz per 32 oz spray bottle) and allow to dwell 30\u201360 sec to soften. Gently wipe with a clean damp MF towel using zero pressure. Do not rub dry \u2014 re-wet if needed. Follow with a second clean MF towel.",
+        "desc": "Bird droppings and tree sap are the most damaging contaminants on a ceramic coating \u2014 do not leave them. Saturate with McKee's 37 N-914 (60\u201390ml per 950ml spray bottle) and allow to dwell 30\u201360 sec to soften. Gently wipe with a clean damp MF towel using zero pressure. Do not rub dry \u2014 re-wet if needed. Follow with a second clean MF towel.",
         "tools": [
           "Labeled spray bottle (N-914 QD mix)",
           "2\u00d7 clean MF towels"
         ],
         "chems": [
-          "McKee's 37 N-914 \u2014 2\u20133 oz per 32 oz water"
+          "McKee's 37 N-914 \u2014 60\u201390ml per 950ml water"
         ]
       },
       {
@@ -1841,20 +1841,20 @@
           "Clean MF towel (dedicated QD towel)"
         ],
         "chems": [
-          "McKee's 37 N-914 \u2014 2\u20133 oz per 32 oz water in spray bottle"
+          "McKee's 37 N-914 \u2014 60\u201390ml per 950ml water in spray bottle"
         ]
       },
       {
         "id": "bw03",
         "title": "Light road film between washes",
-        "desc": "If light road film has built up and N-914 alone isn't cutting it, use the rinseless wash method: mix 1 oz N-914 into 2 gallons of water in a bucket. Work one panel at a time with a clean MF wash mitt, then immediately dry each panel with a drying towel. No rinsing required.",
+        "desc": "If light road film has built up and N-914 alone isn't cutting it, use the rinseless wash method: mix 30ml N-914 into 7.5L of water in a bucket. Work one panel at a time with a clean MF wash mitt, then immediately dry each panel with a drying towel. No rinsing required.",
         "tools": [
           "Bucket",
           "MF wash mitt",
           "MF drying towel"
         ],
         "chems": [
-          "McKee's 37 N-914 \u2014 1 oz per 2 gallons (rinseless method)"
+          "McKee's 37 N-914 \u2014 30ml per 7.5L (rinseless method)"
         ]
       },
       {
@@ -1875,7 +1875,7 @@
         "notes": [
           "Road salt and mag chloride are extremely aggressive on ceramic coatings \u2014 rinse or wash more frequently, ideally within 48 hours of driving on treated roads.",
           "Do not wash in below-freezing temps \u2014 water in gaps, door seals, and locks will freeze. Minimum ambient temp for a wet wash is 40\u00b0F.",
-          "Use the rinseless wash method (McKee's N-914, 1 oz per 2 gal) indoors or in a heated bay when it's too cold for a full exterior wash.",
+          "Use the rinseless wash method (McKee's N-914, 30ml per 7.5L) indoors or in a heated bay when it's too cold for a full exterior wash.",
           "CarPro Reload 2.0 should not be applied below 50\u00b0F \u2014 coating adhesion is compromised. Apply in a warmer environment if needed.",
           "Check and dress door seals with 303 Aerospace Protectant before winter to prevent freezing and cracking.",
           "The IK E Foam Pro 12 battery may lose capacity in sub-freezing temps \u2014 store indoors and bring to the wash location warm."
