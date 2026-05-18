@@ -249,8 +249,8 @@
         {
           "context": "IK E Foam Pro 12 (6L usable fill) \u2014 per carpro-us.com",
           "ratio": "400\u2013500:1",
-          "amount": "13ml (0.45 oz) Touchless into 6L fill",
-          "note": "Midpoint of CarPro's published 400\u2013500:1 ratio. Add Reset first, then fill to 6L usable mark. Do not allow to dry on surface. IK E Foam Pro 2 is not recommended for Reset \u2014 volume too small for accurate measurement at correct dilution."
+          "amount": "12\u201315ml (0.4\u20130.5oz) per 6L usable fill",
+          "note": "Per carpro-us.com 400\u2013500:1 ratio. At 400:1: 15ml per 6L. At 500:1: 12ml per 6L. Add Reset first, then fill to 6L usable mark. Do not allow to dry on surface. CarPro's published 1:9 is foam cannon only \u2014 does not apply to IK foam sprayers."
         },
         {
           "context": "Wash bucket \u2014 recommended 4 gallon working fill \u2014 per carpro-us.com",
@@ -975,12 +975,12 @@
       {
         "id": "n09",
         "title": "Snow foam pre-soak \u2014 CarPro Reset",
-        "desc": "Add approx. 120ml (4oz) Reset to IK E Foam Pro 12, fill to 6L mark with water (~1:50). Apply thick foam top to bottom, dwell 5 min. Do not let dry. Rinse off completely before contact wash. NOTE: CarPro's published 1:9 ratio is for pressure washer foam cannons only \u2014 not applicable here.",
+        "desc": "Add 12\u201315ml (approx. 0.4\u20130.5oz) of Reset to the IK E Foam Pro 12, then fill to the 6L usable mark with water \u2014 this is the correct 400\u2013500:1 dilution per carpro-us.com. Apply thick foam top to bottom, dwell 5 min. Do not let dry. Rinse off completely before contact wash. Note: CarPro's published 1:9 ratio is for pressure washer foam cannons only \u2014 not applicable to IK foam sprayers.",
         "tools": [
           "IK E Foam Pro 12"
         ],
         "chems": [
-          "CarPro Reset \u2014 ~120ml per 6L (~1:50 in IK E Foam Pro 12)"
+          "CarPro Reset \u2014 12\u201315ml per 6L fill in IK E Foam Pro 12 (400\u2013500:1)"
         ],
         "normalOnly": true,
         "phase": "Prewash",
