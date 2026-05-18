@@ -237,7 +237,7 @@ function renderSteps(){
     var timeInfo='';
     if(s.estMins)timeInfo+='<span class="step-meta">~'+s.estMins+' min</span>';
     if(s.dwellMins)timeInfo+='<span class="step-meta step-dwell"><i class="ti ti-clock" style="font-size:10px;"></i> '+s.dwellMins+' min dwell</span>';
-    html+='<div class="'+cls+'" id="ws-'+s.id+'" onclick="toggleStep(''+s.id+'')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b">';
+    html+='<div class="'+cls+'" id="ws-'+s.id+'" onclick="toggleStep(\''+s.id+'\')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b">';
     html+='<div class="step-t">'+esc(s.title)+mb+ob+'</div>';
     if(timeInfo)html+='<div class="step-timing">'+timeInfo+'</div>';
     html+='<div class="step-d">'+esc(s.desc)+'</div>';
@@ -392,7 +392,7 @@ function renderBetweenWash(){
   var html='<div class="notice opt-notice"><i class="ti ti-info-circle" aria-hidden="true"></i><span>'+esc(bw.note)+'</span></div>';
   html+='<div class="steps-list">';
   bw.steps.forEach(function(s,idx){
-    html+='<div class="step ns" id="bw-step-'+s.id+'" onclick="toggleBW(this,''+s.id+'')"><div class="step-n">'+(idx+1)+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+'</div><div class="step-d">'+esc(s.desc)+'</div>';
+    html+='<div class="step ns" id="bw-step-'+s.id+'" onclick="toggleBW(this,\''+s.id+'\')"><div class="step-n">'+(idx+1)+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+'</div><div class="step-d">'+esc(s.desc)+'</div>';
     if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
     html+='</div></div>';
   });
