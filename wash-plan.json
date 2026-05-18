@@ -1171,20 +1171,20 @@
       },
       {
         "id": "m02",
-        "title": "CarPro Descale by hand \u2014 maint. step 2",
-        "desc": "Dilute 1:100 \u2014 10ml Descale per 1L water in Bucket 2. Use the 2-bucket method with Bucket 3 as the rinse bucket. Reset is not used in the maintenance wash \u2014 Descale replaces it for the contact wash stage. Work one panel at a time, top to bottom. Dwell as long as possible without letting it dry. Rinse each panel completely before moving to the next. ION Green makes mineral hazing very visible \u2014 inspect carefully as you go.",
+        "title": "CarPro Descale \u2014 2-bucket contact wash",
+        "desc": "Fill Bucket 2 (WASH) with 4 gallons (15L) of water and add 150ml of Descale (1:100). Use Bucket 3 (RINSE) as the rinse bucket. Reset is not used in the maintenance wash \u2014 Descale replaces it for the contact wash stage. Work one panel at a time, top to bottom. Dwell as long as possible without letting it dry. Rinse each panel completely before moving to the next. ION Green makes mineral hazing very visible \u2014 inspect carefully as you go.",
         "tools": [
-          "2\u00d7 buckets with grit guards",
+          "Bucket 2 (WASH) + Bucket 3 (RINSE) with grit guards",
           "Wash mitt"
         ],
         "chems": [
-          "CarPro Descale \u2014 1:100 (10ml per 1L) in Bucket 2 \u2014 replaces Reset in maint. wash"
+          "CarPro Descale \u2014 150ml per 4 gallons (15L) in Bucket 2 (1:100)"
         ],
         "insertAfter": "n08",
         "phase": "2-Bucket Method Wash",
         "phaseIcon": "\ud83d\udfe1",
         "estMins": 20,
-        "dwellMins": "panel by panel"
+        "dwellMins": "max per panel"
       },
       {
         "id": "m00",
