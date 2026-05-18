@@ -170,6 +170,20 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   .cc-use{display:none;}
   .cc-head .cc-cell.cc-use{display:none;}
 }
+
+.phase-hdr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:10px 14px 6px 12px;margin-top:6px;border-radius:var(--r-sm);background:var(--bg3);}
+.phase-hdr:first-child{margin-top:0;}
+.step-timing{display:flex;gap:8px;margin-bottom:4px;flex-wrap:wrap;}
+.step-meta{font-size:10px;font-weight:600;color:var(--text3);background:var(--bg4);padding:2px 7px;border-radius:20px;letter-spacing:0.04em;display:flex;align-items:center;gap:3px;}
+.step-dwell{color:var(--amber);background:var(--amber-bg);border:0.5px solid var(--amber-bd);}
+.chem-shelf{font-size:11px;color:var(--text3);margin-top:5px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;}
+.chem-shelf i{font-size:13px;margin-top:1px;flex-shrink:0;}
+.changelog-entry{font-size:12px;color:var(--text2);line-height:1.6;padding:10px 0;border-bottom:0.5px solid var(--border);}
+.changelog-entry:last-child{border-bottom:none;}
+.season-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;}
+.season-hdr{font-size:14px;font-weight:700;margin-bottom:10px;letter-spacing:-0.1px;}
+.season-list{padding-left:16px;display:flex;flex-direction:column;gap:7px;}
+.season-list li{font-size:13px;color:var(--text2);line-height:1.55;}
 .loading{text-align:center;padding:80px 20px;color:var(--text3);font-size:14px;}
 .error-box{margin:20px;background:var(--bg2);border:1px solid var(--red-bd);border-radius:var(--r);padding:24px;}
 .error-box h2{font-size:16px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
@@ -189,64 +203,63 @@ try{gapState=JSON.parse(localStorage.getItem('gwp_gaps')||'{}');}catch(e){}
 function save(){try{localStorage.setItem('gwp_done',JSON.stringify([...done]));localStorage.setItem('gwp_eng',JSON.stringify([...engDone]));localStorage.setItem('gwp_int',JSON.stringify([...intDone]));localStorage.setItem('gwp_gaps',JSON.stringify(gapState));}catch(e){}}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function render(){document.getElementById('app').innerHTML=renderHeader()+renderTabs()+renderPanels();}
-function renderHeader(){var m=DATA.meta;return'<div class="hdr"><div class="hdr-top"><div class="hdr-left"><div class="bmw-badge"><div class="bq bl"></div><div class="bq wh"></div><div class="bq wh"></div><div class="bq bl"></div></div><div><div class="hdr-title">'+esc(m.title)+'</div><div class="hdr-sub">'+esc(m.car)+'</div></div></div><div class="ver">v'+esc(m.version)+'</div></div><div class="mode-row"><button class="mbtn '+(mode==='normal'?'an':'')+'" onclick="setMode(\'normal\')"><i class="ti ti-droplet" aria-hidden="true"></i>Bi-weekly wash</button><button class="mbtn '+(mode==='maint'?'am':'')+'" onclick="setMode(\'maint\')"><i class="ti ti-shield-check" aria-hidden="true"></i>Ceramic maintenance</button></div></div>';}
+function renderHeader(){var m=DATA.meta;return'<div class="hdr"><div class="hdr-top"><div class="hdr-left"><div class="bmw-badge"><div class="bq bl"></div><div class="bq wh"></div><div class="bq wh"></div><div class="bq bl"></div></div><div><div class="hdr-title">'+esc(m.title)+'</div><div class="hdr-sub">'+esc(m.car)+' &middot; Updated '+esc(m.lastUpdated)+'</div></div></div><div class="ver">v'+esc(m.version)+'</div></div><div class="mode-row"><button class="mbtn '+(mode==='normal'?'an':'')+'" onclick="setMode(\'normal\')"><i class="ti ti-droplet" aria-hidden="true"></i>Bi-weekly wash</button><button class="mbtn '+(mode==='maint'?'am':'')+'" onclick="setMode(\'maint\')"><i class="ti ti-shield-check" aria-hidden="true"></i>Ceramic maintenance</button></div></div>';}
 function renderTabs(){return'<div class="tabs">'+[{id:'steps',l:'Steps'},{id:'chems',l:'Chemicals'},{id:'tools',l:'Tools'},{id:'engine',l:'Engine Bay'},{id:'interior',l:'Interior'},
-    {id:'shortlist',l:'ShortList'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
-function renderPanels(){return['steps','chems','tools','engine','interior','shortlist'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,shortlist:renderShortList}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
+    {id:'shortlist',l:'ShortList'},{id:'between',l:'Between Washes'},{id:'seasonal',l:'Seasonal'}].map(function(t){return'<button class="tab'+(activeTab===t.id?' active':'')+'" onclick="showTab(\''+t.id+'\')">'+t.l+'</button>';}).join('')+'</div>';}
+function renderPanels(){return['steps','chems','tools','engine','interior','shortlist','between','seasonal'].map(function(id){var fn={steps:renderSteps,chems:renderChems,tools:renderTools,engine:renderEngine,interior:renderInterior,shortlist:renderShortList,between:renderBetweenWash,seasonal:renderSeasonal}[id];return'<div class="panel'+(activeTab===id?' active':'')+'" id="panel-'+id+'">'+fn()+'</div>';}).join('');}
 function getVis(){var n=DATA.washSteps.normal;if(mode==='normal')return n;var f=n.filter(function(s){return!s.normalOnly;});var c=f.slice();DATA.washSteps.maintOnly.forEach(function(ms){var i=c.findIndex(function(s){return s.id===ms.insertAfter;});var e=Object.assign({},ms,{isMaint:true});if(i>=0)c.splice(i+1,0,e);else c.push(e);});return c;}
-function renderSteps(){var steps=getVis();var n=steps.filter(function(s){return done.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var html='<div class="notice ceramic"><i class="ti ti-shield-half" aria-hidden="true"></i><span><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying — zero towel contact on paint after rinsing.</span></div>';html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:'+pct+'%"></div></div></div>';html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';html+='<div class="steps-list">';steps.forEach(function(s,idx){var isDone=done.has(s.id);var cls='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');var mb=s.isMaint?'<span class="pill pm">maint.</span>':'';var ob=s.optional?'<span class="pill po">optional</span>':'';html+='<div class="'+cls+'" onclick="toggleStep(\''+s.id+'\')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+mb+ob+'</div><div class="step-d">'+esc(s.desc)+'</div>';if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}html+='</div></div>';});html+='</div>';return html;}
-function getBrand(name){
-  if(name.indexOf('CarPro')===0)return'CarPro';
-  if(name.indexOf('Bilt Hamber')===0)return'Bilt Hamber';
-  if(name.indexOf('Koch Chemie')===0)return'Koch Chemie';
-  if(name.indexOf('Autofinesse')===0)return'Autofinesse';
-  if(name.indexOf('Colourlock')===0)return'Colourlock';
-  if(name.indexOf("McKee's")===0)return"McKee's 37";
-  if(name.indexOf('P21S')===0)return'P21S';
-  if(name.indexOf('DIY Detail')===0)return'DIY Detail';
-  if(name.indexOf('Brake Buster')===0)return'Brake Buster';
-  return'Other';
-}
-function getShortUse(c){
-  var u=c.usedOn||'';
-  var dash=u.indexOf(' — ');
-  if(dash>0)u=u.substring(0,dash);
-  var comma=u.indexOf(',');
-  if(comma>40)u=u.substring(0,comma);
-  if(u.length>55)u=u.substring(0,52)+'...';
-  return u;
-}
-function getChartRatio(c){
-  var r=c.dilutions[0].ratio;
-  if(r==='RTU')return'RTU';
-  if(r==='Direct')return'Direct';
-  return r;
-}
-function renderChemChart(chems){
-  var sorted=chems.slice().sort(function(a,b){
-    var ba=getBrand(a.name),bb=getBrand(b.name);
-    if(ba<bb)return-1;if(ba>bb)return 1;
-    return a.name<b.name?-1:1;
-  });
-  var html='<div class="chem-chart">';
-  html+='<div class="cc-head"><div class="cc-cell cc-brand">Brand</div><div class="cc-cell cc-name">Product</div><div class="cc-cell cc-use">Areas of use</div><div class="cc-cell cc-ratio">Dilution</div></div>';
-  var lastBrand='';
-  sorted.forEach(function(c){
-    var brand=getBrand(c.name);
-    var dispName=c.name.replace(/^CarPro /,'').replace(/^Bilt Hamber /,'').replace(/^Koch Chemie /,'').replace(/^Autofinesse /,'').replace(/^McKee's 37 /,'').replace(/^P21S /,'').replace(/^DIY Detail /,'').replace(/^Colourlock /,'');
-    var brandCell=brand!==lastBrand?'<div class="cc-cell cc-brand cc-brand-val">'+esc(brand)+'</div>':'<div class="cc-cell cc-brand"></div>';
-    lastBrand=brand;
-    var normalOnly=c.modes.length===1&&c.modes[0]==='normal';
-    var maintOnly=c.modes.length===1&&c.modes[0]==='maint';
-    var badge=maintOnly?'<span class="cc-pill cc-pm">M</span>':normalOnly?'<span class="cc-pill cc-pn">N</span>':'';
-    html+='<div class="cc-row">'+brandCell+'<div class="cc-cell cc-name">'+esc(dispName)+badge+'</div><div class="cc-cell cc-use">'+esc(getShortUse(c))+'</div><div class="cc-cell cc-ratio">'+esc(getChartRatio(c))+'</div></div>';
+function renderSteps(){
+  var steps=getVis();
+  var today=new Date().toDateString();
+  var lastDate=localStorage.getItem('gwp_date');
+  if(lastDate&&lastDate!==today){done.clear();save();}
+  localStorage.setItem('gwp_date',today);
+  var n=steps.filter(function(s){return done.has(s.id);}).length;
+  var t=steps.length;
+  var pct=t>0?Math.round(n/t*100):0;
+  var html='<div class="notice ceramic"><i class="ti ti-shield-half" aria-hidden="true"></i><span><strong>Ceramic coat rules:</strong> pH-neutral shampoos only. No wax or sealant over ceramic. Touchless leaf blower drying — zero towel contact on paint after rinsing.</span></div>';
+  html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Progress</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:'+pct+'%"></div></div></div>';
+  html+='<button class="rbtn" onclick="resetSteps()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset all</button>';
+  html+='<div class="steps-list">';
+  var lastPhase='';
+  var phaseColors={'Pre-treatment':'#c0282a','Wheels & Tires':'#1358d4','Paint Decon':'#7a3db0','Wash':'#b07000','Dry & Protect':'#0a7a4a','Finish':'#505068'};
+  steps.forEach(function(s,idx){
+    var isDone=done.has(s.id);
+    var cls='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');
+    var mb=s.isMaint?'<span class="pill pm">maint.</span>':'';
+    var ob=s.optional?'<span class="pill po">optional</span>':'';
+    var phase=s.phase||'';
+    if(phase&&phase!==lastPhase){
+      var pc=phaseColors[phase]||'var(--text3)';
+      html+='<div class="phase-hdr" style="border-left:3px solid '+pc+';color:'+pc+'">'+esc(s.phaseIcon||'')+'  '+esc(phase)+'</div>';
+      lastPhase=phase;
+    }
+    var timeInfo='';
+    if(s.estMins)timeInfo+='<span class="step-meta">~'+s.estMins+' min</span>';
+    if(s.dwellMins)timeInfo+='<span class="step-meta step-dwell"><i class="ti ti-clock" style="font-size:10px;"></i> '+s.dwellMins+' min dwell</span>';
+    html+='<div class="'+cls+'" id="ws-'+s.id+'" onclick="toggleStep(''+s.id+'')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b">';
+    html+='<div class="step-t">'+esc(s.title)+mb+ob+'</div>';
+    if(timeInfo)html+='<div class="step-timing">'+timeInfo+'</div>';
+    html+='<div class="step-d">'+esc(s.desc)+'</div>';
+    if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
+    html+='</div></div>';
   });
   html+='</div>';
-  html+='<div class="cc-legend"><span class="cc-pill cc-pm">M</span> maint. only &nbsp;&nbsp;<span class="cc-pill cc-pn">N</span> normal only</div>';
   return html;
 }
-function renderChems(){var modeLabel=mode==='normal'?'Bi-weekly wash':'Ceramic maintenance wash';var activechems=DATA.chemicals.filter(function(c){return c.modes.indexOf(mode)>=0;});var html='<div class="notice info"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Showing chemicals for: <strong>'+modeLabel+'</strong>. Ratios are for IK E Foam sprayers — not pressure washer foam cannons.</span></div>';html+=renderChemChart(activechems);html+='<div class="slbl" style="margin-top:20px;">Full dilution details</div>';var cats={};DATA.chemicals.forEach(function(c){if(c.modes.indexOf(mode)<0)return;if(!cats[c.category])cats[c.category]=[];cats[c.category].push(c);});var catOrder=['Spot pre-treatment','Wheel cleaner','Wheel cleaner (option)','Wheel cleaner — iron-reactive','Tire cleaner','All-purpose cleaner','All-purpose cleaner / degreaser (APC)','Iron / fallout decon','Iron / fallout remover — paint','Ceramic maintenance pre-wash — step 1','Ceramic maintenance pre-wash — step 2','Main wash shampoo','Tire dressing','Paint sealant / coating topper — both modes','Exhaust & metal cleaning','Glass cleaner','Glass cleaner — alternative to BH Trace-Less','Screen cleaner — interior','Trim & finishing','Finishing','Ceramic coating topper / paint protection'];var sortedCats=Object.keys(cats).sort(function(a,b){var ai=catOrder.indexOf(a);var bi=catOrder.indexOf(b);if(ai<0)ai=99;if(bi<0)bi=99;return ai-bi;});sortedCats.forEach(function(cat){html+='<div class="slbl">'+esc(cat)+'</div>';cats[cat].forEach(function(c){var normalOnly=c.modes.length===1&&c.modes[0]==='normal';var maintOnly=c.modes.length===1&&c.modes[0]==='maint';var badge=maintOnly?'<span class="pill pm">maint. only</span>':normalOnly?'<span class="pill pn">normal only</span>':'';html+='<div class="chem-card"><div class="chem-hd"><div><div class="chem-nm">'+esc(c.name)+'</div><div class="chem-cat">'+esc(c.category)+'</div></div>'+badge+'</div><div class="chem-bd"><div class="chem-used">'+esc(c.usedOn)+'</div>';c.dilutions.forEach(function(d){html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';if(d.amount&&d.amount!=='No dilution'&&d.amount!=='Direct')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';html+='</div>';});html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div></div></div>';});});return html;}
+function renderChems(){var modeLabel=mode==='normal'?'Bi-weekly wash':'Ceramic maintenance wash';var activechems=DATA.chemicals.filter(function(c){return c.modes.indexOf(mode)>=0;});var html='<div class="notice info"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Showing chemicals for: <strong>'+modeLabel+'</strong>. Ratios are for IK E Foam sprayers — not pressure washer foam cannons.</span></div>';html+=renderChemChart(activechems);html+='<div class="slbl" style="margin-top:20px;">Full dilution details</div>';var cats={};DATA.chemicals.forEach(function(c){if(c.modes.indexOf(mode)<0)return;if(!cats[c.category])cats[c.category]=[];cats[c.category].push(c);});var catOrder=['Spot pre-treatment','Wheel cleaner','Wheel cleaner (option)','Wheel cleaner — iron-reactive','Tire cleaner','All-purpose cleaner','All-purpose cleaner / degreaser (APC)','Iron / fallout decon','Iron / fallout remover — paint','Ceramic maintenance pre-wash — step 1','Ceramic maintenance pre-wash — step 2','Main wash shampoo','Tire dressing','Paint sealant / coating topper — both modes','Exhaust & metal cleaning','Glass cleaner','Glass cleaner — alternative to BH Trace-Less','Screen cleaner — interior','Trim & finishing','Finishing','Ceramic coating topper / paint protection'];var sortedCats=Object.keys(cats).sort(function(a,b){var ai=catOrder.indexOf(a);var bi=catOrder.indexOf(b);if(ai<0)ai=99;if(bi<0)bi=99;return ai-bi;});sortedCats.forEach(function(cat){html+='<div class="slbl">'+esc(cat)+'</div>';cats[cat].forEach(function(c){var normalOnly=c.modes.length===1&&c.modes[0]==='normal';var maintOnly=c.modes.length===1&&c.modes[0]==='maint';var badge=maintOnly?'<span class="pill pm">maint. only</span>':normalOnly?'<span class="pill pn">normal only</span>':'';html+='<div class="chem-card"><div class="chem-hd"><div><div class="chem-nm">'+esc(c.name)+'</div><div class="chem-cat">'+esc(c.category)+'</div></div>'+badge+'</div><div class="chem-bd"><div class="chem-used">'+esc(c.usedOn)+'</div>';c.dilutions.forEach(function(d){html+='<div class="dil"><div class="dil-ctx">'+esc(d.context)+'</div><div class="dil-ratio">'+esc(d.ratio)+'</div>';if(d.amount&&d.amount!=='No dilution'&&d.amount!=='Direct')html+='<div class="dil-amt">'+esc(d.amount)+'</div>';if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';html+='</div>';});html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div>';
+      if(c.shelfLife){html+='<div class="chem-shelf"><i class="ti ti-clock" aria-hidden="true"></i><span><strong>Shelf life:</strong> '+esc(c.shelfLife)+'</span></div>';}
+      if(c.storageNote){html+='<div class="chem-shelf"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>'+esc(c.storageNote)+'</span></div>';}
+      html+='</div></div>';});});return html;}
 function renderTools(){var cats={};DATA.tools.forEach(function(t){if(!cats[t.category])cats[t.category]=[];cats[t.category].push(t);});var html='';Object.keys(cats).forEach(function(cat){html+='<div class="slbl">'+esc(cat)+'</div><div class="tbl"><div class="tr tc2 th"><div class="td">Tool</div><div class="td">Qty</div><div class="td">Used for</div></div>';cats[cat].forEach(function(t){html+='<div class="tr tc2"><div class="td">'+esc(t.name)+'</div><div class="td m">'+esc(t.qty)+'</div><div class="td m">'+esc(t.usedFor)+'</div></div>';});html+='</div>';});return html;}
+function renderChangelog(){
+  var html='<div class="slbl" style="margin-top:0;">Version history</div>';
+  var log=DATA.meta.changelog||[];
+  log.forEach(function(entry){
+    html+='<div class="changelog-entry">'+esc(entry)+'</div>';
+  });
+  return html;
+}
 function renderEngine(){var eb=DATA.engineBay;var n=eb.steps.filter(function(s){return engDone.has(s.id);}).length;var t=eb.steps.length;var pct=t>0?Math.round(n/t*100):0;var html='<div class="notice opt-notice"><i class="ti ti-info-circle" aria-hidden="true"></i><span><strong>Optional — standalone session only.</strong> '+esc(eb.note)+'</span></div>';html+='<div class="eng-warn"><div class="eng-warn-t"><i class="ti ti-alert-triangle" aria-hidden="true"></i>Cover before any water contact</div><div class="cvr-grid"><div class="cvr danger"><div class="cvr-lbl">Bag + tape — critical</div><div class="cvr-items">'+eb.coverBeforeWater.bagAndTape.map(esc).join('<br>')+'</div></div><div class="cvr caution"><div class="cvr-lbl">Avoid direct spray</div><div class="cvr-items">'+eb.coverBeforeWater.avoidDirectSpray.map(esc).join('<br>')+'</div></div></div><div style="font-size:12px;color:var(--red);margin-top:10px;opacity:0.7;">Hose only — never pressure washer in the engine bay. Low pressure, back to front, away from firewall looms.</div></div>';html+='<div class="prog-wrap"><div class="prog-meta"><span class="prog-lbl">Engine steps</span><span class="prog-ct">'+n+' / '+t+'</span></div><div class="prog-track"><div class="prog-bar" id="eng-bar" style="width:'+pct+'%"></div></div></div>';html+='<button class="rbtn" onclick="resetEngine()"><i class="ti ti-refresh" aria-hidden="true"></i>Reset engine steps</button>';html+='<div class="steps-list">';eb.steps.forEach(function(s,idx){var isDone=engDone.has(s.id);var cls='step ns'+(isDone?' done':'');var wb=s.warn?'<span class="pill pe">critical</span>':'';html+='<div class="'+cls+'" onclick="toggleEngine(\''+s.id+'\')"><div class="step-n">'+(isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1))+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+wb+'</div><div class="step-d">'+esc(s.desc)+'</div>';if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}html+='</div></div>';});html+='</div>';html+='<div class="slbl" style="margin-top:20px;">Engine bay chemicals</div><div class="tbl"><div class="tr tc4 th"><div class="td">Chemical</div><div class="td">Where used</div><div class="td">Dilution</div><div class="td">Tool / notes</div></div><div class="tr tc4"><div class="td">AllClean APC or CarPro MultiX</div><div class="td m">All plastics, hoses, bay walls, chassis</div><div class="td m">AllClean 5:1–10:1 / MultiX 10:1 general. 3:1 heavy grease.</div><div class="td m">IK E Foam 2 or spray bottle + detail brushes. Dwell 1–2 min.</div></div><div class="tr tc4"><div class="td">Trim dressing</div><div class="td m">Plastic covers, hoses, rubber seals</div><div class="td m">RTU</div><div class="td m">Soft trim brush or foam pad. Apply thin near connectors.</div></div></div>';return html;}
 function renderGaps(){var all=DATA.gaps.tools.concat(DATA.gaps.chemicals);var hv=0,by=0,sk=0,nv=0;all.forEach(function(i){var s=gapState[i.id]||'none';if(s==='have')hv++;else if(s==='buy')by++;else if(s==='skip')sk++;else nv++;});var html='<div class="gsm"><div class="gs"><span class="gsn" style="color:var(--green)">'+hv+'</span><div class="gsl">Have it</div></div><div class="gs"><span class="gsn" style="color:var(--amber)">'+by+'</span><div class="gsl">Need to buy</div></div><div class="gs"><span class="gsn" style="color:var(--text3)">'+sk+'</span><div class="gsl">Skipped</div></div><div class="gs"><span class="gsn">'+nv+'</span><div class="gsl">Unreviewed</div></div></div>';html+='<div class="fbrow">'+['all','essential','recommended','optional','buy'].map(function(f){var l=f==='buy'?'Need to buy':f.charAt(0).toUpperCase()+f.slice(1);return'<button class="fbtn'+(gapFilter===f?' active':'')+'" onclick="setGF(\''+f+'\')">'+l+'</button>';}).join('')+'</div>';html+='<div class="slbl">Tools &amp; materials</div>'+renderGapList(DATA.gaps.tools);html+='<div class="slbl">Chemicals</div>'+renderGapList(DATA.gaps.chemicals);return html;}
 function renderGapList(items){var html='';var shown=0;items.forEach(function(item){if(gapFilter!=='all'&&gapFilter!=='buy'&&item.priority!==gapFilter)return;if(gapFilter==='buy'&&(gapState[item.id]||'none')!=='buy')return;shown++;var st=gapState[item.id]||'none';var cls='gap-item'+(st==='have'?' have':st==='buy'?' buy':st==='skip'?' skip':'');var pc={essential:'pe',recommended:'pr',optional:'po'}[item.priority]||'po';var mo=item.washTypes&&item.washTypes.length===1&&item.washTypes[0]==='maint';html+='<div class="'+cls+'"><div class="gap-nm">'+esc(item.name)+'<span class="pill '+pc+'">'+item.priority+'</span>'+(mo?'<span class="pill pm">maint. only</span>':'')+'</div><div class="gap-why">'+esc(item.why)+'</div><div class="gap-btns"><button class="gap-btn'+(st==='have'?' sh':'')+'" onclick="setGap(\''+item.id+'\',\'have\')">Have it</button><button class="gap-btn'+(st==='buy'?' sb':'')+'" onclick="setGap(\''+item.id+'\',\'buy\')">Need to buy</button><button class="gap-btn'+(st==='skip'?' ss':'')+'" onclick="setGap(\''+item.id+'\',\'skip\')">Skip</button></div></div>';});if(!shown)html='<div style="font-size:13px;color:var(--text3);padding:10px 0;">No items match this filter.</div>';return html;}
@@ -254,7 +267,7 @@ function setMode(m){mode=m;render();}
 function showTab(id){activeTab=id;render();}
 function setGF(f){gapFilter=f;render();}
 function setGap(id,st){gapState[id]=st;save();render();}
-function toggleStep(id){if(done.has(id))done.delete(id);else done.add(id);save();var steps=getVis();var n=steps.filter(function(s){return done.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var bar=document.getElementById('prog-bar');var ct=document.querySelector('.prog-ct');if(bar)bar.style.width=pct+'%';if(ct)ct.textContent=n+' / '+t;steps.forEach(function(s,idx){var el=document.querySelector('[onclick="toggleStep(\''+s.id+'\')"]');if(!el)return;var isDone=done.has(s.id);el.className='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');var nn=el.querySelector('.step-n');if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);});}
+function toggleStep(id){if(done.has(id))done.delete(id);else done.add(id);save();var steps=getVis();var n=steps.filter(function(s){return done.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var bar=document.getElementById('prog-bar');var ct=document.querySelector('.prog-ct');if(bar)bar.style.width=pct+'%';if(ct)ct.textContent=n+' / '+t;steps.forEach(function(s,idx){var el=document.getElementById('ws-'+s.id);if(!el)return;var isDone=done.has(s.id);el.className='step '+(s.isMaint?'ms':s.optional?'os':'ns')+(isDone?' done':'');var nn=el.querySelector('.step-n');if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);});}
 function toggleEngine(id){if(engDone.has(id))engDone.delete(id);else engDone.add(id);save();var steps=DATA.engineBay.steps;var n=steps.filter(function(s){return engDone.has(s.id);}).length;var t=steps.length;var pct=t>0?Math.round(n/t*100):0;var bar=document.getElementById('eng-bar');if(bar)bar.style.width=pct+'%';var ct=document.querySelector('#panel-engine .prog-ct');if(ct)ct.textContent=n+' / '+t;steps.forEach(function(s,idx){var el=document.querySelector('[onclick="toggleEngine(\''+s.id+'\')"]');if(!el)return;var isDone=engDone.has(s.id);el.className='step ns'+(isDone?' done':'');var nn=el.querySelector('.step-n');if(nn)nn.innerHTML=isDone?'<i class="ti ti-check" style="font-size:13px;color:var(--green)"></i>':(idx+1);});}
 function resetSteps(){done.clear();save();render();}
 function resetEngine(){engDone.clear();save();render();}
@@ -292,7 +305,10 @@ function renderInterior(){
       if(d.note)html+='<div class="dil-note">'+esc(d.note)+'</div>';
       html+='</div>';
     });
-    html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div></div></div>';
+    html+='<div class="chem-tool"><i class="ti ti-tool" aria-hidden="true"></i>'+esc(c.tool)+'</div>';
+      if(c.shelfLife){html+='<div class="chem-shelf"><i class="ti ti-clock" aria-hidden="true"></i><span><strong>Shelf life:</strong> '+esc(c.shelfLife)+'</span></div>';}
+      if(c.storageNote){html+='<div class="chem-shelf"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>'+esc(c.storageNote)+'</span></div>';}
+      html+='</div></div>';
   });
   return html;
 }
@@ -369,6 +385,36 @@ function renderShortList(){
   return html;
 }
 
+
+function renderBetweenWash(){
+  var bw=DATA.betweenWash;
+  if(!bw)return'<div class="notice info"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Between-wash data not found.</span></div>';
+  var html='<div class="notice opt-notice"><i class="ti ti-info-circle" aria-hidden="true"></i><span>'+esc(bw.note)+'</span></div>';
+  html+='<div class="steps-list">';
+  bw.steps.forEach(function(s,idx){
+    html+='<div class="step ns" id="bw-step-'+s.id+'" onclick="toggleBW(this,''+s.id+'')"><div class="step-n">'+(idx+1)+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+'</div><div class="step-d">'+esc(s.desc)+'</div>';
+    if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
+    html+='</div></div>';
+  });
+  html+='</div>';
+  return html;
+}
+function toggleBW(el,id){
+  el.className=el.className.indexOf('done')>=0?el.className.replace(' done',''):el.className+' done';
+}
+function renderSeasonal(){
+  var sn=DATA.seasonalNotes;
+  if(!sn)return'<div class="notice info">Seasonal data not found.</div>';
+  var seasonColors={'Winter (Nov–Mar)':'#1358d4','Spring (Mar–May)':'#0a7a4a','Summer (Jun–Sep)':'#b07000','Fall (Sep–Nov)':'#c0282a'};
+  var html='<div class="notice info"><i class="ti ti-map-pin" aria-hidden="true"></i><span><strong>'+esc(sn.location)+'</strong> — season-specific guidance for washing, chemical application, and coating care.</span></div>';
+  sn.seasons.forEach(function(s){
+    var col=seasonColors[s.season]||'var(--text3)';
+    html+='<div class="season-card"><div class="season-hdr" style="color:'+col+'">'+esc(s.icon)+' '+esc(s.season)+'</div><ul class="season-list">';
+    s.notes.forEach(function(n){html+='<li>'+esc(n)+'</li>';});
+    html+='</ul></div>';
+  });
+  return html;
+}
 fetch('wash-plan.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(data){DATA=data;render();}).catch(function(err){document.getElementById('app').innerHTML='<div class="error-box"><h2><i class="ti ti-alert-triangle"></i>Could not load wash-plan.json</h2><p>This viewer requires a local server or GitHub Pages.<br><br><strong>Run locally:</strong><br><code>python3 -m http.server 8080</code><br>Then open <code>http://localhost:8080</code><br><br><strong>Or enable GitHub Pages</strong> in repo Settings → Pages → main / root.<br><br><span style="font-size:11px;opacity:0.5;">Error: '+err.message+'</span></p></div>';});
 </script>
 </body>
