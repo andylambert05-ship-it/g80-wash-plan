@@ -184,6 +184,27 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .season-hdr{font-size:14px;font-weight:700;margin-bottom:10px;letter-spacing:-0.1px;}
 .season-list{padding-left:16px;display:flex;flex-direction:column;gap:7px;}
 .season-list li{font-size:13px;color:var(--text2);line-height:1.55;}
+
+/* ── Floating Timer ── */
+.timer-float{position:fixed;bottom:24px;right:18px;z-index:999;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:14px 16px;box-shadow:0 4px 24px rgba(0,0,0,0.12);display:none;align-items:center;gap:14px;min-width:200px;}
+.timer-float.active{display:flex;}
+.timer-ring-wrap{position:relative;width:52px;height:52px;flex-shrink:0;}
+.timer-svg{width:52px;height:52px;transform:rotate(-90deg);}
+.timer-bg{fill:none;stroke:var(--bg4);stroke-width:4;}
+.timer-fg{fill:none;stroke:var(--blue-lt);stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 1s linear;stroke-dasharray:138.2;stroke-dashoffset:0;}
+.timer-fg.warning{stroke:var(--amber);}
+.timer-fg.expired{stroke:var(--red);}
+.timer-time{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-0.5px;}
+.timer-info{flex:1;min-width:0;}
+.timer-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.timer-status{font-size:12px;color:var(--text2);margin-top:2px;}
+.timer-close{width:26px;height:26px;border-radius:50%;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.timer-close:hover{background:var(--bg4);}
+/* Timer buttons on step cards */
+.timer-btns{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.timer-btn{font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid var(--blue-bd);background:var(--blue-bg);color:var(--blue-lt);cursor:pointer;font-weight:600;letter-spacing:0.03em;display:flex;align-items:center;gap:4px;-webkit-tap-highlight-color:transparent;}
+.timer-btn:hover{background:var(--blue-bg);opacity:0.85;}
+.timer-btn i{font-size:11px;}
 .loading{text-align:center;padding:80px 20px;color:var(--text3);font-size:14px;}
 .error-box{margin:20px;background:var(--bg2);border:1px solid var(--red-bd);border-radius:var(--r);padding:24px;}
 .error-box h2{font-size:16px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
@@ -193,6 +214,20 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </style>
 </head>
 <body>
+<div id="timer-float" class="timer-float">
+  <div class="timer-ring-wrap">
+    <svg class="timer-svg" viewBox="0 0 44 44">
+      <circle class="timer-bg" cx="22" cy="22" r="18"/>
+      <circle class="timer-fg" id="timer-ring" cx="22" cy="22" r="18"/>
+    </svg>
+    <div class="timer-time" id="timer-display">0:00</div>
+  </div>
+  <div class="timer-info">
+    <div class="timer-label" id="timer-label">Dwell timer</div>
+    <div class="timer-status" id="timer-status">Running…</div>
+  </div>
+  <button class="timer-close" onclick="stopTimer()" title="Dismiss">✕</button>
+</div>
 <div id="app"><div class="loading"><i class="ti ti-loader" style="font-size:24px;display:block;margin-bottom:10px;"></i>Loading wash plan…</div></div>
 <script>
 var DATA=null,mode='normal',done=new Set(),engDone=new Set(),intDone=new Set(),gapState={},gapFilter='all',activeTab='steps';
@@ -241,6 +276,17 @@ function renderSteps(){
     if(timeInfo)html+='<div class="step-timing">'+timeInfo+'</div>';
     html+='<div class="step-d">'+esc(s.desc)+'</div>';
     if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
+    if(s.dwellMin){
+      var tLabel=esc(s.title).replace(/<[^>]+>/g,'').substring(0,30);
+      html+='<div class="timer-btns">';
+      if(s.dwellMin===s.dwellMax){
+        html+='<button class="timer-btn" onclick="event.stopPropagation();startTimer('+s.dwellMin+',\''+tLabel+'\')" "><i class="ti ti-clock"></i>Start '+fmtTime(s.dwellMin)+' timer</button>';
+      } else {
+        html+='<button class="timer-btn" onclick="event.stopPropagation();startTimer('+s.dwellMin+',\''+tLabel+'\')" "><i class="ti ti-clock"></i>'+fmtTime(s.dwellMin)+'</button>';
+        html+='<button class="timer-btn" onclick="event.stopPropagation();startTimer('+s.dwellMax+',\''+tLabel+'\')" "><i class="ti ti-clock"></i>'+fmtTime(s.dwellMax)+'</button>';
+      }
+      html+='</div>';
+    }
     html+='</div></div>';
   });
   html+='</div>';
@@ -453,6 +499,17 @@ function renderBetweenWash(){
   bw.steps.forEach(function(s,idx){
     html+='<div class="step ns" id="bw-step-'+s.id+'" onclick="toggleBW(this,\''+s.id+'\')"><div class="step-n">'+(idx+1)+'</div><div class="step-b"><div class="step-t">'+esc(s.title)+'</div><div class="step-d">'+esc(s.desc)+'</div>';
     if((s.tools&&s.tools.length)||(s.chems&&s.chems.length)){html+='<div class="tags">';(s.tools||[]).forEach(function(t){html+='<span class="tag tl"><i class="ti ti-tool" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(t)+'</span>';});(s.chems||[]).forEach(function(c){html+='<span class="tag tc"><i class="ti ti-flask" aria-hidden="true" style="font-size:10px;margin-right:3px;"></i>'+esc(c)+'</span>';});html+='</div>';}
+    if(s.dwellMin){
+      var tLabel=esc(s.title).replace(/<[^>]+>/g,'').substring(0,30);
+      html+='<div class="timer-btns">';
+      if(s.dwellMin===s.dwellMax){
+        html+='<button class="timer-btn" onclick="event.stopPropagation();startTimer('+s.dwellMin+',\''+tLabel+'\')" "><i class="ti ti-clock"></i>Start '+fmtTime(s.dwellMin)+' timer</button>';
+      } else {
+        html+='<button class="timer-btn" onclick="event.stopPropagation();startTimer('+s.dwellMin+',\''+tLabel+'\')" "><i class="ti ti-clock"></i>'+fmtTime(s.dwellMin)+'</button>';
+        html+='<button class="timer-btn" onclick="event.stopPropagation();startTimer('+s.dwellMax+',\''+tLabel+'\')" "><i class="ti ti-clock"></i>'+fmtTime(s.dwellMax)+'</button>';
+      }
+      html+='</div>';
+    }
     html+='</div></div>';
   });
   html+='</div>';
@@ -474,6 +531,106 @@ function renderSeasonal(){
   });
   return html;
 }
+
+// ── Wake Lock ──────────────────────────────────────────────────────────
+var wakeLock = null;
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+      console.log('Wake lock active');
+    }
+  } catch(e) { console.log('Wake lock failed:', e.message); }
+}
+function releaseWakeLock() {
+  if (wakeLock) { wakeLock.release(); wakeLock = null; }
+}
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible' && timerInterval) requestWakeLock();
+});
+
+// ── Audio beep ─────────────────────────────────────────────────────────
+function playBeep() {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var beepCount = 0;
+    function beep() {
+      if (beepCount >= 3) return;
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.6, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc.start(ctx.currentTime + beepCount * 0.5);
+      osc.stop(ctx.currentTime + beepCount * 0.5 + 0.4);
+      beepCount++;
+      setTimeout(beep, 500);
+    }
+    beep();
+  } catch(e) {}
+}
+function vibrate() {
+  try { navigator.vibrate && navigator.vibrate([300, 150, 300, 150, 300]); } catch(e) {}
+}
+
+// ── Timer core ─────────────────────────────────────────────────────────
+var timerInterval = null;
+var timerTotal = 0;
+var timerRemaining = 0;
+var timerLabel = '';
+
+function fmtTime(sec) {
+  var m = Math.floor(sec / 60);
+  var s = sec % 60;
+  return m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function startTimer(seconds, label) {
+  if (timerInterval) clearInterval(timerInterval);
+  timerTotal = seconds;
+  timerRemaining = seconds;
+  timerLabel = label;
+  requestWakeLock();
+  var floatEl = document.getElementById('timer-float');
+  var display = document.getElementById('timer-display');
+  var ring = document.getElementById('timer-ring');
+  var lbl = document.getElementById('timer-label');
+  var status = document.getElementById('timer-status');
+  var circumference = 113.1; // 2*pi*18
+  floatEl.classList.add('active');
+  lbl.textContent = label;
+  display.textContent = fmtTime(timerRemaining);
+  status.textContent = 'Running…';
+  ring.className = 'timer-fg';
+  function tick() {
+    timerRemaining--;
+    var pct = timerRemaining / timerTotal;
+    ring.style.strokeDashoffset = circumference * (1 - pct);
+    display.textContent = fmtTime(timerRemaining);
+    if (timerRemaining <= 30 && timerRemaining > 0) ring.className = 'timer-fg warning';
+    if (timerRemaining <= 0) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      ring.className = 'timer-fg expired';
+      display.textContent = 'DONE';
+      status.textContent = 'Dwell complete — rinse now';
+      playBeep();
+      vibrate();
+      releaseWakeLock();
+    }
+  }
+  timerInterval = setInterval(tick, 1000);
+}
+
+function stopTimer() {
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  var floatEl = document.getElementById('timer-float');
+  if (floatEl) floatEl.classList.remove('active');
+  releaseWakeLock();
+}
+
 fetch('wash-plan.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(data){DATA=data;render();}).catch(function(err){document.getElementById('app').innerHTML='<div class="error-box"><h2><i class="ti ti-alert-triangle"></i>Could not load wash-plan.json</h2><p>This viewer requires a local server or GitHub Pages.<br><br><strong>Run locally:</strong><br><code>python3 -m http.server 8080</code><br>Then open <code>http://localhost:8080</code><br><br><strong>Or enable GitHub Pages</strong> in repo Settings → Pages → main / root.<br><br><span style="font-size:11px;opacity:0.5;">Error: '+err.message+'</span></p></div>';});
 </script>
 </body>

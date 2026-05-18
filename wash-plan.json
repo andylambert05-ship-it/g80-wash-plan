@@ -866,7 +866,9 @@
         "phase": "Wheels & Tires",
         "phaseIcon": "\ud83d\udd35",
         "estMins": 8,
-        "dwellMins": "2\u20135"
+        "dwellMins": "2\u20135",
+        "dwellMin": 120,
+        "dwellMax": 300
       },
       {
         "id": "n06",
@@ -882,7 +884,9 @@
         "phase": "Wheels & Tires",
         "phaseIcon": "\ud83d\udd35",
         "estMins": 4,
-        "dwellMins": "0.5"
+        "dwellMins": "0.5",
+        "dwellMin": 30,
+        "dwellMax": 30
       },
       {
         "id": "n07",
@@ -934,7 +938,9 @@
         "phase": "Pre-treatment",
         "phaseIcon": "\ud83d\udd34",
         "estMins": 3,
-        "dwellMins": "0.5\u20132"
+        "dwellMins": "0.5\u20132",
+        "dwellMin": 30,
+        "dwellMax": 120
       },
       {
         "id": "n03",
@@ -950,7 +956,9 @@
         "phase": "Pre-treatment",
         "phaseIcon": "\ud83d\udd34",
         "estMins": 3,
-        "dwellMins": "2\u20133"
+        "dwellMins": "2\u20133",
+        "dwellMin": 120,
+        "dwellMax": 180
       },
       {
         "id": "n075",
@@ -978,7 +986,9 @@
         "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 6,
-        "dwellMins": "5"
+        "dwellMins": "5",
+        "dwellMin": 300,
+        "dwellMax": 300
       },
       {
         "id": "n08",
@@ -993,7 +1003,9 @@
         "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 7,
-        "dwellMins": "3\u20135"
+        "dwellMins": "3\u20135",
+        "dwellMin": 180,
+        "dwellMax": 300
       },
       {
         "id": "n10",
@@ -1153,7 +1165,9 @@
         "phase": "Prewash",
         "phaseIcon": "\ud83d\udfe3",
         "estMins": 8,
-        "dwellMins": "1\u20135"
+        "dwellMins": "1\u20135",
+        "dwellMin": 60,
+        "dwellMax": 300
       },
       {
         "id": "m02",
